@@ -1,4 +1,7 @@
 package com.example.lover.dao;
 
-public interface IAccountDAO {
+import com.example.lover.model.Account;
+
+public interface IAccountDAO{
+    Account login(String userName, String password);
 }
