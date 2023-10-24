@@ -13,6 +13,16 @@ public class Account {
     private String status;
     private int idRole;
 
+    public Account(int idUser, String userName, String password, int phoneNumber, String status, int role) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.status = status;
+        this.idRole = role;
+    }
+
     public Account(int idUser, String userName, String password, String email, int phoneNumber, String identifyCard, String surname, String name, String nickName, String status, int idRole) {
         this.idUser = idUser;
         this.userName = userName;
@@ -28,6 +38,14 @@ public class Account {
     }
 
     public Account() {
+    }
+
+    public Account(int idUser, String userName, String email, int phoneNumber, String identifyCard) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.identifyCard = identifyCard;
     }
 
     public int getIdUser() {
