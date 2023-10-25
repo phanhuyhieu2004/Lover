@@ -1,21 +1,21 @@
 package com.example.lover.model;
 
 public class Account {
-    private int idUser;
-    private String userName;
+    private int idAccount;
+    private String accountName;
     private String password;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
     private String identifyCard;
     private String surname;
     private String name;
     private String nickName;
     private String status;
-    private int idRole;
 
-    public Account(int idUser, String userName, String password, String email, int phoneNumber, String identifyCard, String surname, String name, String nickName, String status, int idRole) {
-        this.idUser = idUser;
-        this.userName = userName;
+
+    public Account(int idAccount, String accountName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName, String status) {
+        this.idAccount = idAccount;
+        this.accountName = accountName;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -24,26 +24,32 @@ public class Account {
         this.name = name;
         this.nickName = nickName;
         this.status = status;
-        this.idRole = idRole;
+
     }
 
     public Account() {
     }
 
-    public int getIdUser() {
-        return idUser;
+    public Account(String accountName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName) {
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+
+
+
+    public int getIdAccount() {
+        return idAccount;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setIdAccount(int idAccount) {
+        this.idAccount = idAccount;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
     public String getPassword() {
@@ -62,11 +68,11 @@ public class Account {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -110,19 +116,13 @@ public class Account {
         this.status = status;
     }
 
-    public int getIdRole() {
-        return idRole;
-    }
 
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
-    }
 
     @Override
     public String toString() {
         return "Account{" +
-                "idUser=" + idUser +
-                ", userName='" + userName + '\'' +
+                "idAccount=" + idAccount +
+                ", accountName='" + accountName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber +
@@ -131,7 +131,7 @@ public class Account {
                 ", name='" + name + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", status='" + status + '\'' +
-                ", idRole=" + idRole +
+
                 '}';
     }
 }

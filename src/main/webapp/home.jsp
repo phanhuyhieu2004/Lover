@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="home.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 </head>
 <style>
   .main-body{
@@ -43,12 +45,11 @@
 
 
 
-
+<jsp:include page="Flower.jsp"></jsp:include>
 <jsp:include page="header.jsp"></jsp:include>
 
 <div class="container">
   <nav>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <nav>
       <div class="side_navbar">
@@ -70,6 +71,9 @@
   </div>
 
 </div>
+
+<jsp:include page="footer.jsp"></jsp:include>
+
 
 </body>
 </html>

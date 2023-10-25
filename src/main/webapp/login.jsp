@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,19 +39,33 @@
     .input-row input {
         flex: 1; /* Để input chiếm phần bằng nhau trên hàng */
     }
+
+     .alert.alert-warning {
+         background-color: yellow;
+         color: black;
+     }
+
+</style>
 </style>
 <body>
+<jsp:include page="Flower.jsp"></jsp:include>
+
 <div class="container" id="container">
 
     <div class="form-container register-container">
-        <form action="#">
+        <form id="signup-form" action="register" method="post">
+            <div class="alert alert-successful" role="alert" style="background-color: limegreen;">${messSignUp}</div>
             <h1>Register hire.</h1>
             <div class="input-row">
-                <input type="text" name="name" placeholder="UserName" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="text" name="accountName" placeholder="UserName" required>
+                <input type="password" name="password"
+                       placeholder="Passwords " required
+                       pattern="^.{6,15}$"
+                       title="Please need to be between 6 and 15 characters long.">
+
 
             </div>
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="email" id="email-input" placeholder="email@address.com" name="email" required/>
             <div class="input-row">
                 <input type="tel" name="phoneNumber" placeholder="Phone Number" required>
                 <input type="text" name="identifyCard" placeholder="Identify Card" required>
@@ -61,27 +73,26 @@
             <div class="input-row">
                 <input type="text" name="surname" placeholder="Surname" required>
                 <input type="text" name="name" placeholder="Name" required>
-
             </div>
             <input type="text" name="nickName" placeholder="Nickname" required>
-            <select>
-
-                <option selected value="0">Who do you want to be?</option>
-                <option value="1">User</option>
-                <option value="2">Service provider</option>
-            </select>
-            <button>Register</button>
+            <div class="role" style="display: flex">
+                <label><input type="checkbox" name="role_service" value="2"> Service Provider</label>
+                <label><input type="checkbox" name="role_user" value="3"> User</label>
+            </div>
+            <button type="submit" value="Save">Register</button>
 
         </form>
+
     </div>
 
     <div class="form-container login-container">
-        <form class="form-signin" action="login" method="post">
+        <form class="form-signin" action="signin" method="post">
 
             <h1>Login hire.</h1>
-            <form method="post" action="login">
-                <input name="user"  type="text" placeholder="User">
-                <input name="pass"  type="password" placeholder="Password">
+            <div class="alert alert-warning" role="alert">${mess}</div>
+            <form method="post" action="signin">
+                <input name="account" type="text" placeholder="Account">
+                <input name="pass" type="password" placeholder="Password">
                 <div class="content">
                     <div class="checkbox">
                         <input type="checkbox" name="checkbox" id="checkbox">

@@ -6,28 +6,29 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Header</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
 
-    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="nav.css"/>
 </head>
 <style>
     .navbar-logo {
         cursor: pointer;
 
 
-        max-height:100% ;
+        max-height: 100%;
         max-width: 100%;
     }
 </style>
 <body>
 <nav class="navbar">
-    <a href="home.jsp" >
-        <img src="Lover.png" class="navbar-logo" alt="logo" />
+    <a href="home.jsp">
+        <img src="Lover.png" class="navbar-logo" alt="logo"/>
     </a>
 
     <div class="wrap">
@@ -53,10 +54,10 @@
             </div>
 
 
-
-            <span>Hieu
-                <i class="fa-solid fa-angle-down"></i></span>
-
+            <c:if test="${sessionScope.acc != null}">
+        <span>
+                ${sessionScope.acc.accountName}</span>
+            </c:if>
         </div>
 
         <ul class="profile-dropdown-list">
@@ -75,9 +76,8 @@
             </li>
 
 
-
             <li class="profile-dropdown-list-item">
-                <a href="userManager.jsp">
+                <a href="listUser">
                     <i class="fa-solid fa-sliders"></i>
                     Settings
                 </a>
@@ -89,10 +89,10 @@
                     Help & Support
                 </a>
             </li>
-            <hr />
+            <hr/>
 
             <li class="profile-dropdown-list-item">
-                <a href="#">
+                <a href="logout">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Log out
                 </a>
@@ -100,7 +100,7 @@
         </ul>
     </div>
 </nav>
-<script >
+<script>
     let profileDropdownList = document.querySelector(".profile-dropdown-list");
     let btn = document.querySelector(".profile-dropdown-btn");
 
