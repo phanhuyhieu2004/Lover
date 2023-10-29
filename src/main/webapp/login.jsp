@@ -55,20 +55,20 @@
     <div class="form-container register-container">
         <form id="signup-form" action="register" method="post">
             <div class="alert alert-successful" role="alert" style="background-color: limegreen;">${messSignUp}</div>
-            <h1>Register hire.</h1>
+            <h1>Register here</h1>
             <div class="input-row">
-                <input type="text" name="accountName" placeholder="UserName" required>
+                <input type="text" name="accountName" placeholder="Username" required>
                 <input type="password" name="password"
                        placeholder="Passwords " required
                        pattern="^.{6,15}$"
-                       title="Please need to be between 6 and 15 characters long.">
+                       title="Password need to be between 6 and 15 characters long.">
 
 
             </div>
             <input type="email" id="email-input" placeholder="email@address.com" name="email" required/>
             <div class="input-row">
-                <input type="tel" name="phoneNumber" placeholder="Phone Number" required>
-                <input type="text" name="identifyCard" placeholder="Identify Card" required>
+                <input type="tel" name="phoneNumber" placeholder="Phone number" required>
+                <input type="text" name="identifyCard" placeholder="Identify card" required>
             </div>
             <div class="input-row">
                 <input type="text" name="surname" placeholder="Surname" required>
@@ -88,10 +88,10 @@
     <div class="form-container login-container">
         <form class="form-signin" action="signin" method="post">
 
-            <h1>Login hire.</h1>
+            <h1>Login here</h1>
             <div class="alert alert-warning" role="alert">${mess}</div>
             <form method="post" action="signin">
-                <input name="account" type="text" placeholder="Account">
+                <input name="account" type="text" placeholder="Username">
                 <input name="pass" type="password" placeholder="Password">
                 <div class="content">
                     <div class="checkbox">
@@ -112,14 +112,14 @@
         <div class="overlay">
             <div class="overlay-panel overlay-left">
                 <h1 class="title">Hello <br> friends</h1>
-                <p>if Yout have an account, login here and have fun</p>
+                <p>If You have an account, login here and have fun</p>
                 <button class="ghost" id="login">Login
                     <i class="lni lni-arrow-left login"></i>
                 </button>
             </div>
             <div class="overlay-panel overlay-right">
                 <h1 class="title">Start yout <br> journy now</h1>
-                <p>if you don't have an account yet, join us and start your journey.</p>
+                <p>If you don't have an account yet, join us and start your journey.</p>
                 <button class="ghost" id="register">Register
                     <i class="lni lni-arrow-right register"></i>
                 </button>

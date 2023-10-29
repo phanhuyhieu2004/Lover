@@ -7,18 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAO implements IAccountDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/newProject?user=root";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "123456789";
+    private String jdbcPassword = "gabynexo221";
     private static final String LOGIN_ACCOUNT = "SELECT * FROM account where accountName=?and password=?";
     private static final String CHECK_ACCOUNT = "  SELECT * FROM account WHERE accountName=? ;";
     private static final String SIGNUP_ACCOUNT = "INSERT INTO account (accountName, password, email, phoneNumber, identifyCard, surname, name, nickName, status) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Active')";
-    private static final String LIST_USERS ="SELECT account.*, role.nameRole AS role_name\n" +
-            "FROM account\n" +
-            "JOIN account_role ON account.idAccount = account_role.account_id\n" +
-            "JOIN role ON role.idRole = account_role.role_id\n" +
-            "WHERE role.nameRole = 'user'ORDER BY account.idAccount DESC;";
+    private static final String LIST_USERS ="SELECT * FROM account;";
     private static final String LIST_SERVICE_PROVIDERS ="SELECT account.*, role.nameRole AS role_name\n" +
             "FROM account\n" +
             "JOIN account_role ON account.idAccount = account_role.account_id\n" +

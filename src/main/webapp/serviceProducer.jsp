@@ -50,7 +50,6 @@
         <div class="side_navbar">
             <span>Main Menu</span>
             <a href="listUser" >User Manager</a>
-            <a href="listServiceProviders"class="active">Service Provider</a>
             <a href="#">Profile</a>
             <a href="#">My Account</a>
             <a href="#">Account</a>
@@ -72,7 +71,7 @@
                 <option value="3">Block</option>
                 <option value="4">VIP</option>
             </select>
-            <button class="search"><i class="fas fa-search"></i></button>
+            <a href="listUser"class="active">User</a>
         </div>
 
 
