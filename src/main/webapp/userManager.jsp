@@ -70,6 +70,9 @@
                 <option value="3">Block</option>
             </select>
             <a href="listServiceProviders"class="active">Service Provider</a>
+            <p> / </p>
+            <a href="listNormalUser"class="active">Normal User</a>
+
         </div>
 
 

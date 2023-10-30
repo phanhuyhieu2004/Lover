@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: hieuh
-  Date: 10/23/2023
-  Time: 12:50 PM
+  User: gabyg
+  Date: 10/29/2023
+  Time: 11:20 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <html>
 <head>
-    <title>Manager Service Producer</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+
     <title>User Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="manager.css">
@@ -42,14 +42,12 @@
 </style>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-
-
 <jsp:include page="Flower.jsp"></jsp:include>
 <div class="container">
     <nav>
         <div class="side_navbar">
             <span>Main Menu</span>
-            <a href="listUser" >User Manager</a>
+            <a href="listUser" class="active">User Manager</a>
             <a href="#">Profile</a>
             <a href="#">My Account</a>
             <a href="#">Account</a>
@@ -63,17 +61,17 @@
     </nav>
     <div class="main-body" style="margin-right: 130px">
 
+
         <div class="search-filter">
             <select>
                 <option selected value="0">Status</option>
                 <option value="1">Active</option>
                 <option value="2">Inactive</option>
                 <option value="3">Block</option>
-                <option value="4">VIP</option>
             </select>
-            <a href="listUser" class="active">User</a>
+            <a href="listServiceProviders"class="active">Service Provider</a>
             <p> / </p>
-            <a href="listNormalUser" class="active">Normal User</a>
+            <a href="listUser"class="active">User</a>
         </div>
 
 
@@ -94,17 +92,17 @@
                 </thead>
                 <tbody>
                 <!-- Dữ liệu từ CSDL -->
-                <c:forEach var="b" items="${listServiceProviders}">
+                <c:forEach var="c" items="${ListNormalUser}">
                     <tr>
-                        <td>${b.idAccount}</td>
-                        <td>${b.accountName}</td>
-                        <td>${b.email}</td>
-                        <td>${b.phoneNumber}</td>
-                        <td>${b.identifyCard}</td>
-                        <td>${b.surname}</td>
-                        <td>${b.name}</td>
-                        <td>${b.nickName}</td>
-                        <td>${b.status}</td>
+                        <td>${c.idAccount}</td>
+                        <td>${c.accountName}</td>
+                        <td>${c.email}</td>
+                        <td>${c.phoneNumber}</td>
+                        <td>${c.identifyCard}</td>
+                        <td>${c.surname}</td>
+                        <td>${c.name}</td>
+                        <td>${c.nickName}</td>
+                        <td>${c.status}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

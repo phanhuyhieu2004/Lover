@@ -20,6 +20,11 @@ public class AccountDAO implements IAccountDAO {
             "JOIN account_role ON account.idAccount = account_role.account_id\n" +
             "JOIN role ON role.idRole = account_role.role_id\n" +
             "WHERE role.nameRole = 'serviceProviders'ORDER BY account.idAccount DESC;";
+    private static final String LIST_NORMAL_USERS = "SELECT account.*, role.nameRole AS role_name\n" +
+            "FROM account\n" +
+            "JOIN account_role ON account.idAccount = account_role.account_id\n" +
+            "JOIN role ON role.idRole = account_role.role_id\n" +
+            "WHERE role.nameRole = 'user'ORDER BY account.idAccount DESC;";
 
     //    private static finalj String SELECT_Product_SQL = "SELECT * FROM product;";
     public AccountDAO() {
@@ -39,6 +44,32 @@ public class AccountDAO implements IAccountDAO {
         return connection;
     }
     // Phương thức kết nối đến cơ sở dữ liệu
+    @Override
+    public List<Account> getAllNormalUser() {
+        List<Account> accounts = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(LIST_NORMAL_USERS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                Account account = new Account();
+                account.setIdAccount(resultSet.getInt("idAccount"));
+                account.setAccountName(resultSet.getString("accountName"));
+                account.setEmail(resultSet.getString("email"));
+                account.setPhoneNumber(resultSet.getString("phoneNumber"));
+                account.setIdentifyCard(resultSet.getString("identifyCard"));
+                account.setSurname(resultSet.getString("surname"));
+                account.setName(resultSet.getString("account.name"));
+                account.setNickName(resultSet.getString("nickName"));
+                account.setStatus(resultSet.getString("status"));
+
+                accounts.add(account);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return accounts;
+    }
 
     @Override
     public Account login(String accountName, String password) {
