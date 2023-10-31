@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,16 +11,12 @@
 </head>
 <style>
     select {
-
         border: 0;
         outline: 0;
         font: inherit;
-
         width: 20em;
         height: 3em;
         padding: 0 4em 0 1em;
-
-
         border-radius: 0.25em;
 
     }
@@ -44,12 +38,11 @@
 </style>
 <body>
 <div class="container" id="container">
-
     <div class="form-container register-container">
-        <form action="#">
-            <h1>Register hire.</h1>
+        <form method="post" action="register">
+            <h1>Register here.</h1>
             <div class="input-row">
-                <input type="text" name="name" placeholder="UserName" required>
+                <input type="text" name="username" placeholder="UserName" required>
                 <input type="password" name="password" placeholder="Password" required>
 
             </div>
@@ -65,23 +58,21 @@
             </div>
             <input type="text" name="nickName" placeholder="Nickname" required>
             <select>
-
                 <option selected value="0">Who do you want to be?</option>
                 <option value="1">User</option>
                 <option value="2">Service provider</option>
             </select>
-            <button>Register</button>
-
+            <input type="submit" value="Register">
         </form>
     </div>
 
     <div class="form-container login-container">
         <form class="form-signin" action="login" method="post">
 
-            <h1>Login hire.</h1>
+            <h1>Login here.</h1>
             <form method="post" action="login">
-                <input name="user"  type="text" placeholder="User">
-                <input name="pass"  type="password" placeholder="Password">
+                <input name="account" type="text" placeholder="User">
+                <input name="pass" type="password" placeholder="Password">
                 <div class="content">
                     <div class="checkbox">
                         <input type="checkbox" name="checkbox" id="checkbox">

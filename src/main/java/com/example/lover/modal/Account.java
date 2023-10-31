@@ -1,6 +1,6 @@
 package com.example.lover.modal;
 
-public class User {
+public class Account {
     private int idUser;
     private String userName;
     private String password;
@@ -11,11 +11,36 @@ public class User {
     private String name;
     private String nickName;
     private boolean status;
-    private int permission;
+    private int idRole;
 
-    public User() {
+    public Account(int idUser, String userName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.identifyCard = identifyCard;
+        this.surname = surname;
+        this.name = name;
+        this.nickName = nickName;
     }
-    public User(int idUser, String userName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName, boolean status, int permission) {
+
+    public Account(String userName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName) {
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.identifyCard = identifyCard;
+        this.surname = surname;
+        this.name = name;
+        this.nickName = nickName;
+    }
+
+    public Account() {
+
+    }
+
+    public Account(int idUser, String userName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName, boolean status, int idRole) {
         this.idUser = idUser;
         this.userName = userName;
         this.password = password;
@@ -26,8 +51,12 @@ public class User {
         this.name = name;
         this.nickName = nickName;
         this.status = status;
-        this.permission = permission;
+        this.idRole = idRole;
     }
+
+    public Account(int id, String email, boolean isLocked) {
+    }
+
 
     public int getIdUser() {
         return idUser;
@@ -109,12 +138,12 @@ public class User {
         this.status = status;
     }
 
-    public int getPermission() {
-        return permission;
+    public int getidRole() {
+        return idRole;
     }
 
-    public void setPermission(int permission) {
-        this.permission = permission;
+    public void setidRole(int idRole) {
+        this.idRole = idRole;
     }
 
     @Override
@@ -130,7 +159,9 @@ public class User {
                 ", name='" + name + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", status=" + status +
-                ", permission=" + permission +
+                ", idRole=" + idRole +
                 '}';
     }
+
+
 }

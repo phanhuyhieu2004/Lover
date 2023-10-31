@@ -39,7 +39,7 @@
     <form action="#">
       <h1>Login hire.</h1>
       <form method="post" action="Login" name = "name">
-      <input type="text" placeholder="User" name = "user">
+      <input type="text" placeholder="User" name = "account">
       <input type="password" placeholder="Password" name = "password">
       <div class="content">
         <div class="checkbox">

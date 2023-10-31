@@ -62,7 +62,7 @@
         <ul class="profile-dropdown-list">
             <li class="profile-dropdown-list-item">
                 <a href="#">
-                    <i class="fa-regular fa-user"></i>
+                    <i class="fa-regular fa-account"></i>
                     Edit Profile
                 </a>
             </li>

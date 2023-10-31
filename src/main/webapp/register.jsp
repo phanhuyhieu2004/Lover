@@ -17,6 +17,11 @@
   Tên: <input type="text" name="username"><br>
   Email: <input type="text" name="email"><br>
   Mật khẩu: <input type="password" name="password"><br>
+  Số điện thoại: <input type="phoneNumber" name="phoneNumber"><br>
+  CCCD: <input type="identifyCard" name="identifyCard"><br>
+  Họ: <input type="surname" name="surname"><br>
+  Tên: <input type="name" name="name"><br>
+  Nickname: <input type="nickName" name="nickName"><br>
   <input type="submit" value="Đăng ký">
 </form>
 </body>
