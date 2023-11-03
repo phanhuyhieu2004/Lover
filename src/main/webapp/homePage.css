@@ -1,0 +1,71 @@
+.form-group{
+    padding: 20px;
+    border: 100px;
+}
+
+#gender{
+    font-size: 10px;
+    width: 100px;
+    height: 37px;
+}
+#category{
+    font-size: 10px;
+    width: 100px;
+    height: 37px;
+}
+#view{
+    font-size: 10px;
+    width: 100px;
+    height: 37px;
+}
+#online{
+    font-size: 10px;
+    width: 100px;
+    height: 30px;
+}
+#price{
+    font-size: 10px;
+    width: 100px;
+    height: 37px;
+}
+#live{
+    font-size: 10px;
+    width: 100px;
+    height: 37px;
+}
+#nameplayer{
+    font-size: 10px;
+    width: 100px;
+    height: 37px;
+}
+#namegame{
+    font-size: 10px;
+    width: 100px;
+    height: 37px;
+}
+#title{
+    width: 300px;
+    height: 40px;
+}
+#img1{
+    display-model: 8px;
+}
+.front-end{
+    padding-top: 30px;
+}
+.front{
+    padding-top: 30px;
+}
+.header{
+    padding-top: 50px;
+}
+
+input[type="text"]::placeholder{
+    color: #dc3545;
+}
+
+.bg-red {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
+}
