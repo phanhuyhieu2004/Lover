@@ -14,9 +14,8 @@
 
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
     <link rel="stylesheet" href="homePage.css"/>
-
+    <script src="https://kit.fontawesome.com/74cf7057a9.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
 </head>
 <body>
 <div class="container" style=" max-width: 1000px;">
@@ -84,9 +83,26 @@
         <div class="front">
             <b style="font-size: 20px">VIP PLAYER</b>
 
-            <div class="img1" style="width: 100% ; height: 500px; background-color: #f5e8e8">
+            <div class="img1" style="width: 100% ; height: 550px; background-color: #f5e8e8">
                 <%--            <c:forEach var="list" items="${listServiceProvider}">--%>
-                <div class="box" style="width: 190px; height: 260px ; background-color: #cccccc ; margin-left: 40px; float: left">
+                <div class="box" style="width: 190px; height: 272px; background-color: white; float: left">
+                    <div class="imgPlayer" style="width: 190px; height: 200px; background-color: paleturquoise">
+                        <button type="button" value="display" style="width: 90px; height: 28px; border-radius: 15px/15px; background-color: #dc3545; float: right; margin-top: 165px; margin-right: 5px;"></button>
+                    </div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: #4bb6b7"></div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: tomato"></div>
+                    <div class="imgUser" style="width: 190px; height: 25px; display: flex; justify-content: space-between">
+                        <div style="display: flex;">
+                            <div class="circle" id="circle-1"></div>
+                            <div class="circle" id="circle-2"></div>
+                            <div class="circle" id="circle-3"></div>
+                        </div>
+
+                        <div class="star" style="color:yellow;">
+                            <i  style="font-size: 20px" class="fa-solid fa-star"></i>
+                            <span><b style="color: #3f3a3a">5</b></span>
+                        </div>
+                    </div>
                     <a href="/project?action=add&id=${list.getId()}">
                         <img src="${list.getImg()}">
                     </a>
@@ -94,7 +110,24 @@
                     <h2>${list.getDescribe()}</h2>
                 </div>
 
-                <div class="box" style="width: 190px; height: 260px ; background-color: #cccccc; margin-left: 30px; float: left">
+                <div class="box" style="width: 190px; height: 272px ; background-color: white; margin-left: 30px; float: left">
+                    <div class="imgPlayer" style="width: 190px; height: 200px; background-color: paleturquoise">
+                        <button type="button" value="display" style="width: 90px; height: 28px; border-radius: 15px/15px; background-color: #dc3545; float: right; margin-top: 165px; margin-right: 5px;"></button>
+                    </div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: #4bb6b7"></div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: tomato"></div>
+                    <div class="imgUser" style="width: 190px; height: 25px; display: flex; justify-content: space-between">
+                        <div style="display: flex;">
+                            <div class="circle" id="circle-4"></div>
+                            <div class="circle" id="circle-5"></div>
+                            <div class="circle" id="circle-6"></div>
+                        </div>
+
+                        <div class="star" style="color:yellow;">
+                            <i  style="font-size: 20px" class="fa-solid fa-star"></i>
+                            <span><b style="color: #3f3a3a">5</b></span>
+                        </div>
+                    </div>
                     <a href="/project?action=add&id=${list.getId()}">
                         <img src="${list.getImg()}">
                     </a>
@@ -108,14 +141,56 @@
             </div>
             <div class="img2" style="width: 100% ; height: 500px; background-color: #f5e8e8">
                 <%--            <c:forEach var="list" items="${listServiceProvider}">--%>
-                <div class="box" style="width: 190px; height: 260px ; background-color: #cccccc ; margin-left: 40px; float: left">
+                <div class="box" style="width: 190px; height: 272px; background-color: white; float: left">
+                    <div class="imgPlayer" style="width: 190px; height: 200px; background-color: paleturquoise">
+                        <button type="button" value="display" style="width: 90px; height: 28px; border-radius: 15px/15px; background-color: #dc3545; float: right; margin-top: 165px; margin-right: 5px;"></button>
+                    </div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: #4bb6b7"></div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: tomato"></div>
+                    <div class="imgUser" style="width: 190px; height: 25px; display: flex; justify-content: space-between">
+                        <div style="display: flex;">
+                            <div class="circle" id="circle-7"></div>
+                            <div class="circle" id="circle-8"></div>
+                            <div class="circle" id="circle-9"></div>
+                        </div>
+
+                        <div class="star" style="color:yellow;">
+                            <i  style="font-size: 20px" class="fa-solid fa-star"></i>
+                            <span><b style="color: #3f3a3a">5</b></span>
+                        </div>
+                    </div>
                     <a href="/project?action=add&id=${list.getId()}">
                         <img src="${list.getImg()}">
                     </a>
                     <h2>${list.getName()}</h2>
                     <h2>${list.getDescribe()}</h2>
                 </div>
-                <%--                    </c:forEach>--%>
+
+                <div class="box" style="width: 190px; height: 272px ; background-color: white; margin-left: 30px; float: left">
+                    <div class="imgPlayer" style="width: 190px; height: 200px; background-color: paleturquoise">
+                        <button type="button" value="display" style="width: 90px; height: 28px; border-radius: 15px/15px; background-color: #dc3545; float: right; margin-top: 165px; margin-right: 5px;"></button>
+                    </div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: #4bb6b7"></div>
+                    <div class="namePlayer" style="width: 190px; height: 23px; background-color: tomato"></div>
+                    <div class="imgUser" style="width: 190px; height: 25px; display: flex; justify-content: space-between">
+                        <div style="display: flex;">
+                            <div class="circle" id="circle-10"></div>
+                            <div class="circle" id="circle-11"></div>
+                            <div class="circle" id="circle-12"></div>
+                        </div>
+
+                        <div class="star" style="color:yellow;">
+                            <i  style="font-size: 20px" class="fa-solid fa-star"></i>
+                            <span><b style="color: #3f3a3a">4.8</b></span>
+                        </div>
+                    </div>
+                    <a href="/project?action=add&id=${list.getId()}">
+                        <img src="${list.getImg()}">
+                    </a>
+                    <h2>${list.getName()}</h2>
+                    <h2>${list.getDescribe()}</h2>
+                </div>
+                <%--            </c:forEach>--%>
             </div>
         </div>
     </div>
