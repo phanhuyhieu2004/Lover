@@ -1,0 +1,211 @@
+.form-group {
+    padding: 20px;
+    border: 100px;
+}
+
+#gender {
+    font-size: 15px;
+    width: 100px;
+    height: 50px;
+}
+
+#category {
+    font-size: 15px;
+    width: 100px;
+    height: 50px;
+}
+
+#view {
+    font-size: 15px;
+    width: 100px;
+    height: 50px;
+}
+
+#online {
+    font-size: 15px;
+    width: 100px;
+    height: 50px;
+}
+
+#price {
+    font-size: 15px;
+    width: 100px;
+    height: 50px;
+}
+
+#live {
+    font-size: 15px;
+    width: 100px;
+    height: 50px;
+
+}
+
+#nameplayer {
+    font-size: 15px;
+    width: 150px;
+    height: 50px;
+}
+
+#namegame {
+    font-size: 11px;
+    width: 100px;
+    height: 50px;
+}
+
+#title {
+    width: 300px;
+    height: 50px;
+}
+
+#img1 {
+    display-model: 8px;
+}
+
+.front-end {
+    padding-top: 30px;
+}
+
+.front {
+    padding-top: 30px;
+}
+
+.header {
+    padding-top: 50px;
+}
+
+input[type="text"]::placeholder {
+    color: black;
+}
+
+.bg-red {
+    background-color: deeppink !important;
+    border-color: deeppink !important;
+    color: #fff !important;
+}
+
+.circle {
+    background-color: white;
+    height: 100%;
+    border-radius: 50%;
+    width: 23px;
+    margin-left: 5px;
+}
+
+#circle-1 {
+    background-image: url("https://i.pinimg.com/564x/72/23/1d/72231da3d60f5c02c6627fbf9b67d2a2.jpg");
+    background-size: cover;
+}
+
+#circle-2 {
+    background-image: url("https://i.pinimg.com/564x/78/ac/ec/78acecf3134f69ffe3a3a8970a4a1d56.jpg");
+    background-size: cover;
+}
+
+#circle-3 {
+    background-image: url("https://i.pinimg.com/564x/47/5e/89/475e8904a09923b8118ab9522eb46792.jpg");
+    background-size: cover;
+}
+
+#circle-4 {
+    background-image: url("https://i.pinimg.com/564x/72/23/1d/72231da3d60f5c02c6627fbf9b67d2a2.jpg");
+    background-size: cover;
+}
+
+#circle-5 {
+    background-image: url("https://i.pinimg.com/564x/78/ac/ec/78acecf3134f69ffe3a3a8970a4a1d56.jpg");
+    background-size: cover;
+}
+
+#circle-6 {
+    background-image: url("https://i.pinimg.com/564x/47/5e/89/475e8904a09923b8118ab9522eb46792.jpg");
+    background-size: cover;
+}
+
+#circle-7 {
+    background-image: url("https://i.pinimg.com/564x/72/23/1d/72231da3d60f5c02c6627fbf9b67d2a2.jpg");
+    background-size: cover;
+}
+
+#circle-8 {
+    background-image: url("https://i.pinimg.com/564x/78/ac/ec/78acecf3134f69ffe3a3a8970a4a1d56.jpg");
+    background-size: cover;
+}
+
+#circle-9 {
+    background-image: url("https://i.pinimg.com/564x/47/5e/89/475e8904a09923b8118ab9522eb46792.jpg");
+    background-size: cover;
+}
+
+#circle-10 {
+    background-image: url("https://i.pinimg.com/564x/72/23/1d/72231da3d60f5c02c6627fbf9b67d2a2.jpg");
+    background-size: cover;
+}
+
+#circle-11 {
+    background-image: url("https://i.pinimg.com/564x/78/ac/ec/78acecf3134f69ffe3a3a8970a4a1d56.jpg");
+    background-size: cover;
+}
+
+#circle-12 {
+    background-image: url("https://i.pinimg.com/564x/47/5e/89/475e8904a09923b8118ab9522eb46792.jpg");
+    background-size: cover;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid deeppink;
+    border-radius: 5px;
+
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 12px;
+}
+
+.btn-outline-danger {
+
+    border-color: hotpink;
+    border-radius: 5px;
+    background-color: white;
+
+}
+
+
+.btn-check:checked + .btn-outline-danger,
+.btn-check:focus + .btn-outline-danger,
+.btn-outline-danger:active,
+.btn-outline-danger:hover {
+
+    background-color: hotpink;
+    border-color: deeppink;
+    cursor: pointer;
+
+}
+
+
+.custom-input[type="checkbox"] {
+    display: none;
+}
+
+.imgUser div {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.imgUser div i {
+    margin-right: 5px; /* Khoảng cách giữa các biểu tượng */
+}
+
+
