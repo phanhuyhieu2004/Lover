@@ -2,6 +2,7 @@ package com.example.lovers.control;
 
 import com.example.lovers.dao.AccountDAO;
 import com.example.lovers.model.Account;
+import com.example.lovers.model.Role;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,9 @@ import java.io.IOException;
 @WebServlet(name = "LoginControl", urlPatterns = {"/login"})
 public class LogInControl extends HttpServlet {
 
+
+
+    private Role roles;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

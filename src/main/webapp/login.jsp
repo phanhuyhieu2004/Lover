@@ -88,16 +88,22 @@
                 <input name="pass" type="password" placeholder="Password">
                 <div class="content">
 
-                    <div class="signup-link">If you not a member? <a href="register" color: deeppink" >Create Account</a>
+                    <div class="signup-link">If you not a member? <a href="register" style="color: deeppink" >Create Account</a>
                     </div>
 
                 </div>
                 <button>Login</button>
                 <span>or use your account</span>
                 <div class="socials">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#" style="background-color: white;
+
+  color: blue;"><i class="fa fa-facebook"></i></a>
+                    <a href="#" style="background-color: dodgerblue;
+  color: white;
+  border: black;"><i class="fa fa-twitter"></i></a>
+                    <a href="#" style="background-color: white;
+  color: black;
+ "><i class="fa fa-github"></i></a>
 
                 </div>
 

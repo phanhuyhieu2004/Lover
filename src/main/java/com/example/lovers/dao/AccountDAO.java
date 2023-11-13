@@ -3,7 +3,9 @@ package com.example.lovers.dao;
 
 import com.example.lovers.model.Account;
 import com.example.lovers.model.AccountDetail;
+import com.example.lovers.model.Role;
 
+import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,11 @@ public class AccountDAO implements IAccountDAO {
     private static final String SIGNUP_ACCOUNT = "INSERT INTO account (accountName, password, email, phoneNumber, identifyCard, surname, name, nickName, status) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Active')";
     private static final String CHECK_ACCOUNT = "  SELECT * FROM account WHERE accountName=? ;";
-    private static final String LOGIN_ACCOUNT = "SELECT * FROM account where accountName=?and password=?";
+    private static final String LOGIN_ACCOUNT = "SELECT account.*, role.idRole AS role_id, role.nameRole AS role_name " +
+            "FROM account " +
+            "JOIN account_role ON account.idAccount = account_role.account_id " +
+            "JOIN role ON role.idRole = account_role.role_id " +
+            "WHERE account.accountName = ? AND account.password = ?";
 
     private static final String LIST_ACCOUNT = "SELECT * FROM account WHERE idAccount <> 1;";
     private static final String LIST_USERS = "SELECT account.*, role.nameRole AS role_name\n" +
@@ -133,6 +139,49 @@ public class AccountDAO implements IAccountDAO {
             }
         }
     }
+    @Override
+    public void addAccountService(List<Integer> serviceIds, HttpSession session) {
+        Connection conn = null;
+        PreparedStatement pstmtAssignment = null;
+
+        try {
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            Account account = (Account) session.getAttribute("acc");
+            int loggedInAccountId = account.getIdAccount();
+            // Lấy giá trị ID của tài khoản đã đăng nhập từ session
+
+            String sqlPivot = "INSERT INTO account_service(account_id, service_id) VALUES (?, ?)";
+            pstmtAssignment = conn.prepareStatement(sqlPivot);
+
+            // Thêm các ID dịch vụ vào bảng trung gian account_service
+            for (int serviceId : serviceIds) {
+                pstmtAssignment.setInt(1, loggedInAccountId);
+                pstmtAssignment.setInt(2, serviceId);
+                pstmtAssignment.executeUpdate();
+            }
+
+            conn.commit();
+        } catch (SQLException ex) {
+            try {
+                if (conn != null)
+                    conn.rollback();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                if (pstmtAssignment != null)
+                    pstmtAssignment.close();
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 
     @Override
     public Account checkAccountExist(String accountName) {
@@ -158,6 +207,8 @@ public class AccountDAO implements IAccountDAO {
                         resultSet.getString(8),
                         resultSet.getString(9),
                         resultSet.getString(10));
+
+
 //                tạo một đối tượng Account mới bằng cách truy cập các cột tương ứng trong kết quả sử dụng các phương thức getInt() và getString(). Mỗi giá trị được truy cập bằng cách truyền số thứ tự của cột trong truy vấn SQL.
             }
         } catch (Exception e) {
@@ -177,7 +228,7 @@ public class AccountDAO implements IAccountDAO {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                return new Account(resultSet.getInt(1),
+                Account account = new Account(resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
@@ -187,8 +238,18 @@ public class AccountDAO implements IAccountDAO {
                         resultSet.getString(8),
                         resultSet.getString(9),
                         resultSet.getString(10));
+                Role role = new Role(
+                        resultSet.getInt("role_id"),
+                        resultSet.getString("role_name")
+                );
+                account.setRole(role);
+                account.getRole();
+
+
+                return account;
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
 //        Trả về giá trị null nếu không có hàng dữ liệu nào tương ứng với tên tài khoản và mật khẩu đã truyền vào, hoặc nếu có lỗi xảy ra trong quá trình thực thi câu lệnh SQL.
@@ -443,12 +504,14 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setRequestWithUser(resultSet.getString("requestWithUser"));
                 accountDetail.setFacebook(resultSet.getString("facebook"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
+                accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
 accountDetail.setPrice(resultSet.getString("price"));
+accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
-            // Xử lý ngoại lệ và thông báo lỗi
+            e.printStackTrace();
         } finally {
             // Đóng kết nối và tài nguyên
         }
@@ -458,23 +521,6 @@ accountDetail.setPrice(resultSet.getString("price"));
     public static void main(String[] args) throws SQLException {
         AccountDAO accountDAO = new AccountDAO();
 
-        AccountDetail newAccountDetail = new AccountDetail();
-        newAccountDetail.setDateOfBirth("1990-01-01");
-        newAccountDetail.setFullName("Jane ");
-        newAccountDetail.setGender("Man");
-        newAccountDetail.setCity("New York");
-        newAccountDetail.setNationality("American");
-        newAccountDetail.setAvatar("avatar.jpg");
-        newAccountDetail.setPortrait("portrait.jpg");
-        newAccountDetail.setHeight("170 cm");
-        newAccountDetail.setWeight("60 kg");
-        newAccountDetail.setInterest("Reading, Traveling");
-        newAccountDetail.setDescribeYourself("I am a friendly and outgoing person.");
-        newAccountDetail.setRequestWithUser("Looking for a serious relationship.");
-        newAccountDetail.setFacebook("https://www.facebook.com/janesmith");
-        newAccountDetail.setJoinDate("2021-05-15");
-        newAccountDetail.setAccount_id(2);
-        accountDAO.addAccountDetail(newAccountDetail);
 
         List<AccountDetail> accountDetails = accountDAO.getAllAccountDetails();
 

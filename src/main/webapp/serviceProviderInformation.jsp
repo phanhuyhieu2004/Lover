@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Information</title>
+    <title>Information Service Provider</title>
     <link rel="stylesheet" href="information.css"/>
     <link rel="stylesheet" href="manager.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,18 +78,24 @@ margin-top: auto;
 
         <div class="side_navbar">
 
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.accountName == 'Admin' && sessionScope.acc.password == '12345' }">
-                <a href="listAccount"><i class="fa-solid fa-list"></i><span class="menu-text">Manager</span></a>
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 1}">
+                <a href="listAccount" ><i class="fa-solid fa-list"></i><span class="menu-text">Manager</span></a>
+                <a href="status">Status Manager</a>
             </c:if>
 
-            <c:if test="${sessionScope.acc.accountName != 'Admin' }">
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
-                <a href="information"class="active"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information</span></a>
+                <a href="serviceProviderInformation"class="active"><i class="fa-solid fa-circle-info"></i></i><span
+                        class="menu-text">Information Service Provider</span></a>
             </c:if>
-            <c:if test="${sessionScope.acc.accountName != 'Admin' }">
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
 
-                <a href="service"> <i class="fa-solid fa-bars"></i> <span
+                <a href="userInformation"><i class="fa-solid fa-circle-info"></i></i><span
+                        class="menu-text">Information User</span></a>
+            </c:if>
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
+
+                <a href="service" > <i class="fa-solid fa-bars"></i> <span
                         class="menu-text">Services</span></a>
             </c:if>
             <a href="#"><i class="fa-solid fa-wallet"></i><span class="menu-text">E-wallet</span></a>
@@ -101,7 +107,7 @@ margin-top: auto;
 
         <h2>Personal information</h2>
        <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>
-        <form  action="information" method="post">
+        <form  action="serviceProviderInformation" method="post">
             <div class="form-group"style="margin-right:0px">
                 <label for="name">Full name(*):</label>
                 <input type="text" id="name" name="fullName" required>
@@ -115,8 +121,8 @@ margin-top: auto;
                     <label for="gender">Gender(*):</label>
                     <select id="gender" name="gender" required style="background-color: white" >
                         <option value="">Choose gender</option>
-                        <option value="Nam">Man</option>
-                        <option value="Nữ">Women</option>
+                        <option value="Man">Man</option>
+                        <option value="Women">Women</option>
                     </select>
                 </div>
             </div>

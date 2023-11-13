@@ -11,11 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-@WebServlet(name = "InformationControl", urlPatterns = {"/information"})
-public class InformationControl extends HttpServlet {
+@WebServlet(name = "ServiceProviderInformation", urlPatterns = {"/serviceProviderInformation"})
+public class ServiceProviderInformation extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private AccountDAO accountDAO;
 //    biến toàn cục của lớp SignUpControl dùng để thao tác,xử lý dữ liệu đối với tài khoản
@@ -70,14 +68,15 @@ public class InformationControl extends HttpServlet {
         accountDAO.addAccountDetail(newAccountDetail);;
         request.setAttribute("messSuccess", "Successfully registered for the service");
 
-        request.getRequestDispatcher("information.jsp").forward(request, response);
+        request.getRequestDispatcher("serviceProviderInformation.jsp").forward(request, response);
+
     }
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("information.jsp").forward(request, response);
+        request.getRequestDispatcher("serviceProviderInformation.jsp").forward(request, response);
 //        Phương thức doGet được ghi đè để xử lý yêu cầu "GET" và chuyển hướng người dùng đến trang "register.jsp".
     }
 

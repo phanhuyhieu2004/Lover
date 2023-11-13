@@ -1,14 +1,13 @@
 package com.example.lovers.model;
 
 public class AccountDetail {
-    private int  idDetail;
+    private int idDetail;
 
 
-    private String  dateOfBirth;
+    private String dateOfBirth;
     private String fullName;
-    private String  gender;
-    private String  city;
-
+    private String gender;
+    private String city;
 
 
     private String nationality;
@@ -16,6 +15,47 @@ public class AccountDetail {
     private String portrait;
     private String portrait1;
     private String portrait2;
+
+
+    private String height;
+    private String weight;
+    private String interest;
+    private String describeYourself;
+
+
+    private String requestWithUser;
+    private String facebook;
+
+
+    private String joinDate;
+private int numberOfRentals;
+    private int account_id;
+    private String price;
+    private int view;
+
+    public int getNumberOfRentals() {
+        return numberOfRentals;
+    }
+
+    public void setNumberOfRentals(int numberOfRentals) {
+        this.numberOfRentals = numberOfRentals;
+    }
+
+    public int getView() {
+        return view;
+    }
+
+    public void setView(int view) {
+        this.view = view;
+    }
+
+    public String getDescribeYourself() {
+        return describeYourself;
+    }
+
+    public void setDescribeYourself(String describeYourself) {
+        this.describeYourself = describeYourself;
+    }
 
     public String getPortrait1() {
         return portrait1;
@@ -33,11 +73,6 @@ public class AccountDetail {
         this.portrait2 = portrait2;
     }
 
-    private String height;
-    private String weight;
-    private String interest;
-    private String describeYourself;
-
     public String getRequestWithUser() {
         return requestWithUser;
     }
@@ -45,22 +80,6 @@ public class AccountDetail {
     public void setRequestWithUser(String requestWithUser) {
         this.requestWithUser = requestWithUser;
     }
-
-    private String requestWithUser;
-    private String facebook;
-
-    public String getDescribeYourself() {
-        return describeYourself;
-    }
-
-    public void setDescribeYourself(String describeYourself) {
-        this.describeYourself = describeYourself;
-    }
-
-    private String joinDate;
-
-    private int   account_id;
-    private String price;
 
     public String getPrice() {
         return price;
@@ -70,27 +89,6 @@ public class AccountDetail {
         this.price = price;
     }
 
-    public AccountDetail(int idDetail, String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String requestWithUser, String facebook, String joinDate, int account_id, String price) {
-        this.idDetail = idDetail;
-        this.dateOfBirth = dateOfBirth;
-        this.fullName = fullName;
-        this.gender = gender;
-        this.city = city;
-        this.nationality = nationality;
-        this.avatar = avatar;
-        this.portrait = portrait;
-        this.portrait1 = portrait1;
-        this.portrait2 = portrait2;
-        this.height = height;
-        this.weight = weight;
-        this.interest = interest;
-        this.describeYourself = describeYourself;
-        this.requestWithUser = requestWithUser;
-        this.facebook = facebook;
-        this.joinDate = joinDate;
-        this.account_id = account_id;
-        this.price = price;
-    }
 
     public int getAccount_id() {
         return account_id;
@@ -99,6 +97,7 @@ public class AccountDetail {
     public void setAccount_id(int account_id) {
         this.account_id = account_id;
     }
+
     public int getIdDetail() {
         return idDetail;
     }
@@ -188,9 +187,6 @@ public class AccountDetail {
     }
 
 
-
-
-
     public String getFacebook() {
         return facebook;
     }
@@ -208,6 +204,30 @@ public class AccountDetail {
     }
 
     public AccountDetail() {
+    }
+
+    public AccountDetail(int idDetail, String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String requestWithUser, String facebook, String joinDate, int numberOfRentals, int account_id, String price, int view) {
+        this.idDetail = idDetail;
+        this.dateOfBirth = dateOfBirth;
+        this.fullName = fullName;
+        this.gender = gender;
+        this.city = city;
+        this.nationality = nationality;
+        this.avatar = avatar;
+        this.portrait = portrait;
+        this.portrait1 = portrait1;
+        this.portrait2 = portrait2;
+        this.height = height;
+        this.weight = weight;
+        this.interest = interest;
+        this.describeYourself = describeYourself;
+        this.requestWithUser = requestWithUser;
+        this.facebook = facebook;
+        this.joinDate = joinDate;
+        this.numberOfRentals = numberOfRentals;
+        this.account_id = account_id;
+        this.price = price;
+        this.view = view;
     }
 
     @Override
@@ -230,8 +250,10 @@ public class AccountDetail {
                 ", requestWithUser='" + requestWithUser + '\'' +
                 ", facebook='" + facebook + '\'' +
                 ", joinDate='" + joinDate + '\'' +
+                ", numberOfRentals=" + numberOfRentals +
                 ", account_id=" + account_id +
                 ", price='" + price + '\'' +
+                ", view=" + view +
                 '}';
     }
 }

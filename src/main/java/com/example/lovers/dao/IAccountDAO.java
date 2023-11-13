@@ -4,12 +4,16 @@ package com.example.lovers.dao;
 import com.example.lovers.model.Account;
 import com.example.lovers.model.AccountDetail;
 
-import java.sql.SQLException;
+
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
 // định nghĩa các phương thức mà một đối tượng DAO  cho Account cần triển khai.
 public interface IAccountDAO{
     Account login(String userName, String password);
 
+
+    void addAccountService(List<Integer> serviceIds, HttpSession session);
 
     Account checkAccountExist(String account);
 
@@ -33,7 +37,6 @@ public interface IAccountDAO{
     List<Account> getAllAccountInactive();
 
 
-//    void addAccountDetail(AccountDetail accountDetail);
 
     void addAccountDetail(AccountDetail accountDetail);
 

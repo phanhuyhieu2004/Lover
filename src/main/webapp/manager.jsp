@@ -91,19 +91,23 @@
 
         <div class="side_navbar">
 
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.accountName == 'Admin' && sessionScope.acc.password == '12345' }">
-                <a href="listAccount" class="active"><i class="fa-solid fa-list"></i><span
-                        class="menu-text">Manager</span></a>
 
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 1}">
+                <a href="listAccount" class="active"><i class="fa-solid fa-list"></i><span class="menu-text">Manager</span></a>
                 <a href="status">Status Manager</a>
-
             </c:if>
-            <c:if test="${sessionScope.acc.accountName != 'Admin' }">
 
-                <a href="information"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information</span></a>
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
+
+                <a href="serviceProviderInformation"><i class="fa-solid fa-circle-info"></i></i><span
+                        class="menu-text">Information Service Provider</span></a>
             </c:if>
-            <c:if test="${sessionScope.acc.accountName != 'Admin' }">
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
+
+                <a href="userInformation"><i class="fa-solid fa-circle-info"></i></i><span
+                        class="menu-text">Information User</span></a>
+            </c:if>
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
                 <a href="service" > <i class="fa-solid fa-bars"></i> <span
                         class="menu-text">Services</span></a>

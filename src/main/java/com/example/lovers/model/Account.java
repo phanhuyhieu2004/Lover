@@ -14,6 +14,17 @@ public class Account {
     private String nickName;
     private String status;
 
+
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public Account(int idAccount, String accountName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName, String status) {
         this.idAccount = idAccount;
         this.accountName = accountName;
@@ -25,19 +36,12 @@ public class Account {
         this.name = name;
         this.nickName = nickName;
         this.status = status;
+
     }
-
-
-
-
-
-
 
     public Account() {
     }
 
-    public Account(String accountName, String password, String email, String phoneNumber, String identifyCard, String surname, String name, String nickName) {
-    }
 
 
 
