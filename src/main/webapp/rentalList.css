@@ -1,0 +1,14 @@
+.container{
+    width: 1000px;
+    margin-left: 250px;
+    margin-top: 50px;
+}
+.row-menu{
+    display: flex;
+    gap: 398px;
+    padding-top: 20px;
+}
+.detail-table a {
+    text-decoration: none;
+    color: black;
+}

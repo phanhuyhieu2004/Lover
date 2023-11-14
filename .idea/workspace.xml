@@ -5,35 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43ef1c5b-6b89-4d37-9138-e4c586ccf5e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/HelloServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/BlockControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/BlockSiteControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/StatusManagerControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/AccountDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/block.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/homes.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/information.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/information.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/service.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/service.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/slide.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/status.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ConfirmApplicationControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/DisplayServiceProviderControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/detailRentalApplication.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/fileImage/Aesthetic Grils.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/fileImage/ICU.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/fileImage/_ (3).jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/fileImage/_ (4).jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/fileImage/_ (5).jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/fileImage/_ (6).jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/fileImage/taeguk _ no space, no distance.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/rentalList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/rentalList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/information.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/information.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,18 +37,29 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="Jsp File" />
         <option value="Class" />
-        <option value="CSS File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -69,6 +72,7 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2XUA7t8L6gvh2fU7rAQBQCt4uC6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -77,24 +81,33 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/hieuh/IdeaProjects/TKW&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/buimai/IdeaProjects/Lovers/src/main/webapp/fileImage&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/fileImage" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/menuList" />
+    </key>
+  </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.803">
     <configuration name="AccountDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="20" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.lovers.dao.AccountDAO" />
       <module name="Lovers.main" />
       <extension name="coverage">
@@ -107,11 +120,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.803" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.803" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/login" />
-      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+    <configuration name="homePage.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/homePage.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="Tomcat 9.0.803" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.80" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="corretto-19">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/home.jsp" />
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Gradle : com.example : Lovers-1.0-SNAPSHOT.war">
+        <artifact name="Gradle : com.example : Lovers-1.0-SNAPSHOT.war (exploded)">
           <settings>
             <option name="CONTEXT_PATH" value="" />
           </settings>
@@ -119,8 +136,6 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="c8ae61b4-a0c9-4da8-923d-52fdc657c66f" />
-        <option name="HTTP_PORT" value="8081" />
-        <option name="JNDI_PORT" value="1097" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -193,16 +208,18 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Gradle : com.example : Lovers-1.0-SNAPSHOT.war" />
+          <artifact name="Gradle : com.example : Lovers-1.0-SNAPSHOT.war (exploded)" />
         </option>
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.AccountDAO" />
+      <item itemvalue="JavaScript Debug.homePage.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.803" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.homePage.jsp" />
         <item itemvalue="Application.AccountDAO" />
       </list>
     </recent_temporary>
@@ -219,13 +236,24 @@
       <workItem from="1698731569611" duration="11982000" />
       <workItem from="1698795429967" duration="361000" />
       <workItem from="1698800996883" duration="5304000" />
-      <workItem from="1698973780918" duration="1558000" />
-      <workItem from="1699229393021" duration="90000" />
-      <workItem from="1699282627634" duration="84000" />
-      <workItem from="1699312123021" duration="33731000" />
-      <workItem from="1699359545973" duration="7682000" />
-      <workItem from="1699395267684" duration="23405000" />
-      <workItem from="1699436121087" duration="5981000" />
+      <workItem from="1698809421925" duration="3033000" />
+      <workItem from="1698887880719" duration="20208000" />
+      <workItem from="1698933922544" duration="2590000" />
+      <workItem from="1698936524989" duration="1992000" />
+      <workItem from="1698973927509" duration="5156000" />
+      <workItem from="1699584132785" duration="12001000" />
+      <workItem from="1699605699040" duration="2078000" />
+      <workItem from="1699607789416" duration="53000" />
+      <workItem from="1699607891685" duration="144000" />
+      <workItem from="1699608111784" duration="2578000" />
+      <workItem from="1699627999835" duration="1640000" />
+      <workItem from="1699837801943" duration="19902000" />
+      <workItem from="1699889304077" duration="6151000" />
+      <workItem from="1699924723498" duration="7261000" />
+      <workItem from="1699933852195" duration="40000" />
+      <workItem from="1699933904545" duration="12000" />
+      <workItem from="1699933926657" duration="2839000" />
+      <workItem from="1699942910117" duration="2320000" />
     </task>
     <servers />
   </component>
@@ -236,13 +264,22 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java</url>
-          <line>26</line>
-          <properties class="com.example.lovers.control.InformationControl" method="processRequest">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/BlockSiteControl.java</url>
+          <line>11</line>
+          <properties class="com.example.lovers.control.BlockSiteControl" method="processRequest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/BlockSiteControl.java</url>
+          <line>20</line>
+          <properties class="com.example.lovers.control.BlockSiteControl" method="doGet">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java</url>
@@ -251,17 +288,27 @@
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="33" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="35" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/BlockSiteControl.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="36" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java</url>
+          <line>413</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java</url>
+          <line>415</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/DisplayServiceProviderControl.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

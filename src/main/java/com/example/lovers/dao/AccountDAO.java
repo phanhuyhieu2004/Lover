@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAO implements IAccountDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/projects?user=root";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "123456789";
+    private String jdbcPassword = "1";
     private static final String SIGNUP_ACCOUNT = "INSERT INTO account (accountName, password, email, phoneNumber, identifyCard, surname, name, nickName, status) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Active')";
     private static final String CHECK_ACCOUNT = "  SELECT * FROM account WHERE accountName=? ;";
@@ -42,7 +42,7 @@ public class AccountDAO implements IAccountDAO {
     protected Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -454,6 +454,31 @@ accountDetail.setPrice(resultSet.getString("price"));
         }
 
         return accountDetails;
+    }
+
+    public List<AccountDetail> getAccountDetails() {
+        List<AccountDetail> serviceProviderDetails = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT_DETAIL);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                AccountDetail accountDetail = new AccountDetail();
+                accountDetail.setIdDetail(resultSet.getInt("idDetail"));
+                accountDetail.setFullName(resultSet.getString("fullName"));
+                accountDetail.setAvatar(resultSet.getString("avatar"));
+                accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
+                accountDetail.setPrice(resultSet.getString("price"));
+                serviceProviderDetails.add(accountDetail);
+            }
+        } catch (SQLException e) {
+            // Xử lý ngoại lệ và thông báo lỗi
+        } finally {
+            // Đóng kết nối và tài nguyên
+        }
+
+        return serviceProviderDetails;
     }
     public static void main(String[] args) throws SQLException {
         AccountDAO accountDAO = new AccountDAO();

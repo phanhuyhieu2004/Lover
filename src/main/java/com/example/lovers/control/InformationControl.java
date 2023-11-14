@@ -5,16 +5,18 @@ import com.example.lovers.model.Account;
 import com.example.lovers.model.AccountDetail;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "InformationControl", urlPatterns = {"/information"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 *20,
+maxFileSize = 1024 *1024 *50,
+maxRequestSize = 1024 * 1024 *50)
 public class InformationControl extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private AccountDAO accountDAO;
@@ -27,12 +29,12 @@ public class InformationControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String dateOfBirth = request.getParameter("dateOfBirth");
         String fullName = request.getParameter("fullName");
         String gender = request.getParameter("gender");
         String city = request.getParameter("city");
         String nationality = request.getParameter("nationality");
-        String avatar = request.getParameter("image");
         String  portrait = request.getParameter("portrait");
         String  portrait1 = request.getParameter("portrait1");
         String  portrait2 = request.getParameter("portrait2");
@@ -47,6 +49,15 @@ public class InformationControl extends HttpServlet {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("acc");
         int account_id = account.getIdAccount();
+
+
+        Part filePath = request.getPart("image");
+        String fileName = extractFileName(filePath);
+        filePath.write(this.getFolderUpload().getAbsolutePath() + File.separator + fileName);
+
+        String avatar = "/fileImage/" + fileName;
+
+
 // Sử dụng giá trị accountId để lưu vào bảng Account Detail
         AccountDetail newAccountDetail = new AccountDetail();
         newAccountDetail.setDateOfBirth(dateOfBirth);
@@ -71,6 +82,25 @@ public class InformationControl extends HttpServlet {
         request.setAttribute("messSuccess", "Successfully registered for the service");
 
         request.getRequestDispatcher("information.jsp").forward(request, response);
+    }
+
+    private String extractFileName(Part filePath) {
+        String contentDisp = filePath.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items){
+            if (s.trim().startsWith("filename")){
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
+
+    public File getFolderUpload(){
+        File folderUpload = new File(System.getProperty("user.home") + "/IdeaProjects/Lovers/src/main/webapp/fileImage");
+        if (!folderUpload.exists()){
+            folderUpload.mkdirs();
+        }
+        return folderUpload;
     }
 
 

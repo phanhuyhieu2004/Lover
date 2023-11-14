@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="information.css"/>
     <link rel="stylesheet" href="manager.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,7 +102,7 @@ margin-top: auto;
 
         <h2>Personal information</h2>
        <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>
-        <form  action="information" method="post">
+        <form  action="information" method="post" enctype="multipart/form-data">
             <div class="form-group"style="margin-right:0px">
                 <label for="name">Full name(*):</label>
                 <input type="text" id="name" name="fullName" required>
