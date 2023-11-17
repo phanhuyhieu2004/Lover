@@ -61,7 +61,6 @@ public class UserInformation extends HttpServlet {
         newAccountDetail.setAccount_id(account_id);
 
         accountDAO.addAccountDetail(newAccountDetail);
-        ;
         request.setAttribute("messSuccess", "Successfully registered for the service");
 
         request.getRequestDispatcher("userInformation.jsp").forward(request, response);

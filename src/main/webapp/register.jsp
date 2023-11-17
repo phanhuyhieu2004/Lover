@@ -19,7 +19,7 @@
 <style>
     .alert-warning {
         background-color: #ff0000;
-        margin: 10px;
+        margin: 5px;
         border-radius: 5px;
         color: white;
 
@@ -27,7 +27,7 @@
 
     .alert-success {
         background-color: forestgreen;
-        margin: 10px;
+        margin: 5px;
         border-radius: 5px;
         color: white;
     }
@@ -83,7 +83,7 @@
     <a href="login" class=" alert-success">${messSuccess}</a>
 
             <div class="input-row">
-                <input type="text" name="accountName" placeholder="Account Name" required>
+                <input type="text" name="accountName" placeholder="Account name" required>
                 <input type="password" name="password"
                        placeholder="Password " required
                        pattern="^.{6,15}$"
@@ -94,15 +94,15 @@
             </div>
             <input type="email" id="email-input" placeholder="Email@address.com" name="email" required/>
             <div class="input-row">
-                <input type="tel" name="phoneNumber" placeholder="Phone Number" required>
-                <input type="text" name="identifyCard" placeholder="Identify Card" required>
+                <input type="tel" name="phoneNumber" placeholder="Phone number" required>
+                <input type="text" name="identifyCard" placeholder="Identify card" required>
             </div>
             <div class="input-row">
                 <input type="text" name="surname" placeholder="Surname" required>
                 <input type="text" name="name" placeholder="Name" required>
             </div>
             <input type="text" name="nickName" placeholder="Nickname" required>
-    Who do you want to be
+    Who do you want to be :
     <div class="role">
         <label>Service</label>
         <input type="radio" name="role" value="service" required>
@@ -112,7 +112,7 @@
 
 
     <button type="submit" value="Save">Register</button>
-    <div class="signup-link">Already have an account? <a href="login" style="font-size: medium; color: deeppink">Login
+    <div class="signup-link"style="margin-bottom: 15px;">Already have an account ? <a href="login" style="font-size: medium; color: deeppink">Login
         now</a></div>
         </form>
 

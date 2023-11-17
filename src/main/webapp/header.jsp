@@ -39,6 +39,13 @@
         max-height: 100%;
         max-width: 100%;
     }
+    .profile-img {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+
+    }
 </style>
 <body>
 <nav class="navbar">
@@ -63,12 +70,14 @@
         <li><a href="#">About</a></li>
     </ul>
     <div class="profile-dropdown">
-        <div onclick="toggle()" class="profile-dropdown-btn">
+        <div onclick="toggle()" class="profile-dropdown-btn"style="height: 40px;">
 <%--            Tạo một phần tử div với class CSS "profile-dropdown-btn". Đây là phần tử sẽ kích hoạt dropdown menu khi được nhấp vào. Sự kiện onclick được liên kết với hàm "toggle()" để thay đổi trạng thái của dropdown menu.--%>
-            <div class="profile-img">
-                <i class="fa-solid fa-circle"></i>
-            </div>
 
+    <div class="profile-img"style="background:url('${sessionScope.acc.accountDetail.avatar}'); background-size: cover;
+           " >
+        <i class="fa-solid fa-circle"></i>
+
+    </div>
 
             <c:if test="${sessionScope.acc != null}">
         <span>

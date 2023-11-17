@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43ef1c5b-6b89-4d37-9138-e4c586ccf5e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ListAccountControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ListAccountControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/AccountDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/AccountDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/service.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/service.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,6 +205,7 @@
       <workItem from="1699683421157" duration="27000" />
       <workItem from="1699756762565" duration="2234000" />
       <workItem from="1699777449669" duration="4438000" />
+      <workItem from="1699870797747" duration="109000" />
     </task>
     <servers />
   </component>

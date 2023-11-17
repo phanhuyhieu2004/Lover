@@ -1,6 +1,7 @@
 package com.example.lovers.control;
 
 import com.example.lovers.dao.AccountDAO;
+import com.example.lovers.model.Service;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import java.util.List;
 @WebServlet(name = "ServiceControl", urlPatterns = {"/service"})
 public class ServiceControl extends HttpServlet {
     private AccountDAO accountDAO;
+
 
     public void init() {
         accountDAO = new AccountDAO();
@@ -69,8 +71,17 @@ public class ServiceControl extends HttpServlet {
 
 
         }
+        String serviceName = request.getParameter("serviceName");
         HttpSession session = request.getSession();
-        accountDAO.addAccountService(serviceIds,session);
+        accountDAO.addAccountServices(serviceIds, session);
+
+        Service newService = new Service();
+        newService.setServiceName(serviceName);
+        accountDAO.addService(newService);
+        int newServiceId = newService.getIdService();
+
+        accountDAO.addAccountService(newServiceId, session);
+
         request.setAttribute("messSuccess", "Successfully registered for the service");
         request.getRequestDispatcher("service.jsp").forward(request, response);
 

@@ -64,12 +64,12 @@ public class RegisterControl extends HttpServlet {
         if(a == null){
             //dc signup
             accountDAO.addAccountTransaction(newUser,roles);
-            request.setAttribute("messSuccess", "register success,click login now");
+            request.setAttribute("messSuccess", "Register success,click login now");
 
             request.getRequestDispatcher("register.jsp").forward(request, response);
 //            Nếu tài khoản không tồn tại, tức là có thể đăng ký, chúng ta gọi phương thức addAccountTransaction của accountDAO để thêm tài khoản mới và gán các vai trò tương ứng.Sau đó phải chuyển hướng lại trang register.jsp để thông báo thành công
         }else{
-            request.setAttribute("messWarning", "accountName already exists");
+            request.setAttribute("messWarning", "Account name already exists");
 
             request.getRequestDispatcher("register.jsp").forward(request, response);
 //            Nếu tài khoản đã tồn tại, chúng ta đặt thông báo lỗi "accountName already exists" vào thuộc tính "messWarning" của yêu cầu và chuyển hướng người dùng đến trang "register.jsp" để hiển thị thông báo lỗi.

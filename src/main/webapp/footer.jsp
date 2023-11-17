@@ -84,8 +84,8 @@
     }
 </style>
 <body>
-<footer style="margin-top: 20px",>
-    <div class="footer">
+<footer style="margin-top: 30px",>
+    <div class="footer"style="height: 100px;padding-top: 20px;">
 
         <p>&copy; 2023 Lover. All rights reserved.</p>
         <ul class="socials">

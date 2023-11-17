@@ -70,25 +70,35 @@
         width: 12px;
         height: 12px;
     }
+    form .signup-link a:hover{
+        text-decoration: underline;
 
+    }
+    a {
+        color: #333;
+        font-size: 15px;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: 0.3s ease-in-out;
+    }
 </style>
 <body>
 <jsp:include page="Flower.jsp"></jsp:include>
 
 <div class="container" id="container">
     <div class="form-container login-container">
-        <form class="form-signin" action="login" method="post">
+        <form class="form-signin" action="login" method="post"style="padding-left: 55px;">
 
             <h1>Login
             </h1>
             <p class=" alert-warning" style="color: white" >${mess}</p>
 
-            <form method="post" action="login">
-                <input name="account" type="text" placeholder="Account Name">
+            <form >
+                <input name="account" type="text" placeholder="Account name">
                 <input name="pass" type="password" placeholder="Password">
                 <div class="content">
 
-                    <div class="signup-link">If you not a member? <a href="register" style="color: deeppink" >Create Account</a>
+                    <div class="signup-link ">If you not a member ? <a href="register" style="color: deeppink" >Create Account</a>
                     </div>
 
                 </div>

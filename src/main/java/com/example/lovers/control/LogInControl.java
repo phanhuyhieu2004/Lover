@@ -18,7 +18,7 @@ public class LogInControl extends HttpServlet {
 
 
 
-    private Role roles;
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class LogInControl extends HttpServlet {
 
         if (a == null) {
             // Kiểm tra giá trị của đối tượng Account trả về. Nếu a là null, tức là thông tin đăng nhập không chính xác, Servlet sẽ đặt thuộc tính "mess" cho yêu cầu và chuyển hướng nó đến trang "login.jsp" để hiển thị thông báo lỗi.
-            request.setAttribute("mess", "Wrong login name or password");
+            request.setAttribute("mess", "Wrong Account name or password");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             // Kiểm tra trạng thái của tài khoản
@@ -42,7 +42,8 @@ public class LogInControl extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);
-
+            Account updatedAccount = dao.login(accountName,password);
+            session.setAttribute("acc", updatedAccount);
             session.setMaxInactiveInterval(1000);
             response.sendRedirect("home");
         }

@@ -33,6 +33,14 @@ price.addEventListener('change', function (e) {
         price.classList.remove("bg-red");
     }
 });
+var live = document.querySelector('#live');
+price.addEventListener('change', function (e) {
+    if (price.options.selectedIndex !== 0) {
+        price.classList.add("bg-red");
+    } else {
+        price.classList.remove("bg-red");
+    }
+});
 
 function search() {
     // Code to handle search functionality

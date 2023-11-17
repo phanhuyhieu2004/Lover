@@ -100,12 +100,12 @@
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
                 <a href="serviceProviderInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information Service Provider</span></a>
+                        class="menu-text">Information</span></a>
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
 
                 <a href="userInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information User</span></a>
+                        class="menu-text">Information</span></a>
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 

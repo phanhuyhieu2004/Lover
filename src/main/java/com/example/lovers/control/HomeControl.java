@@ -23,7 +23,23 @@ public class HomeControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         List<AccountDetail> listAccountDetail = accountDAO.getAllAccountDetails();
+        List<AccountDetail> listAccountRentals = accountDAO.getMostRented();
+        List<AccountDetail> listAccountViews = accountDAO.getMostView();
+        List<AccountDetail> listNewAccount = accountDAO.getNewAccount();
+        List<AccountDetail> listManAccount = accountDAO.getManAccount();
+        List<AccountDetail> listWomenAccount = accountDAO.getWomenAccount();
+
+
+
         request.setAttribute("listAccountDetail", listAccountDetail);
+        request.setAttribute("listAccountRentals", listAccountRentals);
+        request.setAttribute("listAccountViews",listAccountViews);
+        request.setAttribute("listNewAccount",listNewAccount);
+        request.setAttribute("listManAccount",listManAccount);
+        request.setAttribute("listWomenAccount",listWomenAccount);
+
+
+
 
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

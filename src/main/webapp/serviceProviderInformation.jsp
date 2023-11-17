@@ -56,7 +56,12 @@ margin-top: auto;
     .menu-text {
         margin-left: 10px;
     }
-
+    label.required span {
+        color: red;
+    }
+    p span.required {
+        color: red;
+    }
     input[type="submit"] {
         width: 50%;
         padding: 15px;
@@ -85,13 +90,13 @@ margin-top: auto;
 
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
-                <a href="serviceProviderInformation"class="active"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information Service Provider</span></a>
+                <a href="serviceProviderInformation"><i class="fa-solid fa-circle-info"></i></i><span
+                        class="menu-text">Information</span></a>
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
 
                 <a href="userInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information User</span></a>
+                        class="menu-text">Information</span></a>
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
@@ -107,18 +112,18 @@ margin-top: auto;
 
         <h2>Personal information</h2>
        <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>
-        <form  action="serviceProviderInformation" method="post">
+        <form  action="serviceProviderInformation" method="post" enctype="multipart/form-data">
             <div class="form-group"style="margin-right:0px">
-                <label for="name">Full name(*):</label>
+                <label for="name" class="required">Full name(<span>*</span>):</label>
                 <input type="text" id="name" name="fullName" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="dob">Date of birth(*):</label>
+                    <label for="dob" class="required">Date of birth(<span>*</span>):</label>
                     <input type="date" id="dob" name="dateOfBirth" required>
                 </div>
                 <div class="form-group"  >
-                    <label for="gender">Gender(*):</label>
+                    <label for="gender"class="required">Gender(<span>*</span>):</label>
                     <select id="gender" name="gender" required style="background-color: white" >
                         <option value="">Choose gender</option>
                         <option value="Man">Man</option>
@@ -128,12 +133,12 @@ margin-top: auto;
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="city">City(*):</label>
+                    <label for="city"class="required">City(<span>*</span>):</label>
 
                     <input type="text" id="city" name="city" required>
                 </div>
                 <div class="form-group">
-                    <label for="nationality">Nationality(*):</label>
+                    <label for="nationality"class="required">Nationality(<span>*</span>):</label>
                     <input type="text" id="nationality" name="nationality" required>
                 </div>
             </div>
@@ -195,7 +200,7 @@ margin-top: auto;
             </div>
             <div class="form-group"style="margin-right:0px">
                 <label for="facebook">Facebook:</label>
-                <input type="text" id="facebook" name="facebook"required>
+                <input type="text" id="facebook" name="facebook">
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -212,8 +217,9 @@ margin-top: auto;
             <div style="text-align: center" class="form-group">
                 <input type="submit" value="Update information">
             </div>
-            <center><p>Fields marked with (*) are required to be entered</p></center>
-        </form>
+            <center>
+                <p>Fields marked with (<span class="required">*</span>) are required to be entered</p>
+            </center>        </form>
     </div>
 </div>
 

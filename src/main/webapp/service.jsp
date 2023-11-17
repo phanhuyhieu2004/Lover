@@ -93,12 +93,12 @@
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
                 <a href="serviceProviderInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information Service Provider</span></a>
+                        class="menu-text">Information</span></a>
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
 
                 <a href="userInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information User</span></a>
+                        class="menu-text">Information</span></a>
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
@@ -249,7 +249,7 @@
         </div>
         <div class="price">
             <p style="font-size: 20px">You want to add other services:</p>
-            <input type="text" placeholder="Enter the service you want to offer here "style="font-size: 14px">
+            <input type="text" name="serviceName" placeholder="Enter the service you want to offer here "style="font-size: 14px">
         </div>
         <div style="text-align: center">
             <input type="submit" value="Register">
