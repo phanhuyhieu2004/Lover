@@ -7,7 +7,7 @@ import com.example.lovers.model.AccountDetail;
 import java.sql.SQLException;
 import java.util.List;
 // định nghĩa các phương thức mà một đối tượng DAO  cho Account cần triển khai.
-public interface IAccountDAO{
+public interface IAccountDAO {
     Account login(String userName, String password);
 
 

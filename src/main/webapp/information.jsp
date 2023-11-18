@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
 
+    <script src="https://kit.fontawesome.com/74cf7057a9.js" crossorigin="anonymous"></script>
+
 
 </head>
 <style>
@@ -87,6 +89,8 @@ margin-top: auto;
 
                 <a href="information"class="active"><i class="fa-solid fa-circle-info"></i></i><span
                         class="menu-text">Information</span></a>
+                <a href ="Setting" class="active"><i class="fa-duotone fa-gear"></i>
+                <span class="menu-text">Setting</span></a>
             </c:if>
             <c:if test="${sessionScope.acc.accountName != 'Admin' }">
 

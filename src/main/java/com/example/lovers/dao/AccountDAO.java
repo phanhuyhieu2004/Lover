@@ -480,6 +480,8 @@ accountDetail.setPrice(resultSet.getString("price"));
 
         return serviceProviderDetails;
     }
+
+
     public static void main(String[] args) throws SQLException {
         AccountDAO accountDAO = new AccountDAO();
 

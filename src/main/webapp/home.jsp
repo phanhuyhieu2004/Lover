@@ -221,7 +221,7 @@
                                 <div class="box"
                                      style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
                                     <div class="imgPlayer" style="width: 100%; height: 200px;text-align: center">
-                                        <a href="/project?action=add&id=${account.getAccount_id()}"
+                                        <a href="profile.jsp=${account.getAccount_id()}"
                                            style="position: relative; display: inline-block;">
                                             <img src="${account.getAvatar()}" style="max-width: 100%; height: 200px;">
 
