@@ -214,7 +214,7 @@
 
 
                 <button class="custom-input btn btn-outline-danger"
-                        style="font-sizegi3: 15px;height: 50px; width: 110px; float: right;" type="submit" value="search">
+                        style="font-size: 15px;height: 50px; width: 110px; float: right;" type="submit" value="search">
                     <i class="fa-solid fa-magnifying-glass fa-beat"></i>
                     Search
                 </button>

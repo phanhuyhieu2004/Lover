@@ -3,7 +3,6 @@ package com.example.lovers.dao;
 
 import com.example.lovers.model.Account;
 import com.example.lovers.model.AccountDetail;
-import com.example.lovers.model.Service;
 
 
 import javax.servlet.http.HttpSession;
@@ -18,7 +17,6 @@ public interface IAccountDAO {
     void addAccountServices(List<Integer> serviceIds, HttpSession session);
 
 
-    void addAccountService(int idService, HttpSession session);
 
     Account checkAccountExist(String account);
 
@@ -42,7 +40,6 @@ public interface IAccountDAO {
     List<Account> getAllAccountInactive();
 
 
-    void addService(Service service);
 
     void addAccountDetail(AccountDetail accountDetail);
 

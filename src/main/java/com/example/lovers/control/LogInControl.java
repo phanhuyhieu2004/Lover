@@ -42,8 +42,8 @@ public class LogInControl extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);
-            Account updatedAccount = dao.login(accountName,password);
-            session.setAttribute("acc", updatedAccount);
+//            Account updatedAccount = dao.login(accountName,password);
+//            session.setAttribute("acc", updatedAccount);
             session.setMaxInactiveInterval(1000);
             response.sendRedirect("home");
         }

@@ -38,10 +38,9 @@ public class ServiceProviderInformation extends HttpServlet {
         String weight = request.getParameter("weight");
         String interest = request.getParameter("interest");
         String describeYourself = request.getParameter("describeYourself");
-        String requestWithUser = request.getParameter("requestWithUser");
+        String regulations = request.getParameter("regulations");
         String facebook = request.getParameter("facebook");
         String joinDate = request.getParameter("joinDate");
-        String price = request.getParameter("price");
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("acc");
         int account_id = account.getIdAccount();
@@ -62,11 +61,10 @@ public class ServiceProviderInformation extends HttpServlet {
         newAccountDetail.setWeight(weight);
         newAccountDetail.setInterest(interest);
         newAccountDetail.setDescribeYourself(describeYourself);
-        newAccountDetail.setRequestWithUser(requestWithUser);
+        newAccountDetail.setRegulations(regulations);
         newAccountDetail.setFacebook(facebook);
         newAccountDetail.setJoinDate(joinDate);
         newAccountDetail.setAccount_id(account_id);
-        newAccountDetail.setPrice(price);
      accountDAO.addAccountDetail(newAccountDetail);
         request.setAttribute("messSuccess", "Successfully registered for the service");
 
@@ -92,13 +90,7 @@ public class ServiceProviderInformation extends HttpServlet {
         }
         return folderUpload;
     }
-//    public File getFolderUpload() {
-//        File folderUpload = new File("C:\\Users\\hieuh\\IdeaProjects\\Lovers\\src\\main\\webapp\\fileImage");
-//        if (!folderUpload.exists()) {
-//            folderUpload.mkdirs();
-//        }
-//        return folderUpload;
-//    }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

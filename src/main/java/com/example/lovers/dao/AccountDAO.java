@@ -4,7 +4,6 @@ package com.example.lovers.dao;
 import com.example.lovers.model.Account;
 import com.example.lovers.model.AccountDetail;
 import com.example.lovers.model.Role;
-import com.example.lovers.model.Service;
 
 import javax.servlet.http.HttpSession;
 import java.sql.*;
@@ -42,7 +41,6 @@ public class AccountDAO implements IAccountDAO {
     private static final String INACTIVE_ACCOUNT = "            SELECT * from account where status='Inactive';";
     private static final String UPDATE_BLOCK = "        UPDATE account SET status = ? WHERE idAccount = ?;";
     private static final String INSERT_ACCOUNT_DETAIL = "  INSERT INTO detail_Account (dateOfBirth, fullName, gender, city, nationality, avatar, portrait,portrait1,portrait2, height, weight, interest, describeYourself, requestWithUser, facebook, joinDate,account_id,price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
-    private static final String INSERT_SERVICE = "  INSERT INTO service (serviceName) VALUES (?)";
     private static final String SELECT_ACCOUNT_DETAIL =
             "            SELECT * FROM detail_Account\n" +
                     "JOIN account_role ON detail_Account.account_id = account_role.account_id\n" +
@@ -214,7 +212,7 @@ public class AccountDAO implements IAccountDAO {
             int loggedInAccountId = account.getIdAccount();
             // Lấy giá trị ID của tài khoản đã đăng nhập từ session
 
-            String sqlPivot = "INSERT INTO account_service(account_id, service_id) VALUES (?, ?)";
+            String sqlPivot = "INSERT INTO account_serviceCategory(account_id, serviceCategory_id) VALUES (?, ?)";
             pstmtAssignment = conn.prepareStatement(sqlPivot);
 
             // Thêm các ID dịch vụ vào bảng trung gian account_service
@@ -244,47 +242,7 @@ public class AccountDAO implements IAccountDAO {
             }
         }
     }
-    @Override
-    public void addAccountService(int serviceId, HttpSession session) {
-        Connection conn = null;
-        PreparedStatement pstmtAssignment = null;
 
-        try {
-            conn = getConnection();
-            conn.setAutoCommit(false);
-
-            Account account = (Account) session.getAttribute("acc");
-            int loggedInAccountId = account.getIdAccount();
-            // Lấy giá trị ID của tài khoản đã đăng nhập từ session
-
-            String sqlPivot = "INSERT INTO account_service(account_id, service_id) VALUES (?, ?)";
-            pstmtAssignment = conn.prepareStatement(sqlPivot);
-
-            // Thêm ID dịch vụ vào bảng trung gian account_service
-            pstmtAssignment.setInt(1, loggedInAccountId);
-            pstmtAssignment.setInt(2, serviceId);
-            pstmtAssignment.executeUpdate();
-
-            conn.commit();
-        } catch (SQLException ex) {
-            try {
-                if (conn != null)
-                    conn.rollback();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-            System.out.println(ex.getMessage());
-        } finally {
-            try {
-                if (pstmtAssignment != null)
-                    pstmtAssignment.close();
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
 
     @Override
     public Account checkAccountExist(String accountName) {
@@ -584,11 +542,10 @@ public class AccountDAO implements IAccountDAO {
             preparedStatement.setString(11, accountDetail.getWeight());
             preparedStatement.setString(12, accountDetail.getInterest());
             preparedStatement.setString(13, accountDetail.getDescribeYourself());
-            preparedStatement.setString(14, accountDetail.getRequestWithUser());
+            preparedStatement.setString(14, accountDetail.getRegulations());
             preparedStatement.setString(15, accountDetail.getFacebook());
             preparedStatement.setString(16, accountDetail.getJoinDate());
             preparedStatement.setInt(17, accountDetail.getAccount_id());
-            preparedStatement.setString(18, accountDetail.getPrice());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -596,24 +553,7 @@ public class AccountDAO implements IAccountDAO {
         }
     }
 
-    @Override
-    public void addService(Service service) {
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SERVICE, Statement.RETURN_GENERATED_KEYS)) {
 
-            preparedStatement.setString(1, service.getServiceName());
-
-            preparedStatement.executeUpdate();
-
-            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                int newServiceId = generatedKeys.getInt(1);
-                service.setIdService(newServiceId);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     @Override
 
 
@@ -640,12 +580,11 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setWeight(resultSet.getString("weight"));
                 accountDetail.setInterest(resultSet.getString("interest"));
                 accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
-                accountDetail.setRequestWithUser(resultSet.getString("requestWithUser"));
+                accountDetail.setRegulations(resultSet.getString("regulations"));
                 accountDetail.setFacebook(resultSet.getString("facebook"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
-accountDetail.setPrice(resultSet.getString("price"));
 accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }
@@ -682,12 +621,11 @@ accountDetail.setView(resultSet.getInt("view"));
                 accountDetail.setWeight(resultSet.getString("weight"));
                 accountDetail.setInterest(resultSet.getString("interest"));
                 accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
-                accountDetail.setRequestWithUser(resultSet.getString("requestWithUser"));
+                accountDetail.setRegulations(resultSet.getString("regulations"));
                 accountDetail.setFacebook(resultSet.getString("facebook"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
-                accountDetail.setPrice(resultSet.getString("price"));
                 accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }
@@ -724,12 +662,11 @@ accountDetail.setView(resultSet.getInt("view"));
                 accountDetail.setWeight(resultSet.getString("weight"));
                 accountDetail.setInterest(resultSet.getString("interest"));
                 accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
-                accountDetail.setRequestWithUser(resultSet.getString("requestWithUser"));
+                accountDetail.setRegulations(resultSet.getString("regulations"));
                 accountDetail.setFacebook(resultSet.getString("facebook"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
-                accountDetail.setPrice(resultSet.getString("price"));
                 accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }
@@ -766,12 +703,11 @@ accountDetail.setView(resultSet.getInt("view"));
                 accountDetail.setWeight(resultSet.getString("weight"));
                 accountDetail.setInterest(resultSet.getString("interest"));
                 accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
-                accountDetail.setRequestWithUser(resultSet.getString("requestWithUser"));
+                accountDetail.setRegulations(resultSet.getString("regulations"));
                 accountDetail.setFacebook(resultSet.getString("facebook"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
-                accountDetail.setPrice(resultSet.getString("price"));
                 accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }
@@ -808,12 +744,11 @@ accountDetail.setView(resultSet.getInt("view"));
                 accountDetail.setWeight(resultSet.getString("weight"));
                 accountDetail.setInterest(resultSet.getString("interest"));
                 accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
-                accountDetail.setRequestWithUser(resultSet.getString("requestWithUser"));
+                accountDetail.setRegulations(resultSet.getString("regulations"));
                 accountDetail.setFacebook(resultSet.getString("facebook"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
-                accountDetail.setPrice(resultSet.getString("price"));
                 accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }
@@ -850,12 +785,11 @@ accountDetail.setView(resultSet.getInt("view"));
                 accountDetail.setWeight(resultSet.getString("weight"));
                 accountDetail.setInterest(resultSet.getString("interest"));
                 accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
-                accountDetail.setRequestWithUser(resultSet.getString("requestWithUser"));
+                accountDetail.setRegulations(resultSet.getString("regulations"));
                 accountDetail.setFacebook(resultSet.getString("facebook"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
-                accountDetail.setPrice(resultSet.getString("price"));
                 accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }

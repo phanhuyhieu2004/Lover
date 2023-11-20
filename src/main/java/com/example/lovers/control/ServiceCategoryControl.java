@@ -1,7 +1,6 @@
 package com.example.lovers.control;
 
 import com.example.lovers.dao.AccountDAO;
-import com.example.lovers.model.Service;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,8 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ServiceControl", urlPatterns = {"/service"})
-public class ServiceControl extends HttpServlet {
+@WebServlet(name = "ServiceCategoryControl", urlPatterns = {"/serviceCategory"})
+public class ServiceCategoryControl extends HttpServlet {
     private AccountDAO accountDAO;
 
 
@@ -71,26 +70,19 @@ public class ServiceControl extends HttpServlet {
 
 
         }
-        String serviceName = request.getParameter("serviceName");
         HttpSession session = request.getSession();
         accountDAO.addAccountServices(serviceIds, session);
 
-        Service newService = new Service();
-        newService.setServiceName(serviceName);
-        accountDAO.addService(newService);
-        int newServiceId = newService.getIdService();
-
-        accountDAO.addAccountService(newServiceId, session);
 
         request.setAttribute("messSuccess", "Successfully registered for the service");
-        request.getRequestDispatcher("service.jsp").forward(request, response);
+        request.getRequestDispatcher("serviceCategory.jsp").forward(request, response);
 
 
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("service.jsp").forward(request, response);
+        request.getRequestDispatcher("serviceCategory.jsp").forward(request, response);
 
     }
 

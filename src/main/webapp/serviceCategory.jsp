@@ -102,10 +102,14 @@
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
-                <a href="service" class="active"> <i class="fa-solid fa-bars"></i> <span
-                        class="menu-text">Services</span></a>
+                <a href="serviceCategory" class="active"> <i class="fa-solid fa-bars"></i> <span
+                        class="menu-text"> Service Catalog </span></a>
             </c:if>
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
+                <a href="serviceList" > <i class="fa-solid fa-bars"></i> <span
+                        class="menu-text">Service List</span></a>
+            </c:if>
             <a href="#"><i class="fa-solid fa-wallet"></i><span class="menu-text">E-wallet</span></a>
             <a href="#"><i class="fa-solid fa-circle-play"></i><span class="menu-text">Player</span></a>
             <a href="#"><i class="fa-solid fa-circle-dollar-to-slot"></i><span class="menu-text">Donate</span></a>
@@ -113,9 +117,9 @@
         </div>
     </nav>
     <div class="containers">
-        <form  action="service" method="post">
+        <form  action="serviceCategory" method="post">
         <div class="services[]">
-        <h1>Choose the services you want to provide</h1>
+        <h1>Choose service catalog you want to provide</h1>
             <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>
 
             <div class="row">
@@ -181,7 +185,7 @@
 
 
         </div>
-        <h1>Free service</h1>
+
         <div class="row">
             <label>
                 <input type="checkbox"  name="services[]" value="hand"/>
@@ -203,7 +207,7 @@
                 </div>
             </label>
         </div>
-        <h1>Extended services</h1>
+
         <div class="row">
             <label>
                 <input type="checkbox"  name="services[]" value="song"/>
@@ -247,12 +251,9 @@
 
         </div>
         </div>
-        <div class="price">
-            <p style="font-size: 20px">You want to add other services:</p>
-            <input type="text" name="serviceName" placeholder="Enter the service you want to offer here "style="font-size: 14px">
-        </div>
+
         <div style="text-align: center">
-            <input type="submit" value="Register">
+            <input type="submit" value="Catalog registration">
 
         </div>
         </form>

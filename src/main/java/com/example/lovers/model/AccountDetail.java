@@ -23,14 +23,14 @@ public class AccountDetail {
     private String describeYourself;
 
 
-    private String requestWithUser;
+    private String regulations;
     private String facebook;
 
 
     private String joinDate;
 private int numberOfRentals;
     private int account_id;
-    private String price;
+
     private int view;
 
     public int getNumberOfRentals() {
@@ -73,21 +73,17 @@ private int numberOfRentals;
         this.portrait2 = portrait2;
     }
 
-    public String getRequestWithUser() {
-        return requestWithUser;
+    public String getRegulations() {
+        return regulations;
     }
 
-    public void setRequestWithUser(String requestWithUser) {
-        this.requestWithUser = requestWithUser;
+    public void setRegulations(String requestWithUser) {
+        this.regulations = regulations;
     }
 
-    public String getPrice() {
-        return price;
-    }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
+
+
 
 
     public int getAccount_id() {
@@ -221,12 +217,12 @@ private int numberOfRentals;
         this.weight = weight;
         this.interest = interest;
         this.describeYourself = describeYourself;
-        this.requestWithUser = requestWithUser;
+        this.regulations = regulations;
         this.facebook = facebook;
         this.joinDate = joinDate;
         this.numberOfRentals = numberOfRentals;
         this.account_id = account_id;
-        this.price = price;
+
         this.view = view;
     }
 
@@ -247,12 +243,11 @@ private int numberOfRentals;
                 ", weight='" + weight + '\'' +
                 ", interest='" + interest + '\'' +
                 ", describeYourself='" + describeYourself + '\'' +
-                ", requestWithUser='" + requestWithUser + '\'' +
+                ", regulations='" + regulations + '\'' +
                 ", facebook='" + facebook + '\'' +
                 ", joinDate='" + joinDate + '\'' +
                 ", numberOfRentals=" + numberOfRentals +
                 ", account_id=" + account_id +
-                ", price='" + price + '\'' +
                 ", view=" + view +
                 '}';
     }

@@ -58,8 +58,13 @@
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
-                <a href="service" > <i class="fa-solid fa-bars"></i> <span
-                        class="menu-text">Services</span></a>
+                <a href="serviceCategory" > <i class="fa-solid fa-bars"></i> <span
+                        class="menu-text">Service Catalog</span></a>
+            </c:if>
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
+
+                <a href="serviceList" > <i class="fa-solid fa-bars"></i> <span
+                        class="menu-text">Service List</span></a>
             </c:if>
             <a href="#"><i class="fa-solid fa-wallet"></i><span class="menu-text">E-wallet</span></a>
             <a href="#"><i class="fa-solid fa-circle-play"></i><span class="menu-text">Player</span></a>

@@ -100,8 +100,13 @@ margin-top: auto;
             </c:if>
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
 
-                <a href="service" > <i class="fa-solid fa-bars"></i> <span
-                        class="menu-text">Services</span></a>
+                <a href="serviceCategory" > <i class="fa-solid fa-bars"></i> <span
+                        class="menu-text">Service Catalog</span></a>
+            </c:if>
+            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
+
+                <a href="serviceList" > <i class="fa-solid fa-bars"></i> <span
+                        class="menu-text">Service List</span></a>
             </c:if>
             <a href="#"><i class="fa-solid fa-wallet"></i><span class="menu-text">E-wallet</span></a>
             <a href="#"><i class="fa-solid fa-circle-play"></i><span class="menu-text">Player</span></a>
@@ -195,24 +200,19 @@ margin-top: auto;
                 <textarea id="description" name="describeYourself" required></textarea>
             </div>
             <div class="form-group"style="margin-right:0px">
-                <label for="requirements">Request to users:</label>
-                <textarea id="requirements" name="requestWithUser"required></textarea>
+                <label for="requirements"class="required">Regulations(<span>*</span>):</label>
+                <textarea id="requirements" name="regulations"required></textarea>
             </div>
             <div class="form-group"style="margin-right:0px">
                 <label for="facebook">Facebook:</label>
                 <input type="text" id="facebook" name="facebook">
             </div>
-            <div class="form-row">
                 <div class="form-group">
-                    <label for="dob">Join date:</label>
+                    <label for="dob"class="required">Join date(<span>*</span>):</label>
                     <input type="date" id="dob1" name="joinDate" required>
                 </div>
-                <div class="form-group">
-                   <label for="price">Price(*):</label>
-                    <input type="text" id="price" name="price"  placeholder="hourly price" required>
-                </div>
 
-            </div>
+
 
             <div style="text-align: center" class="form-group">
                 <input type="submit" value="Update information">
