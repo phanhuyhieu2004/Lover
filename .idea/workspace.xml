@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43ef1c5b-6b89-4d37-9138-e4c586ccf5e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/FormRegisterService.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/ManageService.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/FormRentServiceProvider.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/information.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/information.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/information.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/information.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +105,9 @@
     <configuration name="homePage.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/homePage.jsp">
       <method v="2" />
     </configuration>
+    <configuration name="information.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/information.jsp">
+      <method v="2" />
+    </configuration>
     <configuration name="Tomcat 9.0.803" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.80" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="corretto-19">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/home.jsp" />
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
@@ -201,11 +199,13 @@
     </configuration>
     <list>
       <item itemvalue="Application.AccountDAO" />
+      <item itemvalue="JavaScript Debug.information.jsp" />
       <item itemvalue="JavaScript Debug.homePage.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.803" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.information.jsp" />
         <item itemvalue="JavaScript Debug.homePage.jsp" />
         <item itemvalue="Application.AccountDAO" />
       </list>
@@ -249,7 +249,10 @@
       <workItem from="1700183421107" duration="2047000" />
       <workItem from="1700189336429" duration="122000" />
       <workItem from="1700189594177" duration="14754000" />
-      <workItem from="1700322168403" duration="7854000" />
+      <workItem from="1700322168403" duration="8234000" />
+      <workItem from="1700529600244" duration="24838000" />
+      <workItem from="1700580736106" duration="762000" />
+      <workItem from="1700615432802" duration="1896000" />
     </task>
     <servers />
   </component>
