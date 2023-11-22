@@ -33,6 +33,37 @@ private int numberOfRentals;
 
     private int view;
 
+    public String getRegulations() {
+        return regulations;
+    }
+
+    public void setRegulations(String regulations) {
+        this.regulations = regulations;
+    }
+
+    public AccountDetail(int idDetail, String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int numberOfRentals, int account_id, int view) {
+        this.idDetail = idDetail;
+        this.dateOfBirth = dateOfBirth;
+        this.fullName = fullName;
+        this.gender = gender;
+        this.city = city;
+        this.nationality = nationality;
+        this.avatar = avatar;
+        this.portrait = portrait;
+        this.portrait1 = portrait1;
+        this.portrait2 = portrait2;
+        this.height = height;
+        this.weight = weight;
+        this.interest = interest;
+        this.describeYourself = describeYourself;
+        this.regulations = regulations;
+        this.facebook = facebook;
+        this.joinDate = joinDate;
+        this.numberOfRentals = numberOfRentals;
+        this.account_id = account_id;
+        this.view = view;
+    }
+
     public int getNumberOfRentals() {
         return numberOfRentals;
     }
@@ -73,13 +104,7 @@ private int numberOfRentals;
         this.portrait2 = portrait2;
     }
 
-    public String getRegulations() {
-        return regulations;
-    }
 
-    public void setRegulations(String requestWithUser) {
-        this.regulations = regulations;
-    }
 
 
 
@@ -202,29 +227,6 @@ private int numberOfRentals;
     public AccountDetail() {
     }
 
-    public AccountDetail(int idDetail, String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String requestWithUser, String facebook, String joinDate, int numberOfRentals, int account_id, String price, int view) {
-        this.idDetail = idDetail;
-        this.dateOfBirth = dateOfBirth;
-        this.fullName = fullName;
-        this.gender = gender;
-        this.city = city;
-        this.nationality = nationality;
-        this.avatar = avatar;
-        this.portrait = portrait;
-        this.portrait1 = portrait1;
-        this.portrait2 = portrait2;
-        this.height = height;
-        this.weight = weight;
-        this.interest = interest;
-        this.describeYourself = describeYourself;
-        this.regulations = regulations;
-        this.facebook = facebook;
-        this.joinDate = joinDate;
-        this.numberOfRentals = numberOfRentals;
-        this.account_id = account_id;
-
-        this.view = view;
-    }
 
     @Override
     public String toString() {

@@ -56,6 +56,7 @@ public class RegisterControl extends HttpServlet {
         newUser.setSurname(surname);
         newUser.setName(name);
         newUser.setNickName(nickName);
+
 //        tạo một đối tượng newUser từ lớp Account và gán các giá trị đã lấy từ yêu cầu vào các thuộc tính tương ứng của newUser.
 //        set từng thuộc tính cho đối tượng mới newUser là để gán giá trị từ các biến đã nhận được từ request vào các thuộc tính tương ứng của đối tượng.
 ;

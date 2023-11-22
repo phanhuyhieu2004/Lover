@@ -118,22 +118,22 @@
 
         <h2>Personal information</h2>
         <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>
-        <form  action="userInformation" method="post">
+        <form  action="#" method="post" enctype="multipart/form-data">
             <div class="form-group"style="margin-right:0px">
                 <label for="name" class="required">Full name(<span>*</span>):</label>
-                <input type="text" id="name" name="fullName" required>
+                <input type="text"  value="${accountDetail.fullName}" id="name" name="fullName" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="dob" class="required">Date of birth(<span>*</span>):</label>
-                    <input type="date" id="dob" name="dateOfBirth" required>
+                    <input type="date"value="${accountDetail.dateOfBirth}" id="dob" name="dateOfBirth" required>
                 </div>
                 <div class="form-group"  >
                     <label for="gender"class="required">Gender(<span>*</span>):</label>
-                    <select id="gender" name="gender" required style="background-color: white" >
+                    <select id="gender" name="gender" required style="background-color: white">
                         <option value="">Choose gender</option>
-                        <option value="Man">Man</option>
-                        <option value="Women">Women</option>
+                        <option value="Man" ${accountDetail.gender == 'Man' ? 'selected' : ''}>Man</option>
+                        <option value="Women" ${accountDetail.gender == 'Women' ? 'selected' : ''}>Women</option>
                     </select>
                 </div>
             </div>
@@ -141,20 +141,19 @@
                 <div class="form-group">
                     <label for="city"class="required">City(<span>*</span>):</label>
 
-                    <input type="text" id="city" name="city" required>
+                    <input type="text" value="${accountDetail.city}"id="city" name="city" required>
                 </div>
                 <div class="form-group">
                     <label for="nationality"class="required">Nationality(<span>*</span>):</label>
-                    <input type="text" id="nationality" name="nationality" required>
+                    <input type="text" value="${accountDetail.nationality}"id="nationality" name="nationality" required>
                 </div>
             </div>
 
 
             <label for="file1">Avatar:</label>
             <div class="image-box" style="width: 130px">
-                <img id="avatar-image" src="">
-
-                <input type="file" name="image" id="file1" onchange="previewImage(this)">
+                <img id="avatar-image" src="${accountDetail.avatar}">
+                <input type="file" name="image" id="file1" onchange="previewImage(this, '${accountDetail.avatar}')">
             </div>
             <p>Click on the squares to select photos from your device </p>
 
@@ -167,22 +166,20 @@
 
             <div class="form-group"style="margin-right:0px">
                 <label for="interests">Interest:</label>
-                <textarea id="interests" name="interest" required></textarea>
+                <textarea id="interests" name="interest" required>${accountDetail.interest}</textarea>
             </div>
 
 
             <div class="form-group"style="margin-right:0px">
                 <label for="facebook">Facebook:</label>
-                <input type="text" id="facebook" name="facebook"required>
+                <input type="text"value="${accountDetail.facebook}" id="facebook" name="facebook">
             </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="dob">Join date:</label>
-                    <input type="date" id="dob1" name="joinDate" required>
-                </div>
+            <div class="form-group">
+                <label for="dob"class="required">Join date(<span>*</span>):</label>
+                <input type="date" value="${accountDetail.joinDate}"id="dob1" name="joinDate" required>
+            </div>
 
 
-            </div>
 
             <div style="text-align: center" class="form-group">
                 <input type="submit" value="Update information">
@@ -196,13 +193,19 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script>
-    function previewImage(input) {
+    function previewImage(input, imageName) {
         const reader = new FileReader();
         reader.onload = function(e) {
             const img = input.previousElementSibling;
             img.src = e.target.result;
         }
-        reader.readAsDataURL(input.files[0]);
+
+        if (input.files && input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            const img = input.previousElementSibling;
+            img.src = imageName; // Gán đường dẫn ảnh từ cơ sở dữ liệu vào thuộc tính src của thẻ <img>
+        }
     }
 </script>
 </body>

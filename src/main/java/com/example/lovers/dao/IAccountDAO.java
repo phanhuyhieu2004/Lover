@@ -41,10 +41,12 @@ public interface IAccountDAO {
 
 
 
-    void addAccountDetail(AccountDetail accountDetail);
 
-    List<AccountDetail> getAllAccountDetails();
+    void addAccountDetail(int accountId, AccountDetail accountDetail);
 
+
+
+    List<AccountDetail> getVipAccountDetail();
 
     List<AccountDetail> getMostRented();
 
@@ -56,4 +58,12 @@ public interface IAccountDAO {
 
     List<AccountDetail> getWomenAccount();
 
+
+
+    List<AccountDetail> getAddressAccount(String city);
+
+    AccountDetail getAccountDetailByAccountId(int accountId);
+
+
+    void updateAccountDetailByAccountId(String dateOfBirth, String fullName, String gender, String city, String nationality, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate,int account_id);
 }

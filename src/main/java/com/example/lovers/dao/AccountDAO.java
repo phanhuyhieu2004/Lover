@@ -40,8 +40,14 @@ public class AccountDAO implements IAccountDAO {
     private static final String VIP_ACCOUNT = "            SELECT * from account where status='Vip';";
     private static final String INACTIVE_ACCOUNT = "            SELECT * from account where status='Inactive';";
     private static final String UPDATE_BLOCK = "        UPDATE account SET status = ? WHERE idAccount = ?;";
-    private static final String INSERT_ACCOUNT_DETAIL = "  INSERT INTO detail_Account (dateOfBirth, fullName, gender, city, nationality, avatar, portrait,portrait1,portrait2, height, weight, interest, describeYourself, requestWithUser, facebook, joinDate,account_id,price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
-    private static final String SELECT_ACCOUNT_DETAIL =
+    private static final String INSERT_ACCOUNT_DETAIL = "  INSERT INTO detail_Account (dateOfBirth, fullName, gender, city, nationality, avatar, portrait,portrait1,portrait2, height, weight, interest, describeYourself, regulations, facebook, joinDate,account_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
+    private static final String SELECT_ACCOUNT_DETAIL = " SELECT * FROM detail_account WHERE account_id = ?";
+    private static final String UPDATE_ACCOUNT_DETAIL = " UPDATE detail_Account\n" +
+            "SET dateOfBirth = ?, fullName = ?, gender = ?, city = ?, nationality = ?, \n" +
+            "     height = ?, weight = ?, \n" +
+            "    interest = ?, describeYourself = ?, regulations = ?, facebook = ?, joinDate = ? \n" +
+            "WHERE account_id = ?";
+    private static final String SELECT_ACCOUNT_VIP =
             "            SELECT * FROM detail_Account\n" +
                     "JOIN account_role ON detail_Account.account_id = account_role.account_id\n" +
                     "JOIN role ON account_role.role_id = role.idRole\n" +
@@ -99,6 +105,14 @@ public class AccountDAO implements IAccountDAO {
             "JOIN account_role ar ON acc.idAccount = ar.account_id\n" +
             "JOIN role r ON ar.role_id = r.idRole\n" +
             "WHERE da.gender = 'Women' AND r.idRole = 2\n" +
+            "\n" +
+            "limit 12;";
+    private static final String SELECT_ADDRESS_ACCOUNT= "SELECT da.*\n" +
+            "FROM detail_Account da\n" +
+            "JOIN account acc ON da.account_id = acc.idAccount\n" +
+            "JOIN account_role ar ON acc.idAccount = ar.account_id\n" +
+            "JOIN role r ON ar.role_id = r.idRole\n" +
+            "WHERE da.city = ? AND r.idRole = 2\n" +
             "\n" +
             "limit 12;";
 
@@ -175,6 +189,22 @@ public class AccountDAO implements IAccountDAO {
 //                    Thực thi câu lệnh SQL để gán vai trò cho tài khoản.
                 }
                 conn.commit();
+                AccountDetail newAccountDetail = new AccountDetail();
+                newAccountDetail.setDateOfBirth(newAccountDetail.getDateOfBirth());
+                newAccountDetail.setFullName(newAccountDetail.getFullName());
+                newAccountDetail.setGender(newAccountDetail.getGender());
+                newAccountDetail.setCity(newAccountDetail.getCity());
+                newAccountDetail.setNationality(newAccountDetail.getNationality());
+                newAccountDetail.setAvatar(newAccountDetail.getAvatar());
+                newAccountDetail.setHeight(newAccountDetail.getHeight());
+                newAccountDetail.setWeight(newAccountDetail.getWeight());
+                newAccountDetail.setInterest(newAccountDetail.getInterest());
+                newAccountDetail.setDescribeYourself(newAccountDetail.getDescribeYourself());
+                newAccountDetail.setRegulations(newAccountDetail.getRegulations());
+                newAccountDetail.setFacebook(newAccountDetail.getFacebook());
+                newAccountDetail.setJoinDate(newAccountDetail.getJoinDate());
+                newAccountDetail.setAccount_id(accountId);
+                addAccountDetail(accountId,newAccountDetail);
 //                Xác nhận giao dịch bằng cách lưu các thay đổi vào cơ sở dữ liệu
             } else {
                 conn.rollback();
@@ -192,7 +222,7 @@ public class AccountDAO implements IAccountDAO {
             try {
                 if (rs != null) rs.close();
                 if (pstmt != null) pstmt.close();
-                if (pstmtAssignment != null) pstmtAssignment.close();
+                 if (pstmtAssignment != null) pstmtAssignment.close();
                 if (conn != null) conn.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -307,7 +337,7 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setCity(resultSet.getString("city"));
 
                 accountDetail.setAvatar(resultSet.getString("avatar"));
-
+accountDetail.setAccount_id(resultSet.getInt("account_id"));
 // Tạo một đối tượng AccountDetail từ các cột dữ liệu tương ứng trong ResultSet.
 
                 account.setAccountDetail(accountDetail);
@@ -525,7 +555,7 @@ public class AccountDAO implements IAccountDAO {
 
 
     @Override
-    public void addAccountDetail(AccountDetail accountDetail) {
+    public void addAccountDetail(int accountId, AccountDetail accountDetail) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ACCOUNT_DETAIL)) {
 
@@ -545,7 +575,7 @@ public class AccountDAO implements IAccountDAO {
             preparedStatement.setString(14, accountDetail.getRegulations());
             preparedStatement.setString(15, accountDetail.getFacebook());
             preparedStatement.setString(16, accountDetail.getJoinDate());
-            preparedStatement.setInt(17, accountDetail.getAccount_id());
+            preparedStatement.setInt(17, accountId);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -557,11 +587,11 @@ public class AccountDAO implements IAccountDAO {
     @Override
 
 
-    public List<AccountDetail> getAllAccountDetails() {
+    public List<AccountDetail> getVipAccountDetail() {
         List<AccountDetail> accountDetails = new ArrayList<>();
 
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT_DETAIL);
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT_VIP);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
@@ -801,7 +831,110 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+    @Override
+    public List<AccountDetail> getAddressAccount(String city) {
+        List<AccountDetail> accountDetails = new ArrayList<>();
 
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ADDRESS_ACCOUNT)) {
+
+            preparedStatement.setString(1, city);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    AccountDetail accountDetail = new AccountDetail();
+                    accountDetail.setIdDetail(resultSet.getInt("idDetail"));
+                    accountDetail.setDateOfBirth(resultSet.getString("dateOfBirth"));
+                    accountDetail.setFullName(resultSet.getString("fullName"));
+                    accountDetail.setGender(resultSet.getString("gender"));
+                    accountDetail.setCity(resultSet.getString("city"));
+                    accountDetail.setNationality(resultSet.getString("nationality"));
+                    accountDetail.setAvatar(resultSet.getString("avatar"));
+                    accountDetail.setPortrait(resultSet.getString("portrait"));
+                    accountDetail.setPortrait1(resultSet.getString("portrait1"));
+                    accountDetail.setPortrait2(resultSet.getString("portrait2"));
+                    accountDetail.setHeight(resultSet.getString("height"));
+                    accountDetail.setWeight(resultSet.getString("weight"));
+                    accountDetail.setInterest(resultSet.getString("interest"));
+                    accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
+                    accountDetail.setRegulations(resultSet.getString("regulations"));
+                    accountDetail.setFacebook(resultSet.getString("facebook"));
+                    accountDetail.setJoinDate(resultSet.getString("joinDate"));
+                    accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
+                    accountDetail.setAccount_id(resultSet.getInt("account_id"));
+                    accountDetail.setView(resultSet.getInt("view"));
+                    accountDetails.add(accountDetail);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Đóng kết nối và tài nguyên
+        }
+
+        return accountDetails;
+    }
+    @Override
+    public AccountDetail getAccountDetailByAccountId(int accountId) {
+        AccountDetail accountDetail = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT_DETAIL)) {
+            preparedStatement.setInt(1, accountId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    accountDetail = new AccountDetail();
+                    accountDetail.setIdDetail(resultSet.getInt("idDetail"));
+                    accountDetail.setDateOfBirth(resultSet.getString("dateOfBirth"));
+                    accountDetail.setFullName(resultSet.getString("fullName"));
+                    accountDetail.setGender(resultSet.getString("gender"));
+                    accountDetail.setCity(resultSet.getString("city"));
+                    accountDetail.setNationality(resultSet.getString("nationality"));
+                    accountDetail.setAvatar(resultSet.getString("avatar"));
+                    accountDetail.setPortrait(resultSet.getString("portrait"));
+                    accountDetail.setPortrait1(resultSet.getString("portrait1"));
+                    accountDetail.setPortrait2(resultSet.getString("portrait2"));
+                    accountDetail.setHeight(resultSet.getString("height"));
+                    accountDetail.setWeight(resultSet.getString("weight"));
+                    accountDetail.setInterest(resultSet.getString("interest"));
+                    accountDetail.setDescribeYourself(resultSet.getString("describeYourself"));
+                    accountDetail.setRegulations(resultSet.getString("regulations"));
+                    accountDetail.setFacebook(resultSet.getString("facebook"));
+                    accountDetail.setJoinDate(resultSet.getString("joinDate"));
+                    accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
+                    accountDetail.setAccount_id(resultSet.getInt("account_id"));
+                    accountDetail.setView(resultSet.getInt("view"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return accountDetail;
+    }
+    @Override
+    public void updateAccountDetailByAccountId(String dateOfBirth, String fullName, String gender, String city, String nationality, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate,int account_id) {
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACCOUNT_DETAIL)) {
+            preparedStatement.setString(1, dateOfBirth);
+            preparedStatement.setString(2, fullName);
+            preparedStatement.setString(3, gender);
+            preparedStatement.setString(4, city);
+            preparedStatement.setString(5, nationality);
+
+            preparedStatement.setString(6, height);
+            preparedStatement.setString(7, weight);
+            preparedStatement.setString(8, interest);
+            preparedStatement.setString(9, describeYourself);
+            preparedStatement.setString(10, regulations);
+            preparedStatement.setString(11,facebook );
+            preparedStatement.setString(12,joinDate );
+            preparedStatement.setInt(13,account_id );
+
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) throws SQLException {
         AccountDAO accountDao=new AccountDAO();
 List<AccountDetail> accountDetails=accountDao.getMostRented();

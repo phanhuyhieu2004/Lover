@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43ef1c5b-6b89-4d37-9138-e4c586ccf5e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/EditServiceProviderInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/LogInControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/LogInControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ProfileControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ProfileControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/RegisterControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/RegisterControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceProviderInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceProviderInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/UserInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/UserInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/service.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/service.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/AccountDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/AccountDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/serviceProviderInformation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/serviceProviderInformation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/userInformation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userInformation.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,11 +218,25 @@
       <workItem from="1699756762565" duration="2234000" />
       <workItem from="1699777449669" duration="4438000" />
       <workItem from="1699870797747" duration="109000" />
+      <workItem from="1700528858111" duration="6200000" />
+      <workItem from="1700563127343" duration="9217000" />
+      <workItem from="1700610693497" duration="1750000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -218,7 +244,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java</url>
           <line>26</line>
-          <properties class="com.example.lovers.control.InformationControl" method="processRequest">
+          <properties class="com.example.lovers.control.InformationControl">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -226,12 +252,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java</url>
-          <line>390</line>
-          <properties class="com.example.lovers.dao.AccountDAO" method="addAccountDetail">
+          <line>406</line>
+          <properties class="com.example.lovers.dao.AccountDAO">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java</url>
+          <line>123</line>
+          <properties class="com.example.lovers.dao.AccountDAO">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/RegisterControl.java</url>
+          <line>25</line>
+          <properties class="com.example.lovers.control.RegisterControl" method="processRequest">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java</url>
+          <line>543</line>
+          <properties class="com.example.lovers.dao.AccountDAO">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/ProfileControl.java</url>
+          <line>14</line>
+          <properties class="com.example.lovers.control.ProfileControl" method="processRequest">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java</url>
+          <line>826</line>
+          <properties class="com.example.lovers.dao.AccountDAO" method="getAccountDetailByAccountId">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/InformationControl.java</url>
@@ -243,7 +314,17 @@
           <line>69</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lovers/control/ProfileControl.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="postParseSuccess" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

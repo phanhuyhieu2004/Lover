@@ -26,42 +26,15 @@ public class UserInformation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String dateOfBirth = request.getParameter("dateOfBirth");
-        String fullName = request.getParameter("fullName");
-        String gender = request.getParameter("gender");
-        String city = request.getParameter("city");
-        String nationality = request.getParameter("nationality");
-        String avatar = request.getParameter("image");
-
-
-        String interest = request.getParameter("interest");
-
-
-        String facebook = request.getParameter("facebook");
-        String joinDate = request.getParameter("joinDate");
+        request.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("acc");
-        int account_id = account.getIdAccount();
-// Sử dụng giá trị accountId để lưu vào bảng Account Detail
-        AccountDetail newAccountDetail = new AccountDetail();
-        newAccountDetail.setDateOfBirth(dateOfBirth);
-        newAccountDetail.setFullName(fullName);
-        newAccountDetail.setGender(gender);
-        newAccountDetail.setCity(city);
-        newAccountDetail.setNationality(nationality);
-        newAccountDetail.setAvatar(avatar);
+        int account_id = account.getAccountDetail().getAccount_id();
 
+        AccountDetail accountDetail=accountDAO.getAccountDetailByAccountId(account_id);
 
-        newAccountDetail.setInterest(interest);
-
-
-        newAccountDetail.setFacebook(facebook);
-        newAccountDetail.setJoinDate(joinDate);
-        newAccountDetail.setAccount_id(account_id);
-
-        accountDAO.addAccountDetail(newAccountDetail);
-        request.setAttribute("messSuccess", "Successfully registered for the service");
+        request.setAttribute("accountDetail", accountDetail);
 
         request.getRequestDispatcher("userInformation.jsp").forward(request, response);
 
@@ -71,7 +44,8 @@ public class UserInformation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("userInformation.jsp").forward(request, response);
+        processRequest(request, response);
+
 //        Phương thức doGet được ghi đè để xử lý yêu cầu "GET" và chuyển hướng người dùng đến trang "register.jsp".
     }
 

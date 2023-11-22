@@ -85,15 +85,14 @@
             </c:if>
 <%--Sử dụng thẻ <c:if> để kiểm tra điều kiện. Trong trường hợp này, kiểm tra xem biến "sessionScope.acc" có khác null hay không. Nếu điều kiện đúng, thẻ <span> được sử dụng để hiển thị nội dung là giá trị của "sessionScope.acc.accountName".--%>
         </div>
-
         <ul class="profile-dropdown-list">
+
             <li class="profile-dropdown-list-item">
-                <a href="profile">
+                <a href="profiles">
                     <i class="fa-regular fa-user"></i>
                      Profile
                 </a>
             </li>
-
 
             <li class="profile-dropdown-list-item">
                 <a href="dashboard">
@@ -109,6 +108,7 @@
                 </a>
             </li>
             <hr/>
+
             <c:if test="${sessionScope.acc == null}">
                 <li class="profile-dropdown-list-item">
                     <a href="login">
@@ -125,10 +125,11 @@
                         Log out
                     </a>
                 </li>
-            </c:if>
+
 <%--            kiểm tra xem biến "sessionScope.acc" có khác null hay không. Nếu điều kiện đúng (tức là người dùng đã đăng nhập), thẻ <li> được sử dụng để tạo một mục trong dropdown menu với class CSS "profile-dropdown-list-item".--%>
 
         </ul>
+</c:if>
     </div>
 </nav>
 <script>

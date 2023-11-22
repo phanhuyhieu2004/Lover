@@ -83,6 +83,11 @@
         height: 100%;
         object-fit: cover;
     }
+    .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
 </style>
 <body>
 
@@ -91,9 +96,9 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <div class="containers">
-    <nav>
 
-        <nav>
+
+    <nav class="sticky-nav">
             <div class="side_navbar">
                 <span>Game Category</span>
                 <c:forEach var="i" begin="1" end="10">
@@ -105,7 +110,7 @@
                 </c:forEach>
             </div>
         </nav>
-    </nav>
+
     <div class="main">
         <div class="slider">
             <div class="list">
@@ -134,7 +139,7 @@
                     <img src="anggame7.jpg" alt="">
                 </div>
                 <div class="item">
-                    <img src="anhgame8.jpg" alt="">
+                    <img src="Angry-Birds-se-bi-xoa-khoi-CH-Play-vao-ngay-23-thang-2.jpg" alt="">
                 </div>
                 <div class="item">
                     <img src="laplace-m-vung-dat-gio-01-06-2021-0.png" alt="">
@@ -231,13 +236,10 @@
                                 <div class="box"
                                      style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
                                     <div class="imgPlayer" style="width: 210px; height: 200px;">
-                                        <a href="/project?action=add&id="
+                                        <a href="profile?aid=${o.account_id}"
                                            style="position: relative; display: inline-block;">
                                             <img src="${o.avatar}"
                                             >
-                                            <button type="button" value="display"
-                                                    style="position: absolute; bottom: 10px; right: 10px; width: 90px; height: 28px; border-radius: 15px/15px; background-color: lightpink;">${o.price}$/h
-                                            </button>
                                         </a>
                                     </div>
                                     <div class="info"
@@ -280,13 +282,11 @@
                                 <div class="box"
                                      style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
                                     <div class="imgPlayer" style="width: 210px; height: 200px;">
-                                        <a href="/project?action=add&id="
+                                        <a href="profile?aid=${a.account_id}"
                                            style="position: relative; display: inline-block;">
                                             <img src="${a.avatar}"
                                             >
-                                            <button type="button" value="display"
-                                                    style="position: absolute; bottom: 10px; right: 10px; width: 90px; height: 28px; border-radius: 15px/15px; background-color: lightpink;">${a.price}$/h
-                                            </button>
+
                                         </a>
                                     </div>
                                     <div class="info"
@@ -332,13 +332,11 @@
                                 <div class="box"
                                      style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
                                     <div class="imgPlayer" style="width: 210px; height: 200px;">
-                                        <a href="/project?action=add&id="
+                                        <a href="profile?aid=${b.account_id}"
                                            style="position: relative; display: inline-block;">
                                             <img src="${b.avatar}"
                                             >
-                                            <button type="button" value="display"
-                                                    style="position: absolute; bottom: 10px; right: 10px; width: 90px; height: 28px; border-radius: 15px/15px; background-color: lightpink;">${b.price}$/h
-                                            </button>
+
                                         </a>
                                     </div>
                                     <div class="info"
@@ -384,13 +382,11 @@
                                 <div class="box"
                                      style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
                                     <div class="imgPlayer" style="width: 210px; height: 200px;">
-                                        <a href="/project?action=add&id="
+                                        <a href="profile?aid=${d.account_id}"
                                            style="position: relative; display: inline-block;">
                                             <img src="${d.avatar}"
                                             >
-                                            <button type="button" value="display"
-                                                    style="position: absolute; bottom: 10px; right: 10px; width: 90px; height: 28px; border-radius: 15px/15px; background-color: lightpink;">${d.price}$/h
-                                            </button>
+
                                         </a>
                                     </div>
                                     <div class="info"
@@ -436,13 +432,11 @@
                                     <div class="box"
                                          style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
                                         <div class="imgPlayer" style="width: 210px; height: 200px;">
-                                            <a href="/project?action=add&id="
+                                            <a href="profile?aid=${boy.account_id}"
                                                style="position: relative; display: inline-block;">
                                                 <img src="${boy.avatar}"
                                                 >
-                                                <button type="button" value="display"
-                                                        style="position: absolute; bottom: 10px; right: 10px; width: 90px; height: 28px; border-radius: 15px/15px; background-color: lightpink;">${boy.price}$/h
-                                                </button>
+
                                             </a>
                                         </div>
                                         <div class="info"
@@ -489,13 +483,11 @@
                                     <div class="box"
                                          style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
                                         <div class="imgPlayer" style="width: 210px; height: 200px;">
-                                            <a href="/project?action=add&id="
+                                            <a href="profile?aid=${girl.account_id}"
                                                style="position: relative; display: inline-block;">
                                                 <img src="${girl.avatar}"
                                                 >
-                                                <button type="button" value="display"
-                                                        style="position: absolute; bottom: 10px; right: 10px; width: 90px; height: 28px; border-radius: 15px/15px; background-color: lightpink;">${girl.price}$/h
-                                                </button>
+                                               
                                             </a>
                                         </div>
                                         <div class="info"
@@ -530,6 +522,57 @@
                         </div>
                     </div>
                 </c:if>
+                    <div class="front">
+                        <b style="font-size: 20px;color:deeppink"> ADDRESS PLAYERS </b>
+                    </div>
+                    <div class="img6"
+                         style="width: 100% ;height: 940px; background-color: pink;margin-top: 20px;padding-top: 30px;padding-left: 10px;padding-right: 20px;border-radius: 10px">
+                        <div class="grid-container">
+                            <c:forEach items="${listAddressAccount}" var="address">
+                                <div class="grid-item">
+                                    <div class="box"
+                                         style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
+                                        <div class="imgPlayer" style="width: 210px; height: 200px;">
+                                            <a href="profile?aid=${address.account_id}"
+                                               style="position: relative; display: inline-block;">
+                                                <img src="${address.avatar}"
+                                                >
+
+                                            </a>
+                                        </div>
+                                        <div class="info"
+                                             style="display: flex; justify-content: space-between; align-items: center; padding: 0 10px;">
+                                            <div class="namePlayer">
+                                                <p>${address.fullName}</p>
+                                            </div>
+                                            <span class="dot" style="width: 8px;
+  height: 8px;
+  background-color: limegreen;
+  border-radius: 50%;
+  display: inline-block;"></span>
+                                        </div>
+                                        <div class="namePlayer" style="width: 190px; height: 23px;padding-left: 10px;">
+                                            <p>${address.interest}</p>
+                                        </div>
+                                        <div class="imgUser"
+                                             style="width: 190px; height: 25px; display: flex; justify-content: space-between;">
+                                            <div style="display: flex;">
+
+                                            </div>
+                                            <div class="address" style="color:limegreen;">
+                                                <i style="font-size: 20px"class="fa-solid fa-map-location fa-beat"></i>
+                                                <span><b style="color: #3f3a3a">${address.city}</b></span>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+
             </div>
         </div>
     </div>

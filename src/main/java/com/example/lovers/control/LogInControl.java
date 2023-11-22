@@ -28,6 +28,7 @@ public class LogInControl extends HttpServlet {
         AccountDAO dao = new AccountDAO();
         Account a = dao.login(accountName, password);
 
+
         if (a == null) {
             // Kiểm tra giá trị của đối tượng Account trả về. Nếu a là null, tức là thông tin đăng nhập không chính xác, Servlet sẽ đặt thuộc tính "mess" cho yêu cầu và chuyển hướng nó đến trang "login.jsp" để hiển thị thông báo lỗi.
             request.setAttribute("mess", "Wrong Account name or password");

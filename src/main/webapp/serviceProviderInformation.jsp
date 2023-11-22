@@ -117,22 +117,22 @@ margin-top: auto;
 
         <h2>Personal information</h2>
        <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>
-        <form  action="serviceProviderInformation" method="post" enctype="multipart/form-data">
+        <form  action="edit" method="post" >
             <div class="form-group"style="margin-right:0px">
                 <label for="name" class="required">Full name(<span>*</span>):</label>
-                <input type="text" id="name" name="fullName" required>
+                <input type="text"  value="${accountDetail.fullName}" id="name" name="fullName" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="dob" class="required">Date of birth(<span>*</span>):</label>
-                    <input type="date" id="dob" name="dateOfBirth" required>
+                    <input type="date"value="${accountDetail.dateOfBirth}" id="dob" name="dateOfBirth" required>
                 </div>
                 <div class="form-group"  >
                     <label for="gender"class="required">Gender(<span>*</span>):</label>
-                    <select id="gender" name="gender" required style="background-color: white" >
+                    <select id="gender" name="gender" required style="background-color: white">
                         <option value="">Choose gender</option>
-                        <option value="Man">Man</option>
-                        <option value="Women">Women</option>
+                        <option value="Man" ${accountDetail.gender == 'Man' ? 'selected' : ''}>Man</option>
+                        <option value="Women" ${accountDetail.gender == 'Women' ? 'selected' : ''}>Women</option>
                     </select>
                 </div>
             </div>
@@ -140,20 +140,19 @@ margin-top: auto;
                 <div class="form-group">
                     <label for="city"class="required">City(<span>*</span>):</label>
 
-                    <input type="text" id="city" name="city" required>
+                    <input type="text" value="${accountDetail.city}"id="city" name="city" required>
                 </div>
                 <div class="form-group">
                     <label for="nationality"class="required">Nationality(<span>*</span>):</label>
-                    <input type="text" id="nationality" name="nationality" required>
+                    <input type="text" value="${accountDetail.nationality}"id="nationality" name="nationality" required>
                 </div>
             </div>
 
 
             <label for="file1">Avatar:</label>
             <div class="image-box" style="width: 130px">
-                <img id="avatar-image" src="">
-
-                <input type="file" name="image" id="file1" onchange="previewImage(this)">
+                <img id="avatar-image" src="${accountDetail.avatar}">
+                <input type="file" name="image" id="file1" onchange="previewImage(this, '${accountDetail.avatar}')">
             </div>
             <p>Click on the squares to select photos from your device </p>
 
@@ -164,19 +163,16 @@ margin-top: auto;
             <label for="file2">Portrait:</label>
             <div class="row">
                 <div class="image-box">
-                    <img id="portrait-image1" src="">
-                    <!--                    <div class="image-placeholder"><i class="fa-solid fa-camera"></i></div>-->
-                    <input type="file" name="portrait" id="file2" onchange="previewImage(this)">
+                    <img id="portrait-image1" src="${accountDetail.portrait}">
+                    <input type="file" name="portrait" id="file2" onchange="previewImage(this, '${accountDetail.portrait}')">
                 </div>
                 <div class="image-box">
-                    <img id="portrait-image2" src="">
-                    <!--                    <div class="image-placeholder"><i class="fa-solid fa-camera"></i></div>-->
-                    <input type="file" name="portrait1" id="file3" onchange="previewImage(this)">
+                    <img id="portrait-image2" src="${accountDetail.portrait1}">
+                    <input type="file" name="portrait1" id="file3" onchange="previewImage(this, '${accountDetail.portrait1}')">
                 </div>
                 <div class="image-box">
-                    <img id="portrait-image3" src="" >
-                    <!--                    <div class="image-placeholder"><i class="fa-solid fa-camera"></i></div>-->
-                    <input type="file"name="portrait2" id="file4" onchange="previewImage(this)">
+                    <img id="portrait-image3" src="${accountDetail.portrait2}">
+                    <input type="file" name="portrait2" id="file4" onchange="previewImage(this, '${accountDetail.portrait2}')">
                 </div>
 
             </div>
@@ -185,31 +181,31 @@ margin-top: auto;
             <div class="form-row">
                 <div class="form-group">
                     <label for="height">Height:</label>
-                    <input type="text" id="height" name="height" required>
+                    <input type="text"value="${accountDetail.height}" id="height" name="height" required>
                 </div>
                 <div class="form-group">
                     <label for="weight">Weight:</label>
-                    <input type="text" id="weight" name="weight" required>
+                    <input type="text"value="${accountDetail.weight}" id="weight" name="weight" required>
                 </div></div>
             <div class="form-group"style="margin-right:0px">
                 <label for="interests">Interest:</label>
-                <textarea id="interests" name="interest" required></textarea>
+                <textarea id="interests" name="interest" required>${accountDetail.interest}</textarea>
             </div>
             <div class="form-group"style="margin-right:0px">
                 <label for="description">Describe yourself:</label>
-                <textarea id="description" name="describeYourself" required></textarea>
+                <textarea id="description" name="describeYourself" required>${accountDetail.describeYourself}</textarea>
             </div>
             <div class="form-group"style="margin-right:0px">
                 <label for="requirements"class="required">Regulations(<span>*</span>):</label>
-                <textarea id="requirements" name="regulations"required></textarea>
+                <textarea id="requirements" name="regulations" required>${accountDetail.regulations}</textarea>
             </div>
             <div class="form-group"style="margin-right:0px">
                 <label for="facebook">Facebook:</label>
-                <input type="text" id="facebook" name="facebook">
+                <input type="text"value="${accountDetail.facebook}" id="facebook" name="facebook">
             </div>
                 <div class="form-group">
                     <label for="dob"class="required">Join date(<span>*</span>):</label>
-                    <input type="date" id="dob1" name="joinDate" required>
+                    <input type="date" value="${accountDetail.joinDate}"id="dob1" name="joinDate" required>
                 </div>
 
 
@@ -226,13 +222,19 @@ margin-top: auto;
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script>
-    function previewImage(input) {
+    function previewImage(input, imageName) {
         const reader = new FileReader();
         reader.onload = function(e) {
             const img = input.previousElementSibling;
             img.src = e.target.result;
         }
-        reader.readAsDataURL(input.files[0]);
+
+        if (input.files && input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            const img = input.previousElementSibling;
+            img.src = imageName; // Gán đường dẫn ảnh từ cơ sở dữ liệu vào thuộc tính src của thẻ <img>
+        }
     }
 </script>
 </body>

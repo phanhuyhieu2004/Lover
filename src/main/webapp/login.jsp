@@ -91,7 +91,7 @@
 
             <h1>Login
             </h1>
-            <p class=" alert-warning" style="color: white" >${mess}</p>
+            <p class=" alert-warning" style="color: white;width: 100%" >${mess}</p>
 
             <form >
                 <input name="account" type="text" placeholder="Account name">

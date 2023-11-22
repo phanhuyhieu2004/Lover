@@ -10,7 +10,7 @@
 
 <html>
 <head>
-    <title>Profile</title>
+    <title>Profiles</title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
     <link rel="stylesheet" href="profile.css"/>
 
@@ -26,7 +26,7 @@
     .imgPlayer{
         width: 228px;
         height: 200px;
-        background-image: url('${profile.avatar}');
+        background-image: url('${profiles.avatar}');
         background-size: cover;
     }
 </style>
@@ -41,7 +41,7 @@ margin-top: 30px;
   margin-bottom: 30px;">
     <div class="col-md-3" style="width: 230px; border-radius: 10px 10px 10px 10px; height: 340px; border-width: 1px; border: 1px solid; border-color: gainsboro;overflow: hidden ">
 
-        <div class="imgPlayer" >
+        <div class="imgPlayer" ">
             <a href="#"
                style="position: relative; display: inline-block;">
                 <img src=""
@@ -61,7 +61,7 @@ margin-top: 30px;
             <div class="datejoin">
                 <span style="color: #898686">Join date: </span>
 
-                            <span>${profile.joinDate}</span>
+                <span>${profiles.joinDate}</span>
 
             </div>
         </div>
@@ -73,7 +73,7 @@ margin-top: 30px;
          margin-left: 15px;
          margin-right: 15px;">
         <div class="row-name" style="height: 30px;  margin-bottom: 10px;">
-            <span>${profile.fullName}</span>
+            <span>${profiles.fullName}</span>
 
             <button style="float: right" id="followButton" onclick="toggleFollow()">
                 <i class="fa-solid fa-heart" style="color: #ffffff;padding-right: 5px;"></i>
@@ -127,7 +127,7 @@ margin-top: 30px;
   height: 100px;
   float: left; overflow: hidden;">
                 <a href="">
-                    <img src="${profile.portrait}"style="max-width: 100%;height: 100px;">
+                    <img src="${profiles.portrait}"style="max-width: 100%;height: 100px;">
                 </a>
             </div>
             <div class="img-person"
@@ -135,7 +135,7 @@ margin-top: 30px;
   height: 100px;
   float: left; overflow: hidden;">
                 <a href="">
-                    <img src="${profile.portrait}"style="max-width: 100%;height: 100px;">
+                    <img src="${profiles.portrait}"style="max-width: 100%;height: 100px;">
                 </a>
             </div>
             <div class="img-person"
@@ -143,14 +143,14 @@ margin-top: 30px;
   height: 100px;
   float: left; overflow: hidden;">
                 <a href="">
-                    <img src="${profile.portrait}"style="max-width: 100%;height: 100px;">
+                    <img src="${profiles.portrait}"style="max-width: 100%;height: 100px;">
                 </a>
             </div>
         </div>
         <div class="profile-information">
-<p>${profile.interest}</p>
-            <p>${profile.describeYourself}</p>
-            <p>${profile.regulations}</p>
+            <p>${profiles.interest}</p>
+            <p>${profiles.describeYourself}</p>
+            <p>${profiles.regulations}</p>
         </div>
         <div class="row-donate" style="font-size: 20px">
             <b>Top Donate</b>
@@ -174,7 +174,7 @@ margin-top: 30px;
 
     <div class="col-md-3" style="height: 250px; background-color: white; width: 230px;border-radius: 10px ; border-width: 1px; border: 1px solid; border-color: gainsboro">
         <div class="row-pricePlayer">
-            ${profile.view}
+            ${profiles.view}
         </div>
         <div class="evaluate-col3">
             <div class="starcmt" style="font-size: 14px; text-align: center">
