@@ -45,7 +45,7 @@ public class EditServiceProviderInformation extends HttpServlet {
 
 
 
-        response.sendRedirect("login");;
+        response.sendRedirect("serviceProviderInformation");;
 
     }
 

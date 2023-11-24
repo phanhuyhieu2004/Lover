@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
     <link rel="stylesheet" href="profile.css"/>
 
-
+    <script src="https://kit.fontawesome.com/74cf7057a9.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
 
@@ -30,6 +30,154 @@
         background-size: cover;
     }
 </style>
+<style>
+    #first-modal {
+        padding-top: 20px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        justify-content: center;
+        align-content: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+    }
+
+    .modal {
+        margin: 0 auto;
+        width: 500px;
+        height: 460px;
+        padding: 25px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 0 10px hotpink;
+    }
+
+    .row-title {
+        width: 100%;
+        height: 30px;
+        border-bottom: 1px solid darkgray;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .close-button {
+        float: right;
+        top: 10px;
+        right: 40px;
+        width: 25px;
+        height: 25px;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: white;
+    }
+    .modal-body{
+        padding-top: 20px;
+    }
+
+    .form-row {
+        display: flex;
+        padding: 17px;
+    }
+
+    .name-sp {
+        margin-left: 250px;
+    }
+    .div-6 {
+        flex: 6;
+    }
+
+    .div-4 {
+        flex: 4;
+    }
+    .surplus-button {
+        background-color: deeppink;
+        border: 1px solid pink;
+        width: 20px;
+    }
+    #message {
+        width: 600px;
+        height: 70px;
+    }
+    .modal-footer {
+        width: 100%;
+        height: 30px;
+        border-top: 1px solid darkgray;
+    }
+
+</style>
+<style>
+    #two-modal {
+        padding-top: 20px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        justify-content: center;
+        align-content: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+    }
+    .modal2 {
+        margin: 0 auto;
+        width: 500px;
+        height: 460px;
+        padding: 25px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 0 10px hotpink;
+
+    }
+
+    .row-content {
+        width: 100%;
+        height: 30px;
+        border-bottom: 1px solid darkgray;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .close-modal {
+        float: right;
+        top: 10px;
+        right: 40px;
+        width: 25px;
+        height: 25px;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: white;
+    }
+
+    .transfer {
+        margin-top: 15px;
+        margin-left: 50px;
+        height: 40px;
+        width: 80%;
+        text-align: initial;
+        padding-left: 30px;
+    }
+
+    b {
+        padding-left: 5px;
+    }
+
+    .footer {
+        margin-top: 20px;
+        width: 100%;
+        height: 30px;
+        border-top: 1px solid darkgray;
+    }
+</style>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="Flower.jsp"></jsp:include>
@@ -41,7 +189,7 @@ margin-top: 30px;
   margin-bottom: 30px;">
     <div class="col-md-3" style="width: 230px; border-radius: 10px 10px 10px 10px; height: 340px; border-width: 1px; border: 1px solid; border-color: gainsboro;overflow: hidden ">
 
-        <div class="imgPlayer" ">
+        <div class="imgPlayer">
             <a href="#"
                style="position: relative; display: inline-block;">
                 <img src=""
@@ -189,7 +337,7 @@ margin-top: 30px;
         </div>
         <div class="service-player">
             <div class="button-rent" style="padding-left: 5px">
-                <button type="submit" value="search" style="height: 40px; margin-top: 10px; border-radius: 20px/20px; background-color: pink; width: 220px; font-size: 15px; border-width: 1px">
+                <button type="submit" value="search" onclick="openModal()" style="height: 40px; margin-top: 10px; border-radius: 20px/20px; background-color: pink; width: 220px; font-size: 15px; border-width: 1px">
                     <b>RENT</b></button>
             </div>
             <div class="button-donate" style="padding-left: 5px">
@@ -220,6 +368,149 @@ margin-top: 30px;
         }
     }
 </script>
+<div id="first-modal">
+    <div id="modal-table" class="modal ">
+        <div class="row-title">
+            <button id="closeButton" onclick="closeModal()" class="close-button">x</button>
+            <h2>Rent player</h2>
+        </div>
+        <div class="modal-body">
+            <div class="form-row">
+                <div class="div-6">
+                    <label>Player:</label>
+                </div>
+                <div class="div-4">
+                    <span id="name">Linh</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="div-6">
+                    <label>Thời gian muốn thuê:</label>
+                </div>
+                <div class="div-4">
+                    <select id="hour-select" style="width: 80px">
+                        <option value="1">1 giờ</option>
+                        <option value="2">2 giờ</option>
+                        <option value="3">3 giờ</option>
+                        <option value="4">4 giờ</option>
+                        <option value="5">5 giờ</option>
+                        <option value="6">6 giờ</option>
+                        <option value="7">7 giờ</option>
+                        <option value="8">8 giờ</option>
+                        <option value="9">9 giờ</option>
+                        <option value="10">10 giờ</option>
+                        <option value="11">11 giờ</option>
+                        <option value="12">12 giờ</option>
+                        <option value="13">13 giờ</option>
+                        <option value="14">14 giờ</option>
+                        <option value="15">15 giờ</option>
+                        <option value="16">16 giờ</option>
+                        <option value="17">17 giờ</option>
+                        <option value="18">18 giờ</option>
+                        <option value="19">19 giờ</option>
+                        <option value="20">20 giờ</option>
+                        <option value="21">21 giờ</option>
+                        <option value="22">22 giờ</option>
+                        <option value="23">23 giờ</option>
+                        <option value="24">24 giờ</option>
+
+                        <!-- Thêm các tùy chọn giờ khác ở đây -->
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="div-6">
+                    <label>Chi phí:</label>
+                </div>
+                <div class="div-4">
+                    <span id="price">80.000 </span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="div-6">
+                    <label>Số dư hiện tại:</label>
+                </div>
+                <div class="div-4">
+                    <span id="surplus" style="color: deeppink">0 đ</span>
+
+                    <button class="surplus-button" onclick="openModal2()">+</button>
+                </div>
+            </div>
+            <div class="form-row">
+                <textarea placeholder="Type a message..." id="message" name="messageToSp" required></textarea>
+            </div>
+        </div>
+        <div class="modal-footer" >
+            <button type="submit" value="close" onclick="closeModal()" style="width: 60px;
+        height: 30px;
+        font-size: 15px;
+        margin-top: 10px;
+        float: right;
+        text-align: center;
+        margin-right: 15px;">Đóng</button>
+
+            <button type="submit" value="rent" style=" width: 60px;
+        height: 30px;
+        font-size: 15px;
+        margin-top: 10px;
+        float: right;
+        text-align: center;
+        background-color: deeppink;
+        border: 1px solid deeppink;
+        margin-right: 7px;">Thuê</button>
+        </div>
+        <script>
+            function openModal() {
+                document.getElementById("first-modal").style.display = "block";
+            }
+
+            function closeModal() {
+                document.getElementById("first-modal").style.display = "none";
+            }
+        </script>
+    </div>
+</div>
+<div id="two-modal">
+    <div id="modal-table2" class="modal2">
+        <div class="row-content">
+            <button id="close" onclick="closeModal2()" class="close-modal">x</button>
+            <h2>Deposit money into lovers</h2>
+        </div>
+        <div class="content">
+            <button class="transfer"><i class="fa-solid fa-building-columns"></i><b>Chuyển khoản qua ngân hàng <b
+                    style="color: red">(Khuyến nghị)</b></b></button>
+            <button class="transfer"><i class="fa-regular fa-credit-card"></i><b>Thanh toán trực tiếp qua Internet
+                Banking </b></button>
+            <button class="transfer"><i class="fa-regular fa-qrcode"></i><b>Thanh toán trực tiếp qua QR Code</b>
+            </button>
+            <button class="transfer"><i class="fa-solid fa-wallet"></i><b>Nạp tiền vào ví điện tử </b></button>
+            <button class="transfer"><i class="fa-solid fa-p" style="color: #fa0000;"></i><b>Nạp tiền bằng thẻ cào
+                Player Code </b></button>
+            <button class="transfer"><i class="fa-solid fa-m" style="color: #fe1b01;"></i><b>Nạp tiền bằng thẻ cào
+                điện </b></button>
+        </div>
+        <div class="footer">
+            <button type="submit" value="close" onclick="closeModal2()" style="width: 60px;
+        height: 30px;
+        font-size: 15px;
+        margin-top: 20px;
+        float: right;
+        text-align: center;
+        margin-right: 15px;">Đóng
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    function openModal2() {
+        document.getElementById("two-modal").style.display = "block";
+    }
+
+    function closeModal2() {
+        document.getElementById("two-modal").style.display = "none";
+    }
+</script>
+
 </body>
 
 </html>

@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAO implements IAccountDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/project?user=root";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "123456789";
+    private String jdbcPassword = "1";
     private static final String SIGNUP_ACCOUNT = "INSERT INTO account (accountName, password, email, phoneNumber, identifyCard, surname, name, nickName, status) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Active')";
     private static final String CHECK_ACCOUNT = "  SELECT * FROM account WHERE accountName=? ;";

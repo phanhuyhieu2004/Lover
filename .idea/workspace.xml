@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43ef1c5b-6b89-4d37-9138-e4c586ccf5e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/EditServiceProviderInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/money.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/HomeControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/LogInControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/LogInControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ProfileControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ProfileControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/RegisterControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/RegisterControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceProviderInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/ServiceProviderInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/UserInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/UserInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/EditServiceProviderInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/control/EditServiceProviderInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/dao/IAccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/AccountDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lovers/model/AccountDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/serviceProviderInformation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/serviceProviderInformation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/userInformation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userInformation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/profiles.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profiles.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +25,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -75,29 +64,17 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.803">
-    <configuration name="AccountDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="20" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.example.lovers.dao.AccountDAO" />
-      <module name="Lovers.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.lovers.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.80">
+    <configuration name="profile.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/profile.jsp">
+      <method v="2" />
     </configuration>
-    <configuration name="Tomcat 9.0.803" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.803" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/login" />
-      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+    <configuration name="Tomcat 9.0.80" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.80" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/home.jsp" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Gradle : com.example : Lovers-1.0-SNAPSHOT.war">
           <settings>
@@ -106,9 +83,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="c8ae61b4-a0c9-4da8-923d-52fdc657c66f" />
-        <option name="HTTP_PORT" value="8081" />
-        <option name="JNDI_PORT" value="1097" />
+        <option name="BASE_DIRECTORY_NAME" value="a839efa3-0a1a-447c-a2d6-36108d3cf435" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -116,7 +91,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50726" />
+        <option name="DEBUG_PORT" value="41503" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -186,12 +161,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.AccountDAO" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.803" />
+      <item itemvalue="JavaScript Debug.profile.jsp" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.80" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AccountDAO" />
+        <item itemvalue="JavaScript Debug.profile.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -221,6 +196,13 @@
       <workItem from="1700528858111" duration="6200000" />
       <workItem from="1700563127343" duration="9217000" />
       <workItem from="1700610693497" duration="1750000" />
+      <workItem from="1700709632933" duration="1356000" />
+      <workItem from="1700711000163" duration="10624000" />
+      <workItem from="1700757451605" duration="52000" />
+      <workItem from="1700760202329" duration="681000" />
+      <workItem from="1700781372326" duration="27000" />
+      <workItem from="1700783432828" duration="5569000" />
+      <workItem from="1700809197004" duration="2123000" />
     </task>
     <servers />
   </component>
@@ -326,5 +308,10 @@
         <watch expression="postParseSuccess" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Lovers$AccountDAO.ic" NAME="AccountDAO Coverage Results" MODIFIED="1700710703285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.lovers.dao.*</FILTER>
+    </SUITE>
   </component>
 </project>
