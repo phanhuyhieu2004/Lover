@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+input[type="submit"] {
+    width: 30%;
+    padding: 15px;
+    background-color: deeppink;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    outline: none;
+    justify-content: center;
+    transition: background-color 0.3s ease-in-out;
+    text-align: center;
+    margin: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: mediumvioletred;
+}
+
+
+.containers{
+
+    background-color: white;
+    margin-right: 80px;
+
+
+}
+
+.row {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+}
+.row label {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+}
+
+.row label input[type="checkbox"] {
+    display: none;
+}
+
+.row label .icon-box {
+    position: relative;
+    display: flex;
+    width: 280px;
+    height: 160px;
+    padding: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #353746;
+    color:white;
+
+    border-radius: 10px;
+    font-size: 21px;
+    transition: 0.5s;
+    user-select: none;
+
+}
+.price {
+    text-align: center;
+    padding: 20px;
+}
+
+.price input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid hotpink;
+    border-radius: 3px;
+    outline: none;
+}
+
+.price input[type="text"]:focus {
+    border-color: #21c1ff;
+}
+.row label input[type="checkbox"]:checked ~ .icon-box {
+    background: linear-gradient(138deg, pink, deeppink,hotpink);
+    color:white;
+    transition: transform 0.2s ease;
+    transform: translateY(-10px);
+}
+
+.row label .icon-box span {
+    margin: 5px;
+    font-size: 18px;
+}
+
