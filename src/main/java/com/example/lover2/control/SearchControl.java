@@ -26,6 +26,11 @@ public class SearchControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String search = request.getParameter("searchFullName");
 
+        if (search == null || search.trim().isEmpty()) {
+            request.setAttribute("error", "No characters were entered, please enter again");
+            request.getRequestDispatcher("search.jsp").forward(request, response);
+            return;
+        }
         List<AccountDetail> listAccountDetail = accountDAO.searchByName(search);
 
         request.setAttribute("searchFullName", search);

@@ -34,6 +34,17 @@
 </head>
 
 <style>
+    .comments-list:after {
+        content: '';
+        position: absolute;
+
+        bottom: 0;
+
+        border: 3px solid #dee1e3;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+    }
     .imgPlayer{
         width: 228px;
         height: 200px;
@@ -279,7 +290,7 @@ height: 1200px;">
                 </a>
             </div>
         </div>
-        <div class="profile-information" style="margin-left: 20px;">
+        <div class="profile-information" style="margin-left: 50px;;">
 <p>${profile.interest}</p>
             <p>${profile.describeYourself}</p>
             <p>${profile.regulations}</p>
@@ -333,7 +344,7 @@ height: 1200px;">
 
     <div class="col-md-3" style="height: 250px; background-color: white; width: 230px;border-radius: 10px ; border-width: 1px; border: 1px solid; border-color: gainsboro">
         <div class="row-pricePlayer">
-            ${profile.view}
+
         </div>
         <div class="evaluate-col3">
             <div class="starcmt" style="font-size: 14px; text-align: center">
@@ -575,37 +586,7 @@ height: 1200px;">
         </script>
     </div>
 </div>
-<div id="two-modal">
-    <div id="modal-table2" class="modal2">
-        <div class="row-content">
-            <button id="close" onclick="closeModal2()" class="close-modal">x</button>
-            <h2>Deposit money into lovers</h2>
-        </div>
-        <div class="content">
-            <button class="transfer"><i class="fa-solid fa-building-columns"></i><b>Chuyển khoản qua ngân hàng <b
-                    style="color: red">(Khuyến nghị)</b></b></button>
-            <button class="transfer"><i class="fa-regular fa-credit-card"></i><b>Thanh toán trực tiếp qua Internet
-                Banking </b></button>
-            <button class="transfer"><i class="fa-regular fa-qrcode"></i><b>Thanh toán trực tiếp qua QR Code</b>
-            </button>
-            <button class="transfer"><i class="fa-solid fa-wallet"></i><b>Nạp tiền vào ví điện tử </b></button>
-            <button class="transfer"><i class="fa-solid fa-p" style="color: #fa0000;"></i><b>Nạp tiền bằng thẻ cào
-                Player Code </b></button>
-            <button class="transfer"><i class="fa-solid fa-m" style="color: #fe1b01;"></i><b>Nạp tiền bằng thẻ cào
-                điện </b></button>
-        </div>
-        <div class="footer">
-            <button type="submit" value="close" onclick="closeModal2()" style="width: 60px;
-        height: 30px;
-        font-size: 15px;
-        margin-top: 20px;
-        float: right;
-        text-align: center;
-        margin-right: 15px;">Đóng
-            </button>
-        </div>
-    </div>
-</div>
+
 <script>
     function openModal2() {
         document.getElementById("two-modal").style.display = "block";

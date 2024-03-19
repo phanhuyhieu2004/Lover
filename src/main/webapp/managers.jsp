@@ -138,40 +138,67 @@
             <a href="#"><i class="fa-solid fa-users-slash"></i><span class="menu-text">Blacklist</span></a>
         </div>
     </nav>
+<%--    <div class="main-body" style="margin-right: 130px">--%>
+
+<%--        <center><p>You can filter the list and search by account name here</p></center>--%>
+<%--        <div class="search-filter">--%>
+<%--            <select id="tableSelect" name="optionList" onchange="display()">--%>
+<%--                &lt;%&ndash;                Giá trị của option này là "serviceProviders" và hiển thị trên giao diện là "Service List". "${select eq 'serviceProviders' ? 'selected': '' }" kiểm tra nếu giá trị của biến "select" bằng "serviceProviders" thì thêm thuộc tính "selected" vào option này, nghĩa là option này sẽ được chọn mặc định trong select.&ndash;%&gt;--%>
+<%--                    <option value="serviceProviders" data-display="serviceProviders" ${select eq 'serviceProviders' ? 'selected': '' } >Service List</option>--%>
+
+<%--                <option value="account" data-display="account" ${select eq 'account' ? 'selected': '' } >All Account List</option>--%>
+
+<%--                <option value="user" data-display="user" ${select eq 'user' ? 'selected': '' }>User List</option>--%>
+<%--            </select>--%>
+<%--                    <form action="searchAccount" method="post" style="display: flex;margin-left: 100px;">--%>
+
+<%--                    <input class="custom-input btn btn-outline-danger" type="text" id="nameplayer" name="searchFullName"--%>
+<%--                   placeholder="Account Name" value="${searchFullName}" style="border: 0.1rem solid deeppink;">--%>
+<%--            <button id="searchButton" class="search" style="margin-top: 5px;"><i class="fas fa-search"></i></button>--%>
+<%--                    </form>--%>
+<%--            &lt;%&ndash;            nhấp chuột vào nút sẽ gọi hàm "display()" của JS&ndash;%&gt;--%>
+<%--        </div>--%>
     <div class="main-body" style="margin-right: 130px">
-
         <center><p>You can filter the list and search by account name here</p></center>
-        <div class="search-filter">
-            <select id="tableSelect" name="optionList" onchange="display()">
-                <%--                Giá trị của option này là "serviceProviders" và hiển thị trên giao diện là "Service List". "${select eq 'serviceProviders' ? 'selected': '' }" kiểm tra nếu giá trị của biến "select" bằng "serviceProviders" thì thêm thuộc tính "selected" vào option này, nghĩa là option này sẽ được chọn mặc định trong select.--%>
-                    <option value="serviceProviders" data-display="serviceProviders" ${select eq 'serviceProviders' ? 'selected': '' } >Service List</option>
 
-                <option value="account" data-display="account" ${select eq 'account' ? 'selected': '' } >All Account List</option>
+        <form action="filterAndSearch" method="post">
+            <div class="search-filter">
+                <select id="tableSelect" name="optionList" style="background-color: pink">
+                    <option value="" >Status List</option>
+                    <option value="Active" ${selects eq 'Active' ? 'selected': '' }>Active List</option>
+                    <option value="Block" ${selects eq 'Block' ? 'selected': '' }>Block List</option>
+                    <option value="InActive" ${selects eq 'InActive' ? 'selected': '' }>InActive List</option>
+                    <option value="Vip" ${selects eq 'Vip' ? 'selected': '' }>Vip List</option>
+                </select>
 
-                <option value="user" data-display="user" ${select eq 'user' ? 'selected': '' }>User List</option>
-            </select>
-                    <form action="searchAccount" method="post" style="display: flex;margin-left: 100px;">
+                <select id="tableSelects" name="roleList"style="background-color: pink">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </select>
 
-                    <input class="custom-input btn btn-outline-danger" type="text" id="nameplayer" name="searchFullName"
-                   placeholder="Account Name" value="${searchFullName}" style="border: 0.1rem solid deeppink;">
-            <button id="searchButton" class="search" style="margin-top: 5px;"><i class="fas fa-search"></i></button>
-                    </form>
-            <%--            nhấp chuột vào nút sẽ gọi hàm "display()" của JS--%>
-        </div><div class="table info">
-<c:choose>
-    <c:when test="${empty listAccountRole}">
-        <p style="text-align: center;">The account's Account Name could not be found</p>
-    </c:when>
-    <c:otherwise>
+                <input class="custom-input btn btn-outline-danger" type="text" id="nameplayer" name="searchFullName"
+                       placeholder="Account Name" value="${searchFullName}" style="border: 0.1rem solid deeppink;">
+
+                <button id="searchButton" class="search" style="margin-top: 5px;"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <div class="table info">
+        <c:choose>
+            <c:when test="${not empty error}">
+                <b class="alert-warning" >${error}</b>
+            </c:when>
+            <c:when test="${empty listAccountRole}">
+                <center>
+                    <b class="alert-warning" style="text-align: center;">Player name not found</b>
+                </center>
+            </c:when>
+            <c:otherwise>
         <table id="dynamicTable" style="margin-left: 15px;" >
             <thead>
             <tr class="sticky-row">
                 <th style="text-align: center">STT</th>
-                <th style="width: 40%;">Nick Name</th>
-                <th style="width: 50%;text-align: center;">Account Name</th>
+                <th style="width: 40%;">Nick name</th>
+                <th style="width: 50%;text-align: center;">Account name</th>
                 <th style="text-align: center;width: 100%;">Email</th>
-                <th style="width: 50%;text-align: center;">Phone Number</th>
-                <th style="width: 50%;text-align: center;">Identify Card</th>
+                <th style="width: 50%;text-align: center;">Phone number</th>
+                <th style="width: 50%;text-align: center;">Identify card</th>
                 <th style="width: 40%;">Status</th>
                 <th  style="width: 65%;text-align: center;">Role</th>
 
@@ -213,14 +240,39 @@
 <script>
 
 
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     var select = document.getElementById("tableSelect");
+    //     select.addEventListener("click", function() {
+    //         var selectedValue = select.value;
+    //         var url = "list?optionList=" + encodeURIComponent(selectedValue);
+    //         window.location.href = url;
+    //     });
+    // });document.addEventListener("DOMContentLoaded", function() {
+    //     var select = document.getElementById("tableSelects");
+    //     select.addEventListener("click", function() {
+    //         var selectedValue = select.value;
+    //         var url = "list?roleList=" + encodeURIComponent(selectedValue);
+    //         window.location.href = url;
+    //     });
+    // });
     document.addEventListener("DOMContentLoaded", function() {
-        var select = document.getElementById("tableSelect");
-        select.addEventListener("change", function() {
-            var selectedValue = select.value;
-            var url = "list?optionList=" + encodeURIComponent(selectedValue);
+        var searchButton = document.getElementById("searchButton");
+        searchButton.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            // Lấy giá trị của select và input
+            var statusValue = document.getElementById("tableSelect").value;
+            var roleValue = document.getElementById("tableSelects").value;
+            var searchValue = document.getElementById("nameplayer").value;
+
+
+            var url = "filterAndSearch?optionList=" + encodeURIComponent(statusValue) + "&roleList=" + encodeURIComponent(roleValue) + "&searchFullName=" + encodeURIComponent(searchValue);
+
+
             window.location.href = url;
         });
     });
+
 
     // Truyền tham số là id của tài khocần chặn đã lấy ở trên
     function blockAccount(id) {
@@ -247,6 +299,34 @@
         xhr.send('id=' + id);
         // Gửi yêu cầu POST với nội dung là 'id=' + id, trong đó id là giá trị của tham số "id". Lập tức gửi yêu cầu chặn tài khoản với ID tương ứng sang bên servlet có đường dẫn là 'BlockAccountServlet'
     }
+    document.addEventListener("DOMContentLoaded", function() {
+        var statusSelect = document.getElementById("tableSelect");
+        var roleSelect = document.getElementById("tableSelects");
+
+        // Thêm sự kiện change cho select box Status List
+        statusSelect.addEventListener("change", function() {
+            // Nếu người dùng chọn một tùy chọn không phải là mặc định ("")
+            if (statusSelect.value !== "") {
+                // Đặt màu nền của select box này thành màu trắng
+                statusSelect.style.backgroundColor = "pink";
+            } else {
+                // Nếu người dùng chọn tùy chọn mặc định, đặt lại màu nền là màu hồng
+                statusSelect.style.backgroundColor = "white";
+            }
+        });
+
+        // Thêm sự kiện change cho select box Roles List
+        roleSelect.addEventListener("change", function() {
+            // Nếu người dùng chọn một tùy chọn không phải là mặc định ("")
+            if (roleSelect.value !== "") {
+                // Đặt màu nền của select box này thành màu trắng
+                roleSelect.style.backgroundColor = "pink";
+            } else {
+                // Nếu người dùng chọn tùy chọn mặc định, đặt lại màu nền là màu hồng
+                roleSelect.style.backgroundColor = "white";
+            }
+        });
+    });
 </script>
 
 

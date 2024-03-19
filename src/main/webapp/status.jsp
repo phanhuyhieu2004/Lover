@@ -160,24 +160,29 @@
         </div>
 
         <div class="table info">
-<c:choose>
-    <c:when test="${empty listStatus}">
-        <p style="text-align: center;">The account's Account Name could not be found</p>
-    </c:when>
-    <c:otherwise>
+            <c:choose>
+                <c:when test="${not empty error}">
+                    <b class="alert-warning">${error}</b>
+                </c:when>
+                <c:when test="${empty listStatus}">
+                    <center>
+                        <b class="alert-warning" style="text-align: center;">Player name not found</b>
+                    </center>
+                </c:when>
+                <c:otherwise>
         <table id="dynamicTable" style="margin-left: 15px;" >
         <thead>
         <tr class="sticky-row">
-        <th style="text-align: center">STT</th>
-        <th style="width: 40%;">Nick Name</th>
-        <th style="width: 50%;text-align: center;">Account Name</th>
-        <th style="text-align: center;width: 100%;">Email</th>
-        <th style="width: 50%;text-align: center;">Phone Number</th>
-        <th style="width: 50%;text-align: center;">Identify Card</th>
-        <th style="width: 40%;">Status</th>
-        <th  style="width: 65%;text-align: center;">Role</th>
+            <th style="text-align: center">STT</th>
+            <th style="width: 40%;">Nick name</th>
+            <th style="width: 50%;text-align: center;">Account name</th>
+            <th style="text-align: center;width: 100%;">Email</th>
+            <th style="width: 50%;text-align: center;">Phone number</th>
+            <th style="width: 50%;text-align: center;">Identify card</th>
+            <th style="width: 40%;">Status</th>
+            <th  style="width: 65%;text-align: center;">Role</th>
 
-        <th style="text-align: center;width: 50%">Block</th>
+            <th style="text-align: center;width: 50%">Block</th>
         </tr>
         </thead>
         <tbody>

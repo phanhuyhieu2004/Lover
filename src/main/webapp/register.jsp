@@ -99,7 +99,7 @@
             <input type="text" name="nickName" placeholder="Nickname" required>
     Who do you want to be :
     <div class="role">
-        <label>Service</label>
+        <label>Service </label>
         <input type="radio" name="role" value="service" required>
         <label>User</label>
         <input type="radio" name="role" value="user" required>

@@ -121,6 +121,13 @@
         top: 0;
         z-index: 100;
     }
+    .alert-warning {
+        background-color: #ff0000;
+        margin: 5px;
+        border-radius: 5px;
+        color: white;
+
+    }
 </style>
 <body style="background: white">
 
@@ -264,14 +271,19 @@
                      style="width: 100% ;height:950px; background-color: white;margin-top: 20px;padding-top: 30px;padding-left: 10px;padding-right: 20px;border-radius: 10px">
                     <div class="grid-container">
                         <c:choose>
-                        <c:when test="${empty listAccountDetail}">
-                            <p style="text-align: center;">Player name not found</p>
-                        </c:when>
-                        <c:otherwise>
+                            <c:when test="${not empty error}">
+                                <b class="alert-warning" style="color: white">${error}</b>
+                            </c:when>
+                            <c:when test="${empty listAccountDetail}">
+                                <center>
+                                    <b class="alert-warning" style="text-align: center;">Player name not found</b>
+                                </center>
+                            </c:when>
+                            <c:otherwise>
                                 <c:forEach items="${listAccountDetail}" var="o">
                                     <div class="grid-item">
                                         <div class="box"
-                                             style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;">
+                                             style="width: 210px; height: 280px; background-color: white;float: left;margin-left: 15px;  border-radius: 10px; overflow: hidden;border: 0.1rem solid deeppink;">
                                             <div class="imgPlayer" style="width: 210px; height: 200px;">
                                                 <a href="profile?aid=${o.account_id}"
                                                    style="position: relative; display: inline-block;">

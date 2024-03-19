@@ -26,12 +26,11 @@
         justify-content: space-between;
     }
     .containers {
-        width: 500px;
+        width: 600px;
 
 margin-top: auto;
         margin-bottom:10px;
-        margin-right: 310px;
-        padding: 25px;
+        margin-right: 260px;        padding: 25px;
         background-color: #fff;
         border-radius: 10px;
     }
@@ -131,7 +130,7 @@ margin-top: auto;
         <div id="successMessage" class=" alert-success" style="display: none;">
 
             <div>
-                <p style="text-align: center">Cập nhật thành công!</p>
+                <p style="text-align: center">Update successful!</p>
             </div>
         </div>
 <%--       <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>--%>
@@ -146,12 +145,12 @@ margin-top: auto;
                     <label for="dob" class="required">Date of birth(<span>*</span>):</label>
                     <input type="date"value="${accountDetail.dateOfBirth}" id="dob" name="dateOfBirth" required>
                 </div>
-                <div class="form-group"  >
-                    <label for="gender"class="required">Gender(<span>*</span>):</label>
+                <div class="form-group">
+                    <label for="gender" class="required">Gender(<span>*</span>):</label>
                     <select id="gender" name="gender" required style="background-color: white">
-                        <option value="">Choose gender</option>
+                        <option value="" disabled selected hidden>Select gender</option>
                         <option value="Man" ${accountDetail.gender == 'Man' ? 'selected' : ''}>Male</option>
-                        <option value="Women" ${accountDetail.gender == 'Women' ? 'selected' : ''}>Fmale</option>
+                        <option value="Women" ${accountDetail.gender == 'Women' ? 'selected' : ''}>Female</option>
                     </select>
                 </div>
             </div>
@@ -169,7 +168,7 @@ margin-top: auto;
 
 
             <label for="file1">Avatar:</label>
-            <div class="image-box" style="width: 130px">
+            <div class="image-box" style="width: 160px;">
                 <img id="avatar-image" src="${accountDetail.avatar}">
                 <input type="file" name="image" id="file1" onchange="previewImage(this, '${accountDetail.avatar}')">
             </div>

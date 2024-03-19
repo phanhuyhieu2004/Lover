@@ -39,15 +39,23 @@ public class AccountDAO implements IAccountDAO {
             "            JOIN account_role ON account.idAccount = account_role.account_id\n" +
             "            JOIN role ON role.idRole = account_role.role_id\n" +
             "           WHERE idAccount <> 1 and status =? ORDER BY account.idAccount DESC;";
-
-    private static final String UPDATE_BLOCK = "        UPDATE account SET status = ? WHERE idAccount = ?;";
-    private static final String INSERT_ACCOUNT_DETAIL = "  INSERT INTO detail_Account (dateOfBirth, fullName, gender, city, nationality, avatar, portrait,portrait1,portrait2, height, weight, interest, describeYourself, regulations, facebook, joinDate,account_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
-    private static final String SEARCH_ACCOUNT_DETAIL = " SELECT * from detail_account where fullName like ?  ";
     private static final String SEARCH_ACCOUNT_LIST = "SELECT account.*, role.nameRole AS role_name\n" +
             "                       FROM account\n" +
             "                    JOIN account_role ON account.idAccount = account_role.account_id\n" +
             "                    JOIN role ON role.idRole = account_role.role_id\n" +
             "                 WHERE idAccount <> 1 and  accountName like ? ORDER BY account.idAccount DESC; ";
+
+    private static final String FILTER_ACCOUNTS = "SELECT account.*, role.nameRole AS role_name\n" +
+            "FROM account\n" +
+            "JOIN account_role ON account.idAccount = account_role.account_id\n" +
+            "JOIN role ON role.idRole = account_role.role_id\n" +
+            "WHERE idAccount <> 1 AND (role.nameRole = ? AND status = ? OR accountName LIKE ?) ORDER BY account.idAccount DESC;";
+
+    private static final String UPDATE_BLOCK = "        UPDATE account SET status = ? WHERE idAccount = ?;";
+
+    private static final String INSERT_ACCOUNT_DETAIL = "  INSERT INTO detail_Account (dateOfBirth, fullName, gender, city, nationality, avatar, portrait,portrait1,portrait2, height, weight, interest, describeYourself, regulations, facebook, joinDate,account_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
+    private static final String SEARCH_ACCOUNT_DETAIL = " SELECT * from detail_account where fullName like ?  ";
+
     private static final String SELECT_ACCOUNT_DETAIL = " SELECT * FROM detail_account WHERE account_id = ?";
     private static final String UPDATE_ACCOUNT_DETAIL = " UPDATE detail_Account " +
             "SET dateOfBirth = ?, fullName = ?, gender = ?, city = ?, nationality = ?,avatar=?,portrait=?,portrait1=?,portrait2=?," +
@@ -917,6 +925,42 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accounts;
     }
+    @Override
+    public List<Account> filterAccounts(String roleName, String status, String search) {
+        List<Account> accounts = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(FILTER_ACCOUNTS)) {
+            preparedStatement.setString(1, roleName); // Truyền tham số roleName vào truy vấn
+            preparedStatement.setString(2, status); // Truyền tham số status vào truy vấn
+            preparedStatement.setString(3, "%" + search + "%"); // Truyền tham số search vào truy vấn
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    // Lấy dữ liệu từ ResultSet và thêm vào danh sách accounts
+                    Account account = new Account();
+                    account.setIdAccount(resultSet.getInt("idAccount"));
+                    account.setAccountName(resultSet.getString("accountName"));
+                    account.setEmail(resultSet.getString("email"));
+                    account.setPhoneNumber(resultSet.getString("phoneNumber"));
+                    account.setIdentifyCard(resultSet.getString("identifyCard"));
+                    account.setSurname(resultSet.getString("surname"));
+                    account.setName(resultSet.getString("account.name"));
+                    account.setNickName(resultSet.getString("nickName"));
+                    account.setStatus(resultSet.getString("status"));
+
+                    Role role = new Role();
+                    String roleNameFromResultSet = resultSet.getString("role_name");
+                    role.setRoleName(roleNameFromResultSet);
+
+                    account.setRole(role);
+                    accounts.add(account);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return accounts;
+    }
+
     public static void main(String[] args) throws SQLException {
         AccountDAO accountDao=new AccountDAO();
 List<AccountDetail> accountDetails=accountDao.getMostRented();

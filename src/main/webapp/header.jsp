@@ -102,10 +102,12 @@
 </style>
 <body style="background: white">
 <nav class="navbar">
-    <a href="home">
+<c:if test="${sessionScope.acc != null}">
+
+<a href="home">
         <img src="Lover.png" class="navbar-logo" alt="logo"/>
     </a>
-
+</c:if>
     <div class="wrap">
         <div class="search">
             <input type="text" class="searchTerm" placeholder="What are you looking for?">
@@ -147,6 +149,7 @@
                 </a>
             </li>
 </c:if>
+<c:if test="${sessionScope.acc != null }">
 
             <li class="profile-dropdown-list-item">
                 <a href="dashboard">
@@ -154,6 +157,7 @@
                     Settings
                 </a>
             </li>
+</c:if>
 
             <li class="profile-dropdown-list-item">
                 <a href="#">

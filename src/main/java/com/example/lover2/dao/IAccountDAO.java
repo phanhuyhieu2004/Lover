@@ -74,4 +74,6 @@ public interface IAccountDAO {
     List<AccountDetail> searchByName(String search);
 
     List<Account> searchByAccountName(String search);
+
+    List<Account> filterAccounts(String roleName, String status, String search);
 }
