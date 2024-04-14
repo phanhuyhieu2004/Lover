@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Information User</title>
+    <title>Lover</title>
     <link rel="stylesheet" href="information.css"/>
     <link rel="stylesheet" href="manager.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

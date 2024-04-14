@@ -22,7 +22,7 @@ public class AccountDAO implements IAccountDAO {
             "JOIN role ON role.idRole = account_role.role_id\n" +
             "LEFT JOIN detail_Account ON account.idAccount = detail_Account.account_id\n" +
             "WHERE account.accountName = ? AND account.password = ?;";
-//lấy hết thông tin từ bảng account,cột idRole,cột roleName,kết hợp bảng account với các bảng khác bằng so sánh các id
+    //lấy hết thông tin từ bảng account,cột idRole,cột roleName,kết hợp bảng account với các bảng khác bằng so sánh các id
     private static final String LIST_ACCOUNT = "SELECT account.*, role.nameRole AS role_name\n" +
             "            FROM account\n" +
             "            JOIN account_role ON account.idAccount = account_role.account_id\n" +
@@ -34,7 +34,7 @@ public class AccountDAO implements IAccountDAO {
             "JOIN account_role ON account.idAccount = account_role.account_id\n" +
             "JOIN role ON role.idRole = account_role.role_id\n" +
             "WHERE role.nameRole = ? ORDER BY account.idAccount DESC;";
-    private static final String LIST_STATUS_ACCOUNT =  "SELECT account.*, role.nameRole AS role_name\n" +
+    private static final String LIST_STATUS_ACCOUNT = "SELECT account.*, role.nameRole AS role_name\n" +
             "            FROM account\n" +
             "            JOIN account_role ON account.idAccount = account_role.account_id\n" +
             "            JOIN role ON role.idRole = account_role.role_id\n" +
@@ -49,7 +49,7 @@ public class AccountDAO implements IAccountDAO {
             "FROM account\n" +
             "JOIN account_role ON account.idAccount = account_role.account_id\n" +
             "JOIN role ON role.idRole = account_role.role_id\n" +
-            "WHERE idAccount <> 1 AND (role.nameRole = ? AND status = ? OR accountName LIKE ?) ORDER BY account.idAccount DESC;";
+            "WHERE idAccount <> 1 AND (role.nameRole = ? AND status = ? AND accountName LIKE ?) ORDER BY account.idAccount DESC;";
 
     private static final String UPDATE_BLOCK = "        UPDATE account SET status = ? WHERE idAccount = ?;";
 
@@ -99,14 +99,14 @@ public class AccountDAO implements IAccountDAO {
                     "JOIN role r ON ar.role_id = r.idRole\n" +
                     "WHERE  r.idRole = 2\n" +
                     "order by view DESC limit 6; ";
-    private static final String SELECT_NEW_ACCOUNT= "  SELECT da.*\n" +
+    private static final String SELECT_NEW_ACCOUNT = "  SELECT da.*\n" +
             "FROM detail_Account da\n" +
             "JOIN account acc ON da.account_id = acc.idAccount\n" +
             "JOIN account_role ar ON acc.idAccount = ar.account_id\n" +
             "JOIN role r ON ar.role_id = r.idRole\n" +
             "WHERE  r.idRole = 2\n" +
             "order by joinDate DESC limit 12;";
-    private static final String SELECT_BOY_ACCOUNT= "SELECT da.*\n" +
+    private static final String SELECT_BOY_ACCOUNT = "SELECT da.*\n" +
             "FROM detail_Account da\n" +
             "JOIN account acc ON da.account_id = acc.idAccount\n" +
             "JOIN account_role ar ON acc.idAccount = ar.account_id\n" +
@@ -114,7 +114,7 @@ public class AccountDAO implements IAccountDAO {
             "WHERE da.gender = 'Man' AND r.idRole = 2\n" +
             "\n" +
             " limit 12;";
-    private static final String SELECT_GIRL_ACCOUNT= "SELECT da.*\n" +
+    private static final String SELECT_GIRL_ACCOUNT = "SELECT da.*\n" +
             "FROM detail_Account da\n" +
             "JOIN account acc ON da.account_id = acc.idAccount\n" +
             "JOIN account_role ar ON acc.idAccount = ar.account_id\n" +
@@ -123,7 +123,7 @@ public class AccountDAO implements IAccountDAO {
             "\n" +
             "limit 12;";
 
-    private static final String SELECT_ADDRESS_ACCOUNT= "SELECT da.*\n" +
+    private static final String SELECT_ADDRESS_ACCOUNT = "SELECT da.*\n" +
             "FROM detail_Account da\n" +
             "JOIN account acc ON da.account_id = acc.idAccount\n" +
             "JOIN account_role ar ON acc.idAccount = ar.account_id\n" +
@@ -221,7 +221,7 @@ public class AccountDAO implements IAccountDAO {
                 newAccountDetail.setJoinDate(newAccountDetail.getJoinDate());
                 newAccountDetail.setAccount_id(accountId);
 //                lấy id của tài khoản  mới vừa thêm vào trong bảng account
-                addAccountDetail(accountId,newAccountDetail);
+                addAccountDetail(accountId, newAccountDetail);
 //                gán giá trị của các thuộc tính khác của newAccountDetail cho chính nó,tất cả đều là null vì newAccountDetail là đối tươợng mới tượng tạo
             } else {
                 conn.rollback();
@@ -239,7 +239,7 @@ public class AccountDAO implements IAccountDAO {
             try {
                 if (rs != null) rs.close();
                 if (pstmt != null) pstmt.close();
-                 if (pstmtAssignment != null) pstmtAssignment.close();
+                if (pstmtAssignment != null) pstmtAssignment.close();
                 if (conn != null) conn.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -313,7 +313,7 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setPortrait(resultSet.getString("portrait"));
                 accountDetail.setPortrait1(resultSet.getString("portrait1"));
                 accountDetail.setPortrait2(resultSet.getString("portrait2"));
-accountDetail.setAccount_id(resultSet.getInt("account_id"));
+                accountDetail.setAccount_id(resultSet.getInt("account_id"));
 // Tạo một đối tượng AccountDetail từ các cột dữ liệu tương ứng trong ResultSet.
 
                 account.setAccountDetail(accountDetail);
@@ -336,6 +336,7 @@ accountDetail.setAccount_id(resultSet.getInt("account_id"));
         return null;
 //        Trả về giá trị null nếu không có hàng dữ liệu nào tương ứng với tên tài khoản và mật khẩu đã truyền vào, hoặc nếu có lỗi xảy ra trong quá trình thực thi câu lệnh SQL.
     }
+
     @Override
     public void updateAccountStatus(int id, String status) {
         try (Connection connection = getConnection();
@@ -383,12 +384,11 @@ accountDetail.setAccount_id(resultSet.getInt("account_id"));
     }
 
 
-
     @Override
     public List<Account> getAllRoles(String roleName) {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(LIST_ROLES_ACCOUNT )) {
+             PreparedStatement preparedStatement = connection.prepareStatement(LIST_ROLES_ACCOUNT)) {
             preparedStatement.setString(1, roleName); // Truyền tham số nameRole vào truy vấn
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -454,7 +454,6 @@ accountDetail.setAccount_id(resultSet.getInt("account_id"));
     }
 
 
-
     @Override
     public void addAccountDetail(int accountId, AccountDetail accountDetail) {
         try (Connection connection = getConnection();
@@ -516,7 +515,7 @@ accountDetail.setAccount_id(resultSet.getInt("account_id"));
                 accountDetail.setJoinDate(resultSet.getString("joinDate"));
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
-accountDetail.setView(resultSet.getInt("view"));
+                accountDetail.setView(resultSet.getInt("view"));
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
@@ -527,6 +526,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+
     @Override
     public List<AccountDetail> getMostRented() {
         List<AccountDetail> accountDetails = new ArrayList<>();
@@ -568,6 +568,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+
     @Override
     public List<AccountDetail> getMostView() {
         List<AccountDetail> accountDetails = new ArrayList<>();
@@ -609,6 +610,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+
     @Override
     public List<AccountDetail> getNewAccount() {
         List<AccountDetail> accountDetails = new ArrayList<>();
@@ -650,6 +652,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+
     @Override
     public List<AccountDetail> getManAccount() {
         List<AccountDetail> accountDetails = new ArrayList<>();
@@ -691,6 +694,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+
     @Override
     public List<AccountDetail> getWomenAccount() {
         List<AccountDetail> accountDetails = new ArrayList<>();
@@ -776,6 +780,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+
     @Override
     public AccountDetail getAccountDetailByAccountId(int accountId) {
         AccountDetail accountDetail = null;
@@ -812,6 +817,7 @@ accountDetail.setView(resultSet.getInt("view"));
         }
         return accountDetail;
     }
+
     @Override
     public void updateAccountDetailByAccountId(String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int account_id) {
         try (Connection connection = getConnection();
@@ -822,9 +828,9 @@ accountDetail.setView(resultSet.getInt("view"));
             preparedStatement.setString(4, city);
             preparedStatement.setString(5, nationality);
             preparedStatement.setString(6, avatar);
-            preparedStatement.setString(7,  portrait);
-            preparedStatement.setString(8,  portrait1);
-            preparedStatement.setString(9,  portrait2);
+            preparedStatement.setString(7, portrait);
+            preparedStatement.setString(8, portrait1);
+            preparedStatement.setString(9, portrait2);
 
 
             preparedStatement.setString(10, height);
@@ -832,9 +838,9 @@ accountDetail.setView(resultSet.getInt("view"));
             preparedStatement.setString(12, interest);
             preparedStatement.setString(13, describeYourself);
             preparedStatement.setString(14, regulations);
-            preparedStatement.setString(15,facebook );
-            preparedStatement.setString(16,joinDate );
-            preparedStatement.setInt(17,account_id );
+            preparedStatement.setString(15, facebook);
+            preparedStatement.setString(16, joinDate);
+            preparedStatement.setInt(17, account_id);
 
 
             preparedStatement.executeUpdate();
@@ -850,7 +856,7 @@ accountDetail.setView(resultSet.getInt("view"));
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_ACCOUNT_DETAIL)) {
 
-            preparedStatement.setString(1, "%"+search+"%");
+            preparedStatement.setString(1, "%" + search + "%");
 //tìm tên chứa kí tự muốn tìm kiếm ở bất kì vị trí nào trong tài khoản
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
@@ -886,6 +892,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accountDetails;
     }
+
     @Override
     public List<Account> searchByAccountName(String search) {
         List<Account> accounts = new ArrayList<>();
@@ -925,6 +932,7 @@ accountDetail.setView(resultSet.getInt("view"));
 
         return accounts;
     }
+
     @Override
     public List<Account> filterAccounts(String roleName, String status, String search) {
         List<Account> accounts = new ArrayList<>();
@@ -961,16 +969,8 @@ accountDetail.setView(resultSet.getInt("view"));
         return accounts;
     }
 
-    public static void main(String[] args) throws SQLException {
-        AccountDAO accountDao=new AccountDAO();
-List<AccountDetail> accountDetails=accountDao.getMostRented();
-for (AccountDetail accountDetail:accountDetails) {
-    System.out.println(accountDetail);
-
-}
-
 
     }
 
 
-}
+

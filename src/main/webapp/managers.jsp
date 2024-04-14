@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
 
-    <title>User Manager</title>
+    <title>Lover</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="manager.css">
     <link rel="stylesheet" href="homes.css"/>
@@ -171,25 +171,30 @@
                     <option value="Vip" ${selects eq 'Vip' ? 'selected': '' }>Vip List</option>
                 </select>
 
-                <select id="tableSelects" name="roleList"style="background-color: pink">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </select>
+                <select id="tableSelects" name="roleList"style="background-color: pink">
+                    <option value="" >Roles List</option>
 
+                    <option value="serviceProviders" ${select eq 'serviceProviders' ? 'selected': '' }>Service Providers</option>
+                    <option value="account" ${select eq 'account' ? 'selected': '' }>All Account List</option>
+                    <option value="user" ${select eq 'user' ? 'selected': '' }>User List</option>
+                </select>
                 <input class="custom-input btn btn-outline-danger" type="text" id="nameplayer" name="searchFullName"
                        placeholder="Account Name" value="${searchFullName}" style="border: 0.1rem solid deeppink;">
 
-                <button id="searchButton" class="search" style="margin-top: 5px;"><i class="fas fa-search"></i></button>
+                <button id="searchButton" class="search" ><i class="fas fa-search"></i></button>
             </div>
         </form>
         <div class="table info">
-        <c:choose>
-            <c:when test="${not empty error}">
-                <b class="alert-warning" >${error}</b>
-            </c:when>
-            <c:when test="${empty listAccountRole}">
-                <center>
-                    <b class="alert-warning" style="text-align: center;">Player name not found</b>
-                </center>
-            </c:when>
-            <c:otherwise>
+<%--        <c:choose>--%>
+<%--            <c:when test="${not empty error}">--%>
+<%--                <b class="alert-warning" >${error}</b>--%>
+<%--            </c:when>--%>
+<%--            <c:when test="${empty listAccountRole}">--%>
+<%--                <center>--%>
+<%--                    <b class="alert-warning" style="text-align: center;">Player name not found</b>--%>
+<%--                </center>--%>
+<%--            </c:when>--%>
+<%--            <c:otherwise>--%>
         <table id="dynamicTable" style="margin-left: 15px;" >
             <thead>
             <tr class="sticky-row">
@@ -229,8 +234,8 @@
             </tbody>
 
         </table>
-    </c:otherwise>
-</c:choose>
+<%--    </c:otherwise>--%>
+<%--</c:choose>--%>
     </div>
 
 

@@ -10,8 +10,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
-
-    <title>Dashboard</title>
+    <title>Lover</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="manager.css">
 </head>
@@ -44,7 +43,7 @@
             <a href="dashboard" class="active">  <i class="fa-solid fa-grip"></i><span class="menu-text">Dashboard</span></a>
 
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 1}">
-                <a href="list"><i class="fa-solid fa-list"></i><span class="menu-text">Manager</span></a>
+                <a href="filterAndSearch"><i class="fa-solid fa-list"></i><span class="menu-text">Manager</span></a>
             </c:if>
 
             <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">

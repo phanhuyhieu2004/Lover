@@ -32,7 +32,16 @@ public class FilterControl extends HttpServlet {
 //            return;
 //        }
 
-        List<Account> filteredAccounts = accountDAO.filterAccounts(roleName, status, search);
+        List<Account> filteredAccounts;
+
+
+        if ((roleName == null || roleName.isEmpty()) && (status == null || status.isEmpty()) && (search == null || search.isEmpty())) {
+            // Nếu không có điều kiện nào được nhập
+            filteredAccounts = accountDAO.getAllAccount();
+        } else {
+            // Nếu có ít nhất một điều kiện được nhập
+            filteredAccounts = accountDAO.filterAccounts(roleName, status, search);
+        }
 
         request.setAttribute("select", roleName);
         request.setAttribute("selects", status);

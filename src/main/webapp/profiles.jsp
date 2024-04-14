@@ -10,7 +10,7 @@
 
 <html>
 <head>
-    <title>Profile</title>
+    <title>Lover</title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
     <link rel="stylesheet" href="profile.css"/>
 
