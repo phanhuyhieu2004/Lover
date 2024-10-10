@@ -5,278 +5,187 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
 
     <title>Lover</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="common.css">
+
     <link rel="stylesheet" href="manager.css">
     <link rel="stylesheet" href="homes.css"/>
 </head>
-<style>
-    .menu-text {
-        margin-left: 10px;
-    }
 
-    .block-btn {
-        background-color: #cf3a35; /* Màu đỏ */
-        border: none;
-        border-radius: 5px;
-        color: #fff; /* Màu chữ trắng */
-        font-size: 10px;
-        font-weight: bold;
-        padding: 8px 16px;
-        text-transform: uppercase; /* Chữ in hoa */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng */
-        transition: all 0.3s ease; /* Hiệu ứng chuyển động */
-
-    }
-
-    .block-btn:hover {
-        background-color: #e74b48; /* Màu đỏ sáng */
-        cursor: pointer;
-        box-shadow: 0 4px 9px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng lớn hơn */
-    }
-
-    table {
-        background: papayawhip;
-        padding: 1rem;
-        text-align: left;
-
-        border: 5px solid deeppink;
-        width: 500px;
-        height: 70%;
-        margin-right: 30px;
-        margin-left: 10px;
-
-    }
-    table {
-        width: 110%; /* Đảm bảo bảng chiếm toàn bộ kích thước của phần tử chứa nó */
-        table-layout: fixed; /* Cố định kích thước cột */
-    }
-    table td, th {
-        padding: 0.2rem 0.8rem;
-        border-bottom: 1px solid deeppink;
-        border-right: 1px solid deeppink;
-    }
-    table th,
-    table td {
-        width: 20%; /* Đặt kích thước cố định cho tất cả các cột (ở đây là 10%) */
-    }
-
-
-    table th {
-        font-size: 15px;
-    }
-
-    table td {
-        font-size: 15px;
-    }
-
-
-    .side_navbar {
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        width: 210px;
-    }
-
-    .container {
-        margin-top: 40px;
-        margin-bottom: 40px;
-        display: flex;
-        justify-content: space-between;
-    }
-    .sticky-nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-    .sticky-row {
-        position: sticky;
-        top: 0;
-        background-color: #fff;
-    }
-</style>
 <body style="background: white">
+<jsp:include page="Flower.jsp"></jsp:include>
 
 <jsp:include page="header.jsp"></jsp:include>
-<jsp:include page="Flower.jsp"></jsp:include>
-<div class="container">
-    <nav class="sticky-nav" style="background-color: #FFE4E1;height: 100%;";>
+<div class="container-list" style="display: flex;">
+    <jsp:include page="dashboard.jsp"></jsp:include>
 
-        <div class="side_navbar">
-            <a href="dashboard">  <i class="fa-solid fa-grip"></i><span class="menu-text">Dashboard</span></a>
+    <div class="main-body">
+        <div class="search-title"><p>You can filter the list and search by account name here</p></div>
 
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 1}">
-                <a href="list" class="active"><i class="fa-solid fa-list"></i><span class="menu-text">List manager</span></a>
-                <a href="listStatus"><i class="fa-regular fa-rectangle-list"></i><span class="menu-text">Status manager</span></a>
-            </c:if>
+        <div class="search-filter">
+            <form class="search-list" id="filterForm" action="list" method="POST">
 
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
+                <select id="statusFilter" name="status" class="search__filter--list">
+                    <option value="">Status List</option>
+                    <option value="Active" ${status == 'Active'? 'selected' :''}>Active List</option>
+                    <option value="Block" ${status == 'Block'? 'selected' :''}>Block List</option>
+                    <option value="InActive" ${status == 'InActive'? 'selected' :''}>InActive List</option>
+                    <option value="VIP" ${status == 'VIP'? 'selected' :''}>VIP List</option>
+                </select>
 
-                <a href="serviceProviderInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information</span></a>
-            </c:if>
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
+                <select id="roleFilter" name="role" class="search__filter--list">
+                    <option value="">Roles List</option>
+                    <option value="serviceProviders"  ${role == 'serviceProviders'? 'selected' :''}>Service Providers
+                    </option>
+                    <option value="account"  ${role == 'account'? 'selected' :''}>All Account List</option>
+                    <option value="user" ${role == 'user'? 'selected' :''}>User List</option>
+                </select>
 
-                <a href="userInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information</span></a>
-            </c:if>
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
+                <input class="search__filter--list" type="text" id="nameSearch" name="nameSearch"
+                       value="${accountName}" placeholder="Account Name" style="width: 150px;;">
 
-                <a href="serviceCategory" > <i class="fa-solid fa-bars"></i> <span
-                        class="menu-text">Service category</span></a>
-            </c:if>
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
-
-                <a href="serviceList" > <i class="fa-solid fa-bars"></i> <span
-                        class="menu-text">Service List</span></a>
-            </c:if>
-            <a href="#"><i class="fa-solid fa-wallet"></i><span class="menu-text">E-wallet</span></a>
-            <a href="#"><i class="fa-solid fa-envelope"></i><span class="menu-text">Email</span></a>
-            <a href="#"><i class="fa-solid fa-circle-play"></i><span class="menu-text">Player</span></a>
-            <a href="#"><i class="fa-solid fa-circle-dollar-to-slot"></i><span class="menu-text">Donate</span></a>
-            <a href="#"><i class="fa-solid fa-globe"></i><span class="menu-text">Connect</span></a>
-            <a href="#"><i class="fa-solid fa-chart-simple"></i><span class="menu-text">Statistical</span></a>
-            <a href="#"><i class="fa-solid fa-users-slash"></i><span class="menu-text">Blacklist</span></a>
+                <button id="searchButton" type="submit" class="search"><i class="fas fa-search"></i></button>
+            </form>
         </div>
-    </nav>
-<%--    <div class="main-body" style="margin-right: 130px">--%>
 
-<%--        <center><p>You can filter the list and search by account name here</p></center>--%>
-<%--        <div class="search-filter">--%>
-<%--            <select id="tableSelect" name="optionList" onchange="display()">--%>
-<%--                &lt;%&ndash;                Giá trị của option này là "serviceProviders" và hiển thị trên giao diện là "Service List". "${select eq 'serviceProviders' ? 'selected': '' }" kiểm tra nếu giá trị của biến "select" bằng "serviceProviders" thì thêm thuộc tính "selected" vào option này, nghĩa là option này sẽ được chọn mặc định trong select.&ndash;%&gt;--%>
-<%--                    <option value="serviceProviders" data-display="serviceProviders" ${select eq 'serviceProviders' ? 'selected': '' } >Service List</option>--%>
 
-<%--                <option value="account" data-display="account" ${select eq 'account' ? 'selected': '' } >All Account List</option>--%>
+        <div class="table-info">
+            <c:choose>
+                <c:when test="${not empty error}">
+                    <b class="alert-warning">${error}</b>
+                </c:when>
+                <c:when test="${empty listAccount}">
+                    <center>
+                        <b class="alert-warning" style="text-align: center;">Player name not found</b>
+                    </center>
+                </c:when>
+                <c:otherwise>
+                    <table class="styled-table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nick name</th>
+                            <th>Account name</th>
+                            <th>Email</th>
+                            <th>Phone number</th>
+                            <th>Identify card</th>
+                            <th>Status</th>
+                            <th>Block</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        <c:forEach var="list" items="${listAccount}" varStatus="loop">
+                            <tr>
+                                <td>${loop.index + 1}</td>
+                                <td>${list.nickName}</td>
+                                <td>${list.accountName}</td>
+                                <td>${list.email}</td>
+                                <td>${list.phoneNumber}</td>
+                                <td>${list.identifyCard}</td>
+                                <td id="status_${list.idAccount}" class="status-account">${list.status}</td>
+                                <td>
+                                    <button class="block-btn" style="padding: 10px;
+  border: none;
+  border-radius: 10px;background: pink" onclick="blockAccount('${list.idAccount}')">Block
+                                    </button>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div class="pagination">
+            <ul class="listPage"></ul>
 
-<%--                <option value="user" data-display="user" ${select eq 'user' ? 'selected': '' }>User List</option>--%>
-<%--            </select>--%>
-<%--                    <form action="searchAccount" method="post" style="display: flex;margin-left: 100px;">--%>
-
-<%--                    <input class="custom-input btn btn-outline-danger" type="text" id="nameplayer" name="searchFullName"--%>
-<%--                   placeholder="Account Name" value="${searchFullName}" style="border: 0.1rem solid deeppink;">--%>
-<%--            <button id="searchButton" class="search" style="margin-top: 5px;"><i class="fas fa-search"></i></button>--%>
-<%--                    </form>--%>
-<%--            &lt;%&ndash;            nhấp chuột vào nút sẽ gọi hàm "display()" của JS&ndash;%&gt;--%>
-<%--        </div>--%>
-    <div class="main-body" style="margin-right: 130px">
-        <center><p>You can filter the list and search by account name here</p></center>
-
-        <form action="filterAndSearch" method="post">
-            <div class="search-filter">
-                <select id="tableSelect" name="optionList" style="background-color: pink">
-                    <option value="" >Status List</option>
-                    <option value="Active" ${selects eq 'Active' ? 'selected': '' }>Active List</option>
-                    <option value="Block" ${selects eq 'Block' ? 'selected': '' }>Block List</option>
-                    <option value="InActive" ${selects eq 'InActive' ? 'selected': '' }>InActive List</option>
-                    <option value="Vip" ${selects eq 'Vip' ? 'selected': '' }>Vip List</option>
-                </select>
-
-                <select id="tableSelects" name="roleList"style="background-color: pink">
-                    <option value="" >Roles List</option>
-
-                    <option value="serviceProviders" ${select eq 'serviceProviders' ? 'selected': '' }>Service Providers</option>
-                    <option value="account" ${select eq 'account' ? 'selected': '' }>All Account List</option>
-                    <option value="user" ${select eq 'user' ? 'selected': '' }>User List</option>
-                </select>
-                <input class="custom-input btn btn-outline-danger" type="text" id="nameplayer" name="searchFullName"
-                       placeholder="Account Name" value="${searchFullName}" style="border: 0.1rem solid deeppink;">
-
-                <button id="searchButton" class="search" ><i class="fas fa-search"></i></button>
-            </div>
-        </form>
-        <div class="table info">
-<%--        <c:choose>--%>
-<%--            <c:when test="${not empty error}">--%>
-<%--                <b class="alert-warning" >${error}</b>--%>
-<%--            </c:when>--%>
-<%--            <c:when test="${empty listAccountRole}">--%>
-<%--                <center>--%>
-<%--                    <b class="alert-warning" style="text-align: center;">Player name not found</b>--%>
-<%--                </center>--%>
-<%--            </c:when>--%>
-<%--            <c:otherwise>--%>
-        <table id="dynamicTable" style="margin-left: 15px;" >
-            <thead>
-            <tr class="sticky-row">
-                <th style="text-align: center">STT</th>
-                <th style="width: 40%;">Nick name</th>
-                <th style="width: 50%;text-align: center;">Account name</th>
-                <th style="text-align: center;width: 100%;">Email</th>
-                <th style="width: 50%;text-align: center;">Phone number</th>
-                <th style="width: 50%;text-align: center;">Identify card</th>
-                <th style="width: 40%;">Status</th>
-                <th  style="width: 65%;text-align: center;">Role</th>
-
-                <th style="text-align: center;width: 50%">Block</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Dữ liệu từ danh sách nhà cung cấp dịch vụ hoặc danh sách người dùng -->
-            <c:forEach var="list" items="${listAccountRole}" varStatus="loop">
-                <tr>
-                    <td>${loop.index + 1}</td>
-                    <td>${list.nickName}</td>
-                    <td>${list.accountName}</td>
-                    <td>${list.email}</td>
-                    <td>${list.phoneNumber}</td>
-                    <td>${list.identifyCard}</td>
-                    <td id="status_${list.idAccount}">${list.status}</td>
-                    <td >${list.role.roleName}</td>
-                    <td>
-                        <button class="block-btn" style="margin-left: 10px;" onclick="blockAccount('${list.idAccount}')">Block</button>
-                            <%--                            hàm JS "blockAccount()" sẽ được gọi và truyền giá trị của biến "list.idAccount" vào như một tham số.Cụ thể là khi bấm vào nút block thì sẽ lấy được id của tài khoản muốn block và xử lý trong hàm bên JS
-                            --%>
-
-                    </td>
-                </tr>
-            </c:forEach>
-
-            </tbody>
-
-        </table>
-<%--    </c:otherwise>--%>
-<%--</c:choose>--%>
+        </div>
     </div>
 
 
-    </div>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
+
 <script>
 
+    let thisPage = 1;
+    let limit = 10;
+    let list = document.querySelectorAll('#tableBody tr');
 
-    // document.addEventListener("DOMContentLoaded", function() {
-    //     var select = document.getElementById("tableSelect");
-    //     select.addEventListener("click", function() {
-    //         var selectedValue = select.value;
-    //         var url = "list?optionList=" + encodeURIComponent(selectedValue);
-    //         window.location.href = url;
-    //     });
-    // });document.addEventListener("DOMContentLoaded", function() {
-    //     var select = document.getElementById("tableSelects");
-    //     select.addEventListener("click", function() {
-    //         var selectedValue = select.value;
-    //         var url = "list?roleList=" + encodeURIComponent(selectedValue);
-    //         window.location.href = url;
-    //     });
-    // });
-    document.addEventListener("DOMContentLoaded", function() {
-        var searchButton = document.getElementById("searchButton");
-        searchButton.addEventListener("click", function(event) {
-            event.preventDefault();
+    function loadItem() {
+        let beginGet = limit * (thisPage - 1);
+        let endGet = limit * thisPage - 1;
 
-            // Lấy giá trị của select và input
-            var statusValue = document.getElementById("tableSelect").value;
-            var roleValue = document.getElementById("tableSelects").value;
-            var searchValue = document.getElementById("nameplayer").value;
-
-
-            var url = "filterAndSearch?optionList=" + encodeURIComponent(statusValue) + "&roleList=" + encodeURIComponent(roleValue) + "&searchFullName=" + encodeURIComponent(searchValue);
-
-
-            window.location.href = url;
+        list.forEach((item, key) => {
+            if (key >= beginGet && key <= endGet) {
+                item.style.display = 'table-row';
+            } else {
+                item.style.display = 'none';
+            }
         });
-    });
+        listPage();
+    }
+
+    function listPage() {
+        let count = Math.ceil(list.length / limit);
+        document.querySelector('.listPage').innerHTML = '';
+
+        if (thisPage != 1) {
+            let prev = document.createElement('li');
+            prev.innerText = 'PREV';
+            prev.setAttribute('onclick', "changePage(" + (thisPage - 1) + ")");
+            document.querySelector('.listPage').appendChild(prev);
+        }
+
+        for (let i = 1; i <= count; i++) {
+            let newPage = document.createElement('li');
+            newPage.innerText = i;
+            if (i == thisPage) {
+                newPage.classList.add('active');
+            }
+            newPage.setAttribute('onclick', "changePage(" + i + ")");
+            document.querySelector('.listPage').appendChild(newPage);
+        }
+
+        if (thisPage != count) {
+            let next = document.createElement('li');
+            next.innerText = 'NEXT';
+            next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
+            document.querySelector('.listPage').appendChild(next);
+        }
+    }
+
+    function changePage(i) {
+        thisPage = i;
+        loadItem();
+    }
+
+    // Gọi hàm khởi tạo
+    loadItem();
 
 
     // Truyền tham số là id của tài khocần chặn đã lấy ở trên
@@ -304,34 +213,6 @@
         xhr.send('id=' + id);
         // Gửi yêu cầu POST với nội dung là 'id=' + id, trong đó id là giá trị của tham số "id". Lập tức gửi yêu cầu chặn tài khoản với ID tương ứng sang bên servlet có đường dẫn là 'BlockAccountServlet'
     }
-    document.addEventListener("DOMContentLoaded", function() {
-        var statusSelect = document.getElementById("tableSelect");
-        var roleSelect = document.getElementById("tableSelects");
-
-        // Thêm sự kiện change cho select box Status List
-        statusSelect.addEventListener("change", function() {
-            // Nếu người dùng chọn một tùy chọn không phải là mặc định ("")
-            if (statusSelect.value !== "") {
-                // Đặt màu nền của select box này thành màu trắng
-                statusSelect.style.backgroundColor = "pink";
-            } else {
-                // Nếu người dùng chọn tùy chọn mặc định, đặt lại màu nền là màu hồng
-                statusSelect.style.backgroundColor = "white";
-            }
-        });
-
-        // Thêm sự kiện change cho select box Roles List
-        roleSelect.addEventListener("change", function() {
-            // Nếu người dùng chọn một tùy chọn không phải là mặc định ("")
-            if (roleSelect.value !== "") {
-                // Đặt màu nền của select box này thành màu trắng
-                roleSelect.style.backgroundColor = "pink";
-            } else {
-                // Nếu người dùng chọn tùy chọn mặc định, đặt lại màu nền là màu hồng
-                roleSelect.style.backgroundColor = "white";
-            }
-        });
-    });
 </script>
 
 

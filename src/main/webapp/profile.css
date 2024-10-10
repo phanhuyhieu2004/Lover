@@ -1,5 +1,5 @@
 #followButton {
-    background-color: deeppink;
+    background-color: hotpink;
     font-size: 12px;
     color: white;
     width: 100px;
@@ -7,6 +7,121 @@
     border-radius: 20px;
     cursor: pointer;
     border-color: lightpink;
+}
+html{
+    overflow-x: hidden;
+}
+.content {
+    padding-top: 10px;
+
+    margin: 30px auto;
+}
+
+.person-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.nav-player-profile {
+    margin-top: 30px;
+}
+
+.col-md-3 {
+    width: 25%;
+}
+
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    float: left;
+}
+
+.btn-group-vertical > .btn-group::after, .btn-group-vertical > .btn-group::before, .btn-toolbar::after, .btn-toolbar::before, .clearfix::after, .clearfix::before, .container-fluid::after, .container-fluid::before, .container::after, .container::before, .dl-horizontal dd::after, .dl-horizontal dd::before, .form-horizontal .form-group::after, .form-horizontal .form-group::before, .modal-footer::after, .modal-footer::before, .modal-header::after, .modal-header::before, .nav::after, .nav::before, .navbar-collapse::after, .navbar-collapse::before, .navbar-header::after, .navbar-header::before, .navbar::after, .navbar::before, .pager::after, .pager::before, .panel-body::after, .panel-body::before, .row::after, .row::before {
+    content: " ";
+    display: table;
+}
+
+.btn-group-vertical > .btn-group::after, .btn-toolbar::after, .clearfix::after, .container-fluid::after, .container::after, .dl-horizontal dd::after, .form-horizontal .form-group::after, .modal-footer::after, .modal-header::after, .nav::after, .navbar-collapse::after, .navbar-header::after, .navbar::after, .pager::after, .panel-body::after, .row::after {
+    clear: both;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+
+.col-md-6 {
+    width: 700px;
+
+    padding: 20px;
+}
+
+.nav-player-profile .item-nav-name {
+    color: #354052;
+    display: inline;
+    font-size: 1.2rem;
+    font-weight: 700;
+    height: 15px;
+    opacity: .7;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.col-md-3.col-xs-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    padding: 20px;
+}
+
+.row-name {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-game {
+    padding-right: 10px;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding-bottom: 100px;
+}
+
+.nav-player-profile row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 0;
+    flex-wrap: wrap;
+}
+
+.nav-player-profile .item-nav-value {
+    color: #f0564a;
+
+    font-size: 1.5rem;
+}
+
+.fa-microphone::before {
+    content: "\f130";
+}
+
+.container-profile {
+    display: flex;
+
+    padding: 100px;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 #followButton.cancel {
@@ -25,11 +140,9 @@
 }
 
 
-
 .row-information {
     font-size: 20px;
 }
-
 
 
 .evaluate {
@@ -42,16 +155,21 @@
     height: 40px;
 
     padding-top: 5px;
-    width: 220px;
+
     margin-left: 5px;
     margin-top: 5px;
-    text-align: center}
-
+    text-align: center
+}
+.service-name{
+    text-align: center;
+    font-size: 1rem;
+}
 .evaluate-col3 {
     height: 20px;
     background-color: white;
     margin-top: 10px;
 }
+
 .box {
     width: 217px;
     height: 200px;
@@ -66,6 +184,7 @@
     max-width: 100%;
     max-height: 100%;
 }
+
 .row-activate {
     text-align: center;
     color: green;
@@ -87,6 +206,7 @@
     color: inherit;
     font-weight: bold;
 }
+
 .row-informationperson {
     font-size: 20px;
     display: flex;
@@ -99,9 +219,156 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    color: deeppink;
+    color: hotpink;
 }
 
 .showrow > div {
     flex-basis: 20%;
+}
+
+@media (max-width: 1200px) {
+    .container-profile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .col-md-6 {
+        order: 2;
+    }
+
+
+}
+
+/*Máy tính bảng và đt*/
+@media (max-width: 991.98px) {
+
+}
+
+/*Máy tính bảng*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+
+}
+
+/*Điện thoại*/
+@media  (max-width: 767.98px) {
+
+#modal-table{
+    width: calc(100% - 10px);
+}
+    .container-profile {
+
+
+        padding: 200px 0;
+    }
+
+    .row-name {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .col-xs-6 {
+        width: 100%;
+    }
+
+    .col-md-3.col-xs-6 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 10px;
+        padding: 20px;
+    }
+
+    .name-game {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 10px;
+
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+    }
+
+    .profile-information {
+        width: 100%;
+        word-break: break-all;
+    }
+
+    .comments-container {
+        padding: 100px 5px;
+        margin: 200px 0;
+    }
+
+    .comment-box .comment-name {
+        color: #283035;
+        font-size: 0.75rem;
+        font-weight: 700;
+        float: left;
+        margin-right: 10px;
+    }
+
+}
+@media (max-width: 500px) {
+    .comment-box .comment-name.by-author::after{
+        font-size: 0.75rem;
+
+    }
+    .comment-time{
+        font-size: 0.75rem;
+    }
+    .comment-box .comment-content {
+
+        font-size: 0.75rem;
+
+    }
+    .name-game {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 10px;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+
+    }
+
+    .comment-box .comment-head span {
+        float: left;
+        font-size: 0.75rem;
+
+        position: relative;
+        top: 1px;
+    }
+    .comment-main-level{
+        display: flex;
+    }
+    .comments-list.reply-list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 320px;
+    }
+    .reply-list .comment-box {
+        width: 300px;
+    }
+    .comments-list .comment-box {
+        width: 300px;
+    }
+    .comment-name.by-author {
+        font-size: 0.75rem;
+    }
+    .comments-list .comment-avatar {
+        width: 25px;
+        height: 25px;
+
+    }
 }

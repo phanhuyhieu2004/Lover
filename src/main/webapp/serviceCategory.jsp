@@ -11,126 +11,59 @@
 <head>
     <title>Lover</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <link rel="stylesheet" href="service.css"/>
-    <link rel="stylesheet" href="manager.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+
+    <link rel="stylesheet" href="common.css">
+
+    <link rel="stylesheet" href="service.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <style>
-    .menu-text {
-        margin-left: 10px;
-    }
 
-
-    .containers h1 {
-        font-size: 20px;
-        line-height: 30px;
-        margin-top: 15px;
-        margin-bottom: 10px;
-        text-align: center;
-        position: relative;
-    }
-
-    .container {
-        margin-top: 40px;
-        margin-bottom: 40px;
-        display: flex;
-        justify-content: space-between;
-        z-index: 0;
-
-    }
-
-    .side_navbar {
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        width: 220px;
-    }
-
-    .profile-dropdown-list {
-        position: absolute;
-        top: 68px;
-        width: 220px;
-        right: 0;
-        background-color: var(--white);
-        border-radius: 10px;
-        max-height: 0;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: max-height 0.5s;
-        z-index: 1;
-    }
-
-    .containers {
-
-        background-color: white;
-        margin-right: 80px;
-
-        border-radius: 10px;
-    }
     .alert-success {
         background-color: forestgreen;
         margin: 10px;
         border-radius: 10px;
         color: white;
     }
-    .sticky-nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
+
 </style>
 <body style="background: white">
 
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="Flower.jsp"></jsp:include>
 
-<div class="container">
-    <nav class="sticky-nav" style="background-color: #FFE4E1;height: 100%;";>
-
-
-    <div class="side_navbar">
-            <a href="dashboard">  <i class="fa-solid fa-grip"></i><span class="menu-text">Dashboard</span></a>
-
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 1}">
-                <a href="listAccount" ><i class="fa-solid fa-list"></i><span class="menu-text">Manager</span></a>
-                <a href="status">Status Manager</a>
-            </c:if>
-
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
-
-                <a href="serviceProviderInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information</span></a>
-            </c:if>
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
-
-                <a href="userInformation"><i class="fa-solid fa-circle-info"></i></i><span
-                        class="menu-text">Information</span></a>
-            </c:if>
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
-
-                <a href="serviceCategory" class="active"> <i class="fa-solid fa-bars"></i> <span
-                        class="menu-text"> Service Category</span></a>
-            </c:if>
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
-
-                <a href="serviceList" > <i class="fa-solid fa-bars"></i> <span
-                        class="menu-text">Service List</span></a>
-            </c:if>
-            <a href="#"><i class="fa-solid fa-wallet"></i><span class="menu-text">E-wallet</span></a>
-            <a href="#"><i class="fa-solid fa-envelope"></i><span class="menu-text">Email</span></a>
-            <a href="#"><i class="fa-solid fa-circle-play"></i><span class="menu-text">Player</span></a>
-            <a href="#"><i class="fa-solid fa-circle-dollar-to-slot"></i><span class="menu-text">Donate</span></a>
-            <a href="#"><i class="fa-solid fa-globe"></i><span class="menu-text">Connect</span></a>
-            <a href="#"><i class="fa-solid fa-chart-simple"></i><span class="menu-text">Statistical</span></a>
-            <a href="#"><i class="fa-solid fa-users-slash"></i><span class="menu-text">Blacklist</span></a>
-        </div>
-    </nav>
-    <div class="containers">
+<div class="container-list">
+    <jsp:include page="dashboard.jsp"></jsp:include>
+    <div class="main-body">
         <form  action="serviceCategory" method="post">
             <div class="services[]">
-                <h1>Choose service catalog you want to provide</h1>
+                <h1 class="service-heading">Choose service catalog you want to provide</h1>
                 <center> <p class=" alert-success" style="color: white" >${messSuccess}</p></center>
 
                 <div class="row">
@@ -195,9 +128,8 @@
                     </label>
 
 
-                </div>
 
-                <div class="row">
+
                     <label>
                         <input type="checkbox"  name="services[]" value="hand"/>
                         <div class="icon-box">
@@ -217,9 +149,9 @@
                             <i class="fa-solid fa-eye fa-beat"></i> <span> Look at your eyes </span>
                         </div>
                     </label>
-                </div>
 
-                <div class="row">
+
+
                     <label>
                         <input type="checkbox"  name="services[]" value="song"/>
                         <div class="icon-box">
@@ -260,12 +192,13 @@
                         </div>
                     </label>
 
-                </div>
+
             </div>
 
             <div style="text-align: center">
                 <input type="submit" value="Catalog registration">
 
+            </div>
             </div>
         </form>
     </div>

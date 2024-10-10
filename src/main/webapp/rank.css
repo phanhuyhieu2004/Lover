@@ -1,26 +1,13 @@
-/** {*/
-/*    font-size: 62%;*/
-/*    box-sizing: border-box;*/
-/*    margin: 0;*/
-/*}*/
 
-/*body {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    min-height: 100vh;*/
-/*    background-color: #fbfaff;*/
-
-
-/*}*/
 
 .row-donate {
-    width: 30rem;
-    height: 40rem;
+    padding: 30px;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 0.5rem;
+    margin: 30px auto;
 }
 
 #header {
@@ -94,7 +81,7 @@ td {
 }
 
 .number {
-    width: 0rem;
+
     font-size: 1.5rem;
     font-weight: bold;
     text-align: left;
@@ -123,7 +110,7 @@ td {
 }
 
 .ribbon {
-    width: 32rem;
+    width: 100%;
     height: 5.5rem;
     top: -0.5rem;
     background-color: #5c5be5;

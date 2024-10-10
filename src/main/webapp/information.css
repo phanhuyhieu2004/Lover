@@ -1,5 +1,17 @@
 .form-row {
     display: flex;
+
+}
+.information-heading{
+    font-size: 2rem;
+    font-weight: 700;
+}
+.container-information {
+    display: flex;
+}
+
+.label-important {
+    color: red;
 }
 
 .form-group {
@@ -11,26 +23,56 @@
     margin-right: 0;
 }
 
+.desc-form {
+    padding: 10px 0;
+}
+
+.img-form {
+    padding: 20px;
+}
+
+.img-label {
+    display: block;
+    margin-bottom: 10px;
+
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
 h2 {
     text-align: center;
 }
+
 .form-group {
-    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
 }
+
+.form-group.img {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 20px;
 }
+
 .form-group input[type="text"],
-.form-group input[type="date"],
+.form-group input[type="date"],.form-group input[type="number"],
 .form-group select {
     width: 100%;
     height: 40px;
     padding: 5px;
     border-radius: 10px;
-    border:  solid pink;
+    border: solid pink;
     box-sizing: border-box;
     font-size: 18px;
     outline: none;
@@ -56,20 +98,20 @@ input[type="submit"]:hover {
 }
 
 
-
 .form-group input[type="file"],
 .form-group textarea {
     width: 100%;
     height: 80px;
 
     padding: 15px;
-
-    border:  solid pink;
+    border-radius: 10px;
+    border: solid pink;
     box-sizing: border-box;
     font-size: 18px;
     outline: none;
     resize: vertical;
 }
+
 .form-group input[type="file"] {
     display: none;
 }
@@ -82,7 +124,7 @@ input[type="submit"]:hover {
     display: inline-block;
     cursor: pointer;
 
-    border: 2px solid deeppink; /* Change the border color as desired */
+    border: 2px solid pink;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -106,19 +148,70 @@ input[type="submit"]:hover {
     left: 0;
     cursor: pointer;
 }
+
 .image-box {
     position: relative;
 }
 
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
 
-.row {
-    display: flex;
-    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
-    .container {
-        max-width: 90%;
+.row {
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+
+}
+
+@media (max-width: 767.98px) {
+    .desc-form{
+        font-size: 1rem;
+    }
+    .form-group textarea {
+        font-size: 1rem ;
+    }
+    .img-label {
+        font-size: 1rem;
+    }
+    .form-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .containers {
+        margin: 30px auto;
+        max-width: calc(100% - 20px);
+    }
+
+    .form-group label {
+        font-size: 1rem;
+    }
+
+    .form-group input[type="text"], .form-group input[type="date"], .form-group input[type="submit"], .form-group select {
+        width: fit-content;
+        font-size: 1rem;
+
+    }
+
+    .depositMoney {
+        padding: 10px;
+        border: 1px solid hotpink;
+        border-radius: 10px;
+    }
+    .information-heading{
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    .desc {
+        font-size: 1rem;
     }
 
 }

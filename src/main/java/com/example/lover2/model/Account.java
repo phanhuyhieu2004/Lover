@@ -17,6 +17,7 @@ public class Account {
 
     private Role role;
 //     đối tượng thuộc lớp Role trong lớp Account.
+
 private AccountDetail accountDetail;
 //    đối tượng thuộc lớp AccountDetail trong lớp Account.
     public AccountDetail getAccountDetail() {

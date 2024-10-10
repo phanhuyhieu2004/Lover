@@ -11,8 +11,34 @@
 <html>
 <head>
     <title>Lover</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://cdn.alongwalk.info/vn/wp-content/uploads/2023/04/19040211/89-hinh-anh-hoa-cam-tu-cau-dep-nhieu-mau-sac-day-suc-song1681826531.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+
+    <link rel="stylesheet" href="common.css">
 
     <link rel="stylesheet" href="register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,6 +56,7 @@
     .role{
         display: flex;
         justify-content: center;
+        align-items: center;
 
     }
     .role input[type=radio] {
@@ -38,26 +65,11 @@
     .role label {
         margin-right: 10px;
     }
-    button {
-        position: relative;
-        border-radius: 20px;
-        border: 1px solid hotpink;
-        background-color: hotpink;
-        color: #fff;
-        font-size: 15px;
-        font-weight: 700;
-        margin: 10px;
-        padding: 12px 80px;
-        letter-spacing: 1px;
-        text-transform: capitalize;
-        transition: 0.3s ease-in-out;
-        cursor: pointer;
-    }
     a:hover {
         color: pink;
     }
     .content input {
-        accent-color: deeppink;
+        accent-color: hotpink;
         width: 12px;
         height: 12px;
     }
@@ -68,7 +80,6 @@
 <div class="container" id="container">
 <%--    một phần tử chứa các phần tử khác trong nội dung trang web.--%>
 
-    <div class="form-container register-container">
 <%--        một phần tử chứa form đăng ký.--%>
         <form  action="register" method="post">
 <%--            Khi người dùng gửi form, nó sẽ được gửi đến đường dẫn "signup" bằng phương thức POST.--%>
@@ -107,12 +118,11 @@
     </div>
 
 
-    <button type="submit" value="Save">Register</button>
-    <div class="signup-link"style="margin-bottom: 15px;">Already have an account ? <a href="login" style="font-size: medium; color: deeppink">Login
+    <button class="btn btn-register" type="submit" value="Save">Register</button>
+    <div class="signup-link" style="margin-bottom: 15px;padding: 10px 0;">Already have an account ? <a href="login"class="login-link" style="color: hotpink">Login
         now</a></div>
         </form>
 
-    </div>
 
 
 

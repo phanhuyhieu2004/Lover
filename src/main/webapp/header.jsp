@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Lover</title>
@@ -14,6 +15,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="icon" type="image/png" href="https://cdn.alongwalk.info/vn/wp-content/uploads/2023/04/19040211/89-hinh-anh-hoa-cam-tu-cau-dep-nhieu-mau-sac-day-suc-song1681826531.jpg">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+
+    <link rel="stylesheet" href="common.css">
 
     <link rel="stylesheet" href="nav.css"/>
 </head>
@@ -24,11 +52,10 @@
         font-size: 1.1rem;
         width: 2.3rem;
         height: 2.3rem;
-        background-color: deeppink;
+        background-color: hotpink;
         color: var(--white);
         line-height: 2.3rem;
         text-align: center;
-        margin-right: 1rem;
         border-radius: 50%;
         transition: margin-right 0.3s;
 
@@ -36,23 +63,17 @@
     .navbar-logo {
         cursor: pointer;
 
-
-        max-height: 100%;
-        max-width: 100%;
+        max-width: 100px;
+        width: 100px;
     }
     .profile-img {
         position: relative;
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
-        border: 0.1rem solid deeppink;
+        border: 0.1rem solid white;
     }
-    .navbar-list {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-    }
+
 
     .navbar-list li {
         margin: 0 10px;
@@ -96,101 +117,166 @@
     .navbar-list li a:hover span {
         display: block;
     }
-    body {
-        height: 100vh;
-        width: 100%;
-    }
+
 </style>
 <body style="background: white">
-<nav class="navbar">
-<c:if test="${sessionScope.acc != null}">
-
-<a href="home">
-        <img src="Lover.png" class="navbar-logo" alt="logo"/>
-    </a>
-</c:if>
-    <div class="wrap">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?">
-            <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
-    </div>
-
-    <ul class="navbar-list">
-        <li><a href="home" ><i class="fas fa-home"></i><span>Home</span></a></li>
-        <li><a href="#" ><i class="fas fa-video"></i><span>Videos</span></a></li>
-        <li><a href="#" ><i class="fas fa-trophy"></i><span>Rank</span></a></li>
-        <li><a href="#"><i class="fas fa-users"></i><span>Community</span></a></li>
-        <li><a href="#" ><i class="fas fa-info-circle"></i><span>About</span></a></li>
-    </ul>
-    <div class="profile-dropdown">
-        <div onclick="toggle()" class="profile-dropdown-btn"style="height: 40px;">
-<%--            Tạo một phần tử div với class CSS "profile-dropdown-btn". Đây là phần tử sẽ kích hoạt dropdown menu khi được nhấp vào. Sự kiện onclick được liên kết với hàm "toggle()" để thay đổi trạng thái của dropdown menu.--%>
-
-    <div class="profile-img"style="background:url('${sessionScope.acc.accountDetail.avatar}'); background-size: cover;
-           " >
-        <i class="fa-solid fa-circle"></i>
-
-    </div>
+<header >
+    <div class="container">
+        <nav class="navbar">
 
             <c:if test="${sessionScope.acc != null}">
+
+                <a href="home">
+                    <img src="./favicon/snapedit_1728473669221.png" class="navbar-logo" alt="logo"/>
+                </a>
+            </c:if>
+            <div class="wrap">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <ul class="navbar-list">
+                <li><a href="home" ><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="#" ><i class="fas fa-video"></i><span>Videos</span></a></li>
+                <li><a href="#" ><i class="fas fa-trophy"></i><span>Rank</span></a></li>
+                <li><a href="#"><i class="fas fa-users"></i><span>Community</span></a></li>
+                <li><a href="#" ><i class="fas fa-info-circle"></i><span>About</span></a></li>
+            </ul>
+            <div class="profile-dropdown">
+                <div onclick="toggle()" class="profile-dropdown-btn"style="height: 40px;">
+                    <%--            Tạo một phần tử div với class CSS "profile-dropdown-btn". Đây là phần tử sẽ kích hoạt dropdown menu khi được nhấp vào. Sự kiện onclick được liên kết với hàm "toggle()" để thay đổi trạng thái của dropdown menu.--%>
+
+                    <c:choose>
+                        <c:when test="${sessionScope.acc.accountDetail.avatar != null && !sessionScope.acc.accountDetail.avatar.isEmpty()}">
+                            <div class="profile-img" style="background: url('${sessionScope.acc.accountDetail.avatar}'); background-size: cover;">
+                                <i class="fa-solid fa-circle"></i>
+
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="profile-img" style="background: url('https://cdn-icons-png.flaticon.com/512/9703/9703596.png'); background-size: cover;">
+                                <i class="fa-solid fa-circle"></i>
+
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
+
+
+                    <c:if test="${sessionScope.acc != null}">
         <span>
                 ${sessionScope.acc.accountName}</span>
-            </c:if>
-<%--Sử dụng thẻ <c:if> để kiểm tra điều kiện. Trong trường hợp này, kiểm tra xem biến "sessionScope.acc" có khác null hay không. Nếu điều kiện đúng, thẻ <span> được sử dụng để hiển thị nội dung là giá trị của "sessionScope.acc.accountName".--%>
-        </div>
-        <ul class="profile-dropdown-list">
-            <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole != 1}">
-            <li class="profile-dropdown-list-item">
-                <a href="profiles">
-                    <i class="fa-regular fa-user"></i>
-                     Profile
-                </a>
-            </li>
-</c:if>
-<c:if test="${sessionScope.acc != null }">
+                    </c:if>
+                    <%--Sử dụng thẻ <c:if> để kiểm tra điều kiện. Trong trường hợp này, kiểm tra xem biến "sessionScope.acc" có khác null hay không. Nếu điều kiện đúng, thẻ <span> được sử dụng để hiển thị nội dung là giá trị của "sessionScope.acc.accountName".--%>
+                </div>
+                <ul class="profile-dropdown-list">
+                    <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole != 1}">
+                        <li class="profile-dropdown-list-item">
+                            <a href="profiles">
+                                <i class="fa-regular fa-user"></i>
+                                Profile
+                            </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 1}">
 
-            <li class="profile-dropdown-list-item">
-                <a href="dashboard">
-                    <i class="fa fa-cogs"></i>
-                    Settings
-                </a>
-            </li>
-</c:if>
+                        <li class="profile-dropdown-list-item">
+                            <a href="list">
+                                <i class="fa fa-cogs"></i>
+                                Settings
+                            </a>
+                        </li>
 
-            <li class="profile-dropdown-list-item">
-                <a href="#">
-                    <i class="fa-regular fa-circle-question"></i>
-                    Help & Support
-                </a>
-            </li>
+                    </c:if>
+                    <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 2}">
+
+                        <li class="profile-dropdown-list-item">
+                            <a href="serviceProviderInformation">
+                                <i class="fa fa-cogs"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="menu profile-dropdown-list-item">
+                            <a href="serviceCategory">
+                                <i class="fa-solid fa-bars"></i>
+                                Service
+                            </a>
+                        </li>
+                        <li class="menu profile-dropdown-list-item">
+                            <a href="accountService">
+                                <i class="fa-solid fa-list"></i>
+                                My Service
+                            </a>
+                        </li>
+                        <li class="menu profile-dropdown-list-item">
+                            <a href="rentListAccount">
+                                <i class="fa-solid fa-gears"></i>                                Tenant history
+                            </a>
+                        </li>
+
+                    </c:if>
+                    <c:if test="${sessionScope.acc != null && sessionScope.acc.role.idRole == 3}">
+
+                        <li class="profile-dropdown-list-item">
+                            <a href="userInformation">
+                                <i class="fa fa-cogs"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="menu profile-dropdown-list-item">
+                            <a href="addMoney">
+                                <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                                Deposit money
+                            </a>
+                        </li>
+                        <li class="menu profile-dropdown-list-item">
+                            <a href="rentalList">
+                                <i class="fa-solid fa-gears"></i>
+                                List of service providers
+
+                            </a>
+                        </li>
+
+                    </c:if>
+
+                    <li class="profile-dropdown-list-item">
+                        <a href="#">
+                            <i class="fa-regular fa-circle-question"></i>
+                            Help & Support
+                        </a>
+                    </li>
 
 
-            <c:if test="${sessionScope.acc == null}">
-                <li class="profile-dropdown-list-item">
-                    <a href="login">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        Login
-                    </a>
-                </li>
-            </c:if>
-<%--            kiểm tra xem biến "sessionScope.acc" có bằng null hay không. Nếu điều kiện đúng (tức là người dùng chưa đăng nhập), thẻ <li> được sử dụng để tạo một mục trong dropdown menu với class CSS "profile-dropdown-list-item".--%>
-            <c:if test="${sessionScope.acc != null}">
-                <li class="profile-dropdown-list-item">
-                    <a href="logout">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        Log out
-                    </a>
-                </li>
+                    <c:if test="${sessionScope.acc == null}">
+                        <li class="profile-dropdown-list-item">
+                            <a href="login">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                Login
+                            </a>
+                        </li>
+                    </c:if>
+                    <%--            kiểm tra xem biến "sessionScope.acc" có bằng null hay không. Nếu điều kiện đúng (tức là người dùng chưa đăng nhập), thẻ <li> được sử dụng để tạo một mục trong dropdown menu với class CSS "profile-dropdown-list-item".--%>
+                    <c:if test="${sessionScope.acc != null}">
+                    <li class="profile-dropdown-list-item">
+                        <a href="logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            Log out
+                        </a>
+                    </li>
 
-<%--            kiểm tra xem biến "sessionScope.acc" có khác null hay không. Nếu điều kiện đúng (tức là người dùng đã đăng nhập), thẻ <li> được sử dụng để tạo một mục trong dropdown menu với class CSS "profile-dropdown-list-item".--%>
+                        <%--            kiểm tra xem biến "sessionScope.acc" có khác null hay không. Nếu điều kiện đúng (tức là người dùng đã đăng nhập), thẻ <li> được sử dụng để tạo một mục trong dropdown menu với class CSS "profile-dropdown-list-item".--%>
 
-        </ul>
-</c:if>
+                </ul>
+                </c:if>
+            </div>
+
+        </nav>
     </div>
-</nav>
+</header>
 <script>
 
     let profileDropdownList = document.querySelector(".profile-dropdown-list");

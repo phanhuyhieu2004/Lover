@@ -4,13 +4,13 @@ import com.example.lover2.dao.AccountDAO;
 
 import com.example.lover2.model.Account;
 import com.example.lover2.model.AccountDetail;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 //XỬ LÝ LOGIC PHẦN TRANG CHỦ
@@ -24,15 +24,22 @@ public class HomeControl extends HttpServlet {
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("acc");
+
+        if (session.getAttribute("acc") == null) {
+            response.sendRedirect("login");
+            return;
+        }
         List<AccountDetail> listAccountDetail = accountDAO.getVipAccountDetail();
         List<AccountDetail> listAccountRentals = accountDAO.getMostRented();
         List<AccountDetail> listAccountViews = accountDAO.getMostView();
         List<AccountDetail> listNewAccount = accountDAO.getNewAccount();
         List<AccountDetail> listManAccount = accountDAO.getManAccount();
         List<AccountDetail> listWomenAccount = accountDAO.getWomenAccount();
-        HttpSession session = request.getSession();
-        Account account = (Account) session.getAttribute("acc");
+
         String city = account.getAccountDetail().getCity();
         List<AccountDetail> listAddressAccount = accountDAO.getAddressAccount(city);
 

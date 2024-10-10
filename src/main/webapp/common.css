@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-heading: "Sen" sans-serif;
+    --primary-color:pink;
+    --font-color:#000;
+}
+
+html {
+    font-size: 62.5%;
+    /*font-size: 16px×62.5%=10px/ 62.5%; !* 1rem = 10px *!*/
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+html{
+    overflow-x: hidden;
+}
+
+.btn{
+    display: inline-block;
+    min-width: 118px;
+    padding: 0px 16px;
+    line-height: 50px;
+    height: 50px;
+    color: var(--font-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    background: var(--primary-color);
+    border-radius: 999px;
+    cursor: pointer;
+}
+.container-list{
+    display: flex;
+}

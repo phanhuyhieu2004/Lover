@@ -9,180 +9,187 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title> Danh sách đơn thuê</title>
-    <link rel="stylesheet" href="rentalList.css"/>
+    <title> Danh sách người CCDV</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="nav.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="common.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
+    <link rel="stylesheet" href="manager.css">
 <style>
-    .container{
-        width: 1000px;
-        margin-left: 250px;
-        margin-top: 50px;
+    .table-info{
+        flex: 1 1 500px;
     }
-    .row-menu{
-        display: flex;
-        gap: 398px;
-        padding-top: 20px;
+    .tooltip {
+        position: relative;
+        display: inline-block;
     }
-    .detail-table a {
-        text-decoration: none;
-        color: black;
-    }
-    .profile-dropdown-list-item a i {
-        margin-right: 0.8rem;
-        font-size: 1.1rem;
-        width: 2.3rem;
-        height: 2.3rem;
-        background-color: deeppink;
-        color: var(--white);
-        line-height: 2.3rem;
+
+    .tooltip .tooltip-text {
+        visibility: hidden;
+        width: 120px;
+        background-color: hotpink;
+        color: #fff;
         text-align: center;
-        margin-right: 1rem;
-        border-radius: 50%;
-        transition: margin-right 0.3s;
-
+        border-radius: 6px;
+        padding: 5px 0;
+        font-size: 1rem;
+        position: absolute;
+        z-index: 1;
     }
 
-    .navbar-logo {
-        cursor: pointer;
-
-
-        max-height: 100%;
-        max-width: 100%;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #f2f2f2;
-    }
-
-    .hidden {
-        display: none;
+    .tooltip:hover .tooltip-text {
+        visibility: visible;
     }
 </style>
-<body>
-<div class="header">
-    <nav class="navbar">
-        <a href="home">
-            <img src="Lover.png" class="navbar-logo" alt="logo"/>
-        </a>
 
-        <div class="wrap">
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
+</head>
+<body style="background: white">
+<jsp:include page="Flower.jsp"></jsp:include>
+
+<jsp:include page="header.jsp"></jsp:include>
+<div class="container-list" style="display: flex;">
+    <jsp:include page="dashboard.jsp"></jsp:include>
+
+    <div class="main-body">
+
+        <div class="service-list heading">
+            <h2>List of service providers</h2>
         </div>
 
-        <ul class="navbar-list">
-            <li><a href="home">Home</a></li>
-            <li><a href="#">Videos</a></li>
-            <li><a href="#">Rank</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-        <div class="profile-dropdown">
-            <div onclick="toggle()" class="profile-dropdown-btn">
-                <div class="profile-img">
-                    <i class="fa-solid fa-circle"></i>
-                </div>
+        <div class="table-info">
+            <c:choose>
+                <c:when test="${not empty error}">
+                    <b class="alert-warning">${error}</b>
+                </c:when>
+                <c:when test="${empty playerRentals}">
+                    <center>
+                        <b class="alert-warning" style="text-align: center;">No service providers hired!!!</b>
+                    </center>
+                </c:when>
+                <c:otherwise>
+                    <table class="styled-table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Number of hours</th>
+                            <th>Amount</th>
+                            <th>Rental date</th>
+                            <th>Service provider</th>
 
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        <c:forEach var="rental" items="${playerRentals}" varStatus="loop">
+                            <tr>
+                                <td>${loop.index+1}</td>
+                                <td>${rental.rentalHours}</td>
+                                <td>${rental.totalAmount}</td>
+                                <td>${rental.rentalDate}</td>
+                                <td><a href="profile?aid=${rental.playerId}"><i class="fa-solid fa-circle-info tooltip"> <span
+                                        class="tooltip-text">Information </span>
+                                </i></a></td>
 
-                <c:if test="${sessionScope.acc != null}">
-        <span>
-                ${sessionScope.acc.accountName}</span>
-                </c:if>
-            </div>
-
-            <ul class="profile-dropdown-list">
-                <li class="profile-dropdown-list-item">
-                    <a href="#">
-                        <i class="fa-regular fa-user"></i>
-                        Edit Profile
-                    </a>
-                </li>
-
-                <li class="profile-dropdown-list-item">
-                    <a href="login">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        Login
-                    </a>
-                </li>
-
-
-                <li class="profile-dropdown-list-item">
-                    <a href="dashboard">
-                        <i class="fa-solid fa-sliders"></i>
-                        Settings
-                    </a>
-                </li>
-
-                <li class="profile-dropdown-list-item">
-                    <a href="#">
-                        <i class="fa-regular fa-circle-question"></i>
-                        Help & Support
-                    </a>
-                </li>
-                <hr/>
-
-                <li class="profile-dropdown-list-item">
-                    <a href="logout">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        Log out
-                    </a>
-                </li>
-            </ul>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </c:otherwise>
+            </c:choose>
         </div>
-    </nav>
-    <script>
-        let profileDropdownList = document.querySelector(".profile-dropdown-list");
-        let btn = document.querySelector(".profile-dropdown-btn");
+        <div class="pagination">
+            <ul class="listPage"></ul>
 
-        let classList = profileDropdownList.classList;
-
-        const toggle = () => classList.toggle("active");
-
-        window.addEventListener("click", function (e) {
-            if (!btn.contains(e.target)) classList.remove("active");
-        });
-    </script>
-</div>
-<div class="container">
-    <div class="head-page" style="padding-bottom: 15px">
-        <span><b style="font-size: 25px">List of rental applications</b></span>
+        </div>
     </div>
-    <table class="detail-table" style="font-size: 12px;">
-        <tr>
-            <th>STT</th>
-            <th>Tên người thuê</th>
-            <th>Dịch vụ</th>
-            <th>Chi tiết</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Loan</td>
-            <td>Dọn nhà, Chở hàng</td>
-            <td><button><a href="detailRental.jsp">Xem chi tiết</a></button></td>
-        </tr>
-    </table>
+
+
 </div>
+<jsp:include page="footer.jsp"></jsp:include>
+
+<script>
+
+    let thisPage = 1;
+    let limit = 5; // Số lượng dòng mỗi trang
+    let list = document.querySelectorAll('#tableBody tr');
+
+    function loadItem() {
+        let beginGet = limit * (thisPage - 1);
+        let endGet = limit * thisPage - 1;
+
+        list.forEach((item, key) => {
+            if (key >= beginGet && key <= endGet) {
+                item.style.display = 'table-row'; // Hiện dòng
+            } else {
+                item.style.display = 'none'; // Ẩn dòng
+            }
+        });
+        listPage();
+    }
+
+    function listPage() {
+        let count = Math.ceil(list.length / limit);
+        document.querySelector('.listPage').innerHTML = '';
+
+        if (thisPage != 1) {
+            let prev = document.createElement('li');
+            prev.innerText = 'PREV';
+            prev.setAttribute('onclick', "changePage(" + (thisPage - 1) + ")");
+            document.querySelector('.listPage').appendChild(prev);
+        }
+
+        for (let i = 1; i <= count; i++) {
+            let newPage = document.createElement('li');
+            newPage.innerText = i;
+            if (i == thisPage) {
+                newPage.classList.add('active');
+            }
+            newPage.setAttribute('onclick', "changePage(" + i + ")");
+            document.querySelector('.listPage').appendChild(newPage);
+        }
+
+        if (thisPage != count) {
+            let next = document.createElement('li');
+            next.innerText = 'NEXT';
+            next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
+            document.querySelector('.listPage').appendChild(next);
+        }
+    }
+
+    function changePage(i) {
+        thisPage = i;
+        loadItem();
+    }
+
+    // Gọi hàm khởi tạo
+    loadItem();
+
+
+</script>
+
+
 </body>
 </html>

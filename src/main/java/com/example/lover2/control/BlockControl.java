@@ -1,12 +1,13 @@
 package com.example.lover2.control;
 
 import com.example.lover2.dao.AccountDAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 //XỬ LÝ LOGIC PHẦN CHẶN TÀI KHOẢN VÀ CẬP NHẬT TRẠNG THÁI THÀNH BLOCK TRONG GIAO DIỆN QUẢN LÝ TÀI KHOẢN
@@ -23,7 +24,6 @@ public class BlockControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         int id = Integer.parseInt(request.getParameter("id"));
-        // Cập nhật trạng thái của tài khoản trong database
         accountDAO.updateAccountStatus(id, "Block");
 
 

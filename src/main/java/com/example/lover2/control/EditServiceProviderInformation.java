@@ -6,10 +6,11 @@ import com.example.lover2.model.Account;
 import com.example.lover2.model.AccountDetail;
 import com.example.lover2.model.Role;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
 import java.io.File;
 import java.io.IOException;
 //XỬ LÝ LOGIC PHẦN SỬA THÔNG TIN TÀI KHOẢN
@@ -45,7 +46,19 @@ public class EditServiceProviderInformation extends HttpServlet {
             String regulations = request.getParameter("regulations");
             String facebook = request.getParameter("facebook");
             String joinDate = request.getParameter("joinDate");
+            String priceStr = request.getParameter("price");
+            int price = 0; // Hoặc giá trị mặc định khác bạn muốn
+            if (priceStr != null && !priceStr.isEmpty()) {
+                price = Integer.parseInt(priceStr);
+            }
 
+            String depositMoney = request.getParameter("depositMoney");
+
+            int depositMoneys = 50;
+
+            if (depositMoney != null && !depositMoney.isEmpty()) {
+                depositMoneys = Integer.parseInt(depositMoney);
+            }
             HttpSession session = request.getSession();
             Account account = (Account) session.getAttribute("acc");
             int account_id = account.getAccountDetail().getAccount_id();
@@ -120,12 +133,14 @@ public class EditServiceProviderInformation extends HttpServlet {
             account.getAccountDetail().setPortrait(portrait);
             account.getAccountDetail().setPortrait1(portrait1);
             account.getAccountDetail().setPortrait2(portrait2);
+            account.getAccountDetail().setPrice(price);
+            account.getAccountDetail().setDepositMoney(depositMoneys);
 //            Thiết lập các giá trị cho các thuộc tính của đối tượng AccountDetail trong đối tượng account. Các giá trị này được lấy từ các biến ,ý là nếu có cập nhật ở phần nào thì sẽ lấy giá trị của phần đó thêm vào cho đối tượng account.
 //
 //            gender, city, avatar, portrait, portrait1, portrait2 là các giá trị được truyền vào từ các biến đã được khai báo và nếu có cập nhật thì sẽ lấy giá trị vào thuộc tính AccountDetail của đối tượng Account
             session.setAttribute("acc", account);
 //            cập nhật session mới đã chứa thông tin của các gi trị vừa thay đổi
-            accountDAO.updateAccountDetailByAccountId(dateOfBirth, fullName, gender, city, nationality, avatar,portrait,portrait1,portrait2, height, weight, interest, describeYourself, regulations, facebook, joinDate, account_id);
+            accountDAO.updateAccountDetailByAccountId(dateOfBirth, fullName, gender, city, nationality, avatar,portrait,portrait1,portrait2, height, weight, interest, describeYourself, regulations, facebook, joinDate, price,depositMoneys,account_id);
 
             response.sendRedirect("serviceProviderInformation?success=true");
         } catch (IOException | ServletException e) {
@@ -148,7 +163,7 @@ public class EditServiceProviderInformation extends HttpServlet {
     }
 
     public File getFolderUpload(){
-        File folderUpload = new File(System.getProperty("user.home") + "/IdeaProjects/Lover2/src/main/webapp/fileImage");
+        File folderUpload = new File("D:\\Lover\\src\\main\\webapp\\fileImage");
         if (!folderUpload.exists()){
             folderUpload.mkdirs();
         }
@@ -162,16 +177,14 @@ public class EditServiceProviderInformation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        // Phương thức doGet được ghi đè để xử lý yêu cầu "GET" và chuyển hướng người dùng đến trang "register.jsp".
-    }
+        processRequest(request, response);}
+
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        // Phương thức doPost được ghi đè để xử lý yêu cầu "POST". Nó gọi phương thức processRequest để xử lý yêu cầu và trả về phản hồi tương ứng.
     }
 
 }

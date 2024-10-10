@@ -1,25 +1,23 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+.service-heading{
+    text-align: center;
+    font-size: 2rem;
 }
 input[type="submit"] {
-    width: 30%;
+    width: 300px;
+    max-width: calc(100% - 20px);
     padding: 15px;
-    background-color: deeppink;
+    background-color: hotpink;
     color: #fff;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.8rem;
     outline: none;
     justify-content: center;
     transition: background-color 0.3s ease-in-out;
     text-align: center;
-    margin: 20px;
+
 }
 
 input[type="submit"]:hover {
@@ -63,7 +61,7 @@ input[type="submit"]:hover {
     color:white;
 
     border-radius: 10px;
-    font-size: 21px;
+    font-size: 2rem;
     transition: 0.5s;
     user-select: none;
 
@@ -76,7 +74,7 @@ input[type="submit"]:hover {
 .price input[type="text"] {
     width: 300px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 1.6rem;
     border: 1px solid hotpink;
     border-radius: 3px;
     outline: none;
@@ -94,6 +92,53 @@ input[type="submit"]:hover {
 
 .row label .icon-box span {
     margin: 5px;
-    font-size: 18px;
+    font-size: 1.8rem;
 }
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .service-heading{
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .main-body {
+        width: 100%;
+    }
+    .row {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+@media (max-width: 767.98px) {
+    .row label .icon-box span {
+
+        font-size: 1rem;
+    }
+    .icon-box{
+        width: 200px !important;
+        padding: 0;
+    }
+    .row {
+
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .main-body .services\[\]{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
 

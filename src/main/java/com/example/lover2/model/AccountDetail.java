@@ -29,9 +29,27 @@ public class AccountDetail {
 
     private String joinDate;
 private int numberOfRentals;
+private int price;
+private int depositMoney;
     private int account_id;
 
     private int view;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getDepositMoney() {
+        return depositMoney;
+    }
+
+    public void setDepositMoney(int depositMoney) {
+        this.depositMoney = depositMoney;
+    }
 
     public String getRegulations() {
         return regulations;
@@ -41,7 +59,7 @@ private int numberOfRentals;
         this.regulations = regulations;
     }
 
-    public AccountDetail(int idDetail, String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int numberOfRentals, int account_id, int view) {
+    public AccountDetail(int idDetail, String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int numberOfRentals, int price, int depositMoney, int account_id, int view) {
         this.idDetail = idDetail;
         this.dateOfBirth = dateOfBirth;
         this.fullName = fullName;
@@ -60,6 +78,8 @@ private int numberOfRentals;
         this.facebook = facebook;
         this.joinDate = joinDate;
         this.numberOfRentals = numberOfRentals;
+        this.price = price;
+        this.depositMoney = depositMoney;
         this.account_id = account_id;
         this.view = view;
     }

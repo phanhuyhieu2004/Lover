@@ -5,7 +5,6 @@ import com.example.lover2.model.Account;
 import com.example.lover2.model.AccountDetail;
 
 
-import javax.servlet.http.HttpSession;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -69,7 +68,7 @@ public interface IAccountDAO {
 
 
 
-    void updateAccountDetailByAccountId(String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int account_id);
+    void updateAccountDetailByAccountId(String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int price,int depositMoney,int account_id);
 
     List<AccountDetail> searchByName(String search);
 

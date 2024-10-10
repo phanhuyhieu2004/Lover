@@ -4,7 +4,6 @@ public class ServiceCategory {
     private int idServiceCategory;
     private String serviceNameCategory;
 
-
     public ServiceCategory() {
     }
 
@@ -28,6 +27,8 @@ public class ServiceCategory {
     public void setServiceNameCategory(String serviceNameCategory) {
         this.serviceNameCategory = serviceNameCategory;
     }
+
+
 
     @Override
     public String toString() {

@@ -1,22 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-*{
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-
-.container{
-    margin-top: 10px;
+.main-body{
+    width: calc(100% - 250px);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 50px;
+    gap: 30px;
 }
-
-/* Side menubar section */
+.status-account{
+    text-transform: uppercase;
+}
+.main{
+    width: 100%;
+}
+.service-list.heading{
+    font-size: 2rem;
+    text-align: center;
+}
+.table.info{
+    width: 100%;
+    overflow-x: auto;
+    flex-grow: 1;
+    min-height: 600px;
+}
+.styled-table{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+.search-title{
+    text-align: center;
+}
+.search-filter{
+    width: calc(100% - 20px);
+}
+html{
+    overflow-x: hidden;
+}
 nav{
     background:#FFE4E1;
 }
@@ -42,23 +67,13 @@ nav{
 
 
 
-.search-filter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-}
 
-select {
-    border: 0;
-    outline: 0;
-    font: inherit;
-    width: 20em;
-    height: 3em;
-    padding: 0 4em 0 1em;
-    border-radius: 0.25em;
-    margin: 20px;
-    background-color: pink;
+
+.search__filter--list{
+    padding: 10px;
+    background: pink;
+    border: none;
+    border-radius: 10px;
 }
 
 .search-filter button.search {
@@ -70,9 +85,11 @@ select {
     outline: 0;
     font: inherit;
     background-color: hotpink;
-    height: 3em;
     min-width: 80px;
     cursor: pointer;
+    padding: 20px;
+    height: 10px;
+
 }
 .side_navbar a img {
     width: 40px;
@@ -82,25 +99,133 @@ select {
 }
 
 .side_navbar a:hover {
-    background: deeppink;
+    background: hotpink;
+    color: white;
 }
 
 .side_navbar .active {
     border-left: 2px solid #646464;
 }
 
-/* Main Body Section */
-.main-body{
-    width: 80%;
-    padding: 1rem;
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px pink;
+}
+.styled-table thead tr {
+    background-color: hotpink;
+    color: #ffffff;
+    text-align: left;
 }
 
-.table-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
 }
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.block-btn:hover{
+   background: hotpink;
+    color: #fff;
+    cursor: pointer;
+}
+.listPage {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.listPage li {
+    margin: 0 5px;
+    padding: 8px 12px;
+    background-color: hotpink;    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.listPage li:hover {
+    background-color: pink;
+}
+
+.listPage li.active {
+    background-color: pink;
+    font-weight: bold;
+    color: black;
+}
+
+.listPage li.prev, .listPage li.next {
+    background-color: #6c757d;
+}
+
+.listPage li.prev:hover, .listPage li.next:hover {
+    background-color: #5a6268;
+}
+.search-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+@media (min-width: 992px) {
+
+}
+
+/*Máy tính bảng và đt*/
+@media (max-width: 991.98px) {
+    .service-list.heading{
+        font-size: 1.5rem;
+    }
+    .nav-dashboard{
+        display: none;
+    }
+}
+/*Máy tính bảng*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+.container-list{
+    padding: 10px;
+}
+    .table info{
+        overflow: auto;
+    }
+    .main-body{
+        width: 100%;
+    }
+
+}
+/*Điện thoại*/
+@media (max-width: 767.98px) {
+    .container-list{
+        padding: 10px;
+    }
+    .table-info{
+        overflow: auto;
+    }
+    .main-body{
+        width: 100%;
+    }
+    .styled-table {
+        width: 200%;
+
+    }
+    .listPage{
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+}
+
 
 
 

@@ -1,13 +1,15 @@
 package com.example.lover2.dao;
 
 
-import com.example.lover2.model.Account;
-import com.example.lover2.model.AccountDetail;
-import com.example.lover2.model.Role;
+import com.example.lover2.model.*;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AccountDAO implements IAccountDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
@@ -53,14 +55,14 @@ public class AccountDAO implements IAccountDAO {
 
     private static final String UPDATE_BLOCK = "        UPDATE account SET status = ? WHERE idAccount = ?;";
 
-    private static final String INSERT_ACCOUNT_DETAIL = "  INSERT INTO detail_Account (dateOfBirth, fullName, gender, city, nationality, avatar, portrait,portrait1,portrait2, height, weight, interest, describeYourself, regulations, facebook, joinDate,account_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
+    private static final String INSERT_ACCOUNT_DETAIL = "  INSERT INTO detail_Account (dateOfBirth, fullName, gender, city, nationality, avatar, portrait,portrait1,portrait2, height, weight, interest, describeYourself, regulations, facebook, joinDate,price,depositMoney,account_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)";
     private static final String SEARCH_ACCOUNT_DETAIL = " SELECT * from detail_account where fullName like ?  ";
 
     private static final String SELECT_ACCOUNT_DETAIL = " SELECT * FROM detail_account WHERE account_id = ?";
     private static final String UPDATE_ACCOUNT_DETAIL = " UPDATE detail_Account " +
             "SET dateOfBirth = ?, fullName = ?, gender = ?, city = ?, nationality = ?,avatar=?,portrait=?,portrait1=?,portrait2=?," +
             "height = ?, weight = ?, " +
-            "interest = ?, describeYourself = ?, regulations = ?, facebook = ?, joinDate = ? " +
+            "interest = ?, describeYourself = ?, regulations = ?, facebook = ?, joinDate = ?, price = ?, depositMoney = ? " +
             "WHERE account_id = ?";
     private static final String SELECT_ACCOUNT_VIP =
             "            SELECT * FROM detail_Account\n" +
@@ -131,6 +133,7 @@ public class AccountDAO implements IAccountDAO {
             "WHERE da.city = ? AND r.idRole = 2\n" +
             "\n" +
             "limit 12;";
+    private static final String INSERT_SERVICE_QUERY = "INSERT INTO account_servicecategory (account_id, serviceCategory_id) VALUES (?, ?)";
 
     public AccountDAO() {
     }
@@ -219,6 +222,8 @@ public class AccountDAO implements IAccountDAO {
                 newAccountDetail.setRegulations(newAccountDetail.getRegulations());
                 newAccountDetail.setFacebook(newAccountDetail.getFacebook());
                 newAccountDetail.setJoinDate(newAccountDetail.getJoinDate());
+                newAccountDetail.setPrice(newAccountDetail.getPrice());
+                newAccountDetail.setDepositMoney(newAccountDetail.getDepositMoney());
                 newAccountDetail.setAccount_id(accountId);
 //                lấy id của tài khoản  mới vừa thêm vào trong bảng account
                 addAccountDetail(accountId, newAccountDetail);
@@ -244,6 +249,84 @@ public class AccountDAO implements IAccountDAO {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    // Phương thức thêm dịch vụ vào bảng trung gian
+    public void addServices(int accountId, List<Integer> serviceIds) {
+        String sql = INSERT_SERVICE_QUERY;
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            for (Integer serviceId : serviceIds) {
+                ps.setInt(1, accountId); // Gán account_id
+                ps.setInt(2, serviceId); // Gán service_id
+                ps.addBatch(); // Thêm vào batch
+            }
+            ps.executeBatch(); // Thực thi batch
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isServiceAlreadyAdded(int accountId, int serviceId) {
+        String sql = "SELECT COUNT(*) FROM account_servicecategory WHERE account_id = ? AND serviceCategory_id = ?";
+        try (Connection connection = getConnection();
+
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, accountId);
+            ps.setInt(2, serviceId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public List<ServiceCategory> getServicesByAccountId(int accountId) {
+        List<ServiceCategory> services = new ArrayList<>();
+        String query = "SELECT * FROM service_category sc " +
+                "JOIN account_servicecategory aserv ON sc.idServiceCategory = aserv.serviceCategory_id " +
+                "WHERE aserv.account_id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, accountId); // Gán ID tài khoản vào câu truy vấn
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                ServiceCategory service = new ServiceCategory();
+                service.setIdServiceCategory(resultSet.getInt("idServiceCategory"));
+                service.setServiceNameCategory(resultSet.getString("serviceNameCategory"));
+                services.add(service);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return services;
+    }
+
+    public void removeService(int accountId, int serviceCategoryId) {
+        String query = "DELETE FROM account_servicecategory WHERE account_id = ? AND serviceCategory_id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, accountId);
+            preparedStatement.setInt(2, serviceCategoryId);
+
+            int rowsAffected = preparedStatement.executeUpdate(); // Thực hiện câu lệnh xóa
+            if (rowsAffected > 0) {
+                System.out.println("Service removed successfully");
+            } else {
+                System.out.println("No service found for the given account and service category.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // In lỗi ra console
         }
     }
 
@@ -475,7 +558,9 @@ public class AccountDAO implements IAccountDAO {
             preparedStatement.setString(14, accountDetail.getRegulations());
             preparedStatement.setString(15, accountDetail.getFacebook());
             preparedStatement.setString(16, accountDetail.getJoinDate());
-            preparedStatement.setInt(17, accountId);
+            preparedStatement.setInt(17, accountDetail.getPrice());
+            preparedStatement.setInt(18, accountDetail.getDepositMoney());
+            preparedStatement.setInt(19, accountId);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -516,12 +601,13 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
                 accountDetail.setView(resultSet.getInt("view"));
+                accountDetail.setPrice(resultSet.getInt("price"));
+
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Đóng kết nối và tài nguyên
         }
 
         return accountDetails;
@@ -558,12 +644,12 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
                 accountDetail.setView(resultSet.getInt("view"));
+                accountDetail.setPrice(resultSet.getInt("price"));
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Đóng kết nối và tài nguyên
         }
 
         return accountDetails;
@@ -600,6 +686,8 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
                 accountDetail.setView(resultSet.getInt("view"));
+                accountDetail.setPrice(resultSet.getInt("price"));
+
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
@@ -642,6 +730,8 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
                 accountDetail.setView(resultSet.getInt("view"));
+                accountDetail.setPrice(resultSet.getInt("price"));
+
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
@@ -684,12 +774,13 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
                 accountDetail.setView(resultSet.getInt("view"));
+                accountDetail.setPrice(resultSet.getInt("price"));
+
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Đóng kết nối và tài nguyên
         }
 
         return accountDetails;
@@ -726,6 +817,8 @@ public class AccountDAO implements IAccountDAO {
                 accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                 accountDetail.setAccount_id(resultSet.getInt("account_id"));
                 accountDetail.setView(resultSet.getInt("view"));
+                accountDetail.setPrice(resultSet.getInt("price"));
+
                 accountDetails.add(accountDetail);
             }
         } catch (SQLException e) {
@@ -769,6 +862,8 @@ public class AccountDAO implements IAccountDAO {
                     accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                     accountDetail.setAccount_id(resultSet.getInt("account_id"));
                     accountDetail.setView(resultSet.getInt("view"));
+                    accountDetail.setPrice(resultSet.getInt("price"));
+
                     accountDetails.add(accountDetail);
                 }
             }
@@ -779,6 +874,118 @@ public class AccountDAO implements IAccountDAO {
         }
 
         return accountDetails;
+    }
+
+    public int getCurrentDepositMoney(int accountId) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int currentDepositMoney = 0;
+
+        try {
+            conn = getConnection();
+            if (conn != null) {
+                String sql = "SELECT depositMoney FROM detail_account WHERE account_id = ?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, accountId);
+                rs = pstmt.executeQuery();
+
+                if (rs.next()) {
+                    currentDepositMoney = rs.getInt("depositMoney");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return currentDepositMoney;
+    }
+
+    public void rentPlayer(int playerId, int accountId, int rentalHours, int totalAmount) {
+        String sql = "INSERT INTO player_rental (playerId, accountId, rentalHours, rentalDate, totalAmount) VALUES (?, ?, ?, ?, ?)";
+
+        // Lấy thời gian hiện tại
+        LocalDateTime rentalDate = LocalDateTime.now();
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, playerId);
+            pstmt.setInt(2, accountId);
+            pstmt.setInt(3, rentalHours);
+            pstmt.setTimestamp(4, Timestamp.valueOf(rentalDate));
+            pstmt.setInt(5, totalAmount);
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Player rented successfully!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean addDepositMoney(int accountId, int depositMoneyToAdd) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        boolean isUpdated = false;
+
+        try {
+            conn = getConnection();
+            if (conn != null) {
+                int currentDepositMoney = getCurrentDepositMoney(accountId);
+
+                int newDepositMoney = currentDepositMoney + depositMoneyToAdd;
+
+                String sql = "UPDATE detail_account SET depositMoney = ? WHERE account_id = ?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, newDepositMoney);
+                pstmt.setInt(2, accountId);
+
+                int rowsAffected = pstmt.executeUpdate();
+                if (rowsAffected > 0) {
+                    isUpdated = true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return isUpdated;
+    }
+
+    public void updateAccountBalance(int accountId, int newBalance) {
+        String sql = "UPDATE detail_account SET depositMoney = ? WHERE account_id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, newBalance);
+            pstmt.setInt(2, accountId);
+
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Account balance updated successfully.");
+            } else {
+                System.out.println("Account not found.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -809,7 +1016,10 @@ public class AccountDAO implements IAccountDAO {
                     accountDetail.setJoinDate(resultSet.getString("joinDate"));
                     accountDetail.setNumberOfRentals(resultSet.getInt("numberOfRentals"));
                     accountDetail.setAccount_id(resultSet.getInt("account_id"));
+
                     accountDetail.setView(resultSet.getInt("view"));
+                    accountDetail.setPrice(resultSet.getInt("price"));
+                    accountDetail.setDepositMoney(resultSet.getInt("depositMoney"));
                 }
             }
         } catch (SQLException e) {
@@ -818,8 +1028,61 @@ public class AccountDAO implements IAccountDAO {
         return accountDetail;
     }
 
+    public List<PlayerRental> getPlayerRentalByAccountId(int accountId) {
+        List<PlayerRental> playerRentals = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM player_rental where accountId=?")) {
+            preparedStatement.setInt(1, accountId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    PlayerRental playerRental = new PlayerRental();
+                    playerRental.setPlayerId(resultSet.getInt("playerId"));
+                    playerRental.setAccountId(resultSet.getInt("accountId"));
+                    playerRental.setRentalHours(resultSet.getInt("rentalHours"));
+                    Timestamp rentalDateTimestamp = resultSet.getTimestamp("rentalDate");
+
+                    LocalDateTime rentalDate = rentalDateTimestamp.toLocalDateTime();
+                    playerRental.setRentalDate(rentalDate);
+                    playerRental.setTotalAmount(resultSet.getInt("totalAmount"));
+
+                    // Thêm đối tượng PlayerRental vào danh sách
+                    playerRentals.add(playerRental);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return playerRentals; // Trả về danh sách PlayerRental
+    }
+
+    public List<PlayerRental> getPlayerRentalByPlayerId(int playerId) {
+        List<PlayerRental> playerRentals = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM player_rental where playerId=?")) {
+            preparedStatement.setInt(1, playerId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    PlayerRental playerRental = new PlayerRental();
+                    playerRental.setPlayerId(resultSet.getInt("playerId"));
+                    playerRental.setAccountId(resultSet.getInt("accountId"));
+                    playerRental.setRentalHours(resultSet.getInt("rentalHours"));
+                    Timestamp rentalDateTimestamp = resultSet.getTimestamp("rentalDate");
+
+                    LocalDateTime rentalDate = rentalDateTimestamp.toLocalDateTime();
+                    playerRental.setRentalDate(rentalDate);
+                    playerRental.setTotalAmount(resultSet.getInt("totalAmount"));
+
+                    playerRentals.add(playerRental);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return playerRentals;
+    }
+
     @Override
-    public void updateAccountDetailByAccountId(String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int account_id) {
+    public void updateAccountDetailByAccountId(String dateOfBirth, String fullName, String gender, String city, String nationality, String avatar, String portrait, String portrait1, String portrait2, String height, String weight, String interest, String describeYourself, String regulations, String facebook, String joinDate, int price, int depositMoney, int account_id) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACCOUNT_DETAIL)) {
             preparedStatement.setString(1, dateOfBirth);
@@ -840,7 +1103,9 @@ public class AccountDAO implements IAccountDAO {
             preparedStatement.setString(14, regulations);
             preparedStatement.setString(15, facebook);
             preparedStatement.setString(16, joinDate);
-            preparedStatement.setInt(17, account_id);
+            preparedStatement.setInt(17, price);
+            preparedStatement.setInt(18, depositMoney);
+            preparedStatement.setInt(19, account_id);
 
 
             preparedStatement.executeUpdate();
@@ -933,17 +1198,15 @@ public class AccountDAO implements IAccountDAO {
         return accounts;
     }
 
-    @Override
     public List<Account> filterAccounts(String roleName, String status, String search) {
         List<Account> accounts = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FILTER_ACCOUNTS)) {
-            preparedStatement.setString(1, roleName); // Truyền tham số roleName vào truy vấn
-            preparedStatement.setString(2, status); // Truyền tham số status vào truy vấn
-            preparedStatement.setString(3, "%" + search + "%"); // Truyền tham số search vào truy vấn
+            preparedStatement.setString(1, roleName);
+            preparedStatement.setString(2, status);
+            preparedStatement.setString(3, "%" + search + "%");
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
-                    // Lấy dữ liệu từ ResultSet và thêm vào danh sách accounts
                     Account account = new Account();
                     account.setIdAccount(resultSet.getInt("idAccount"));
                     account.setAccountName(resultSet.getString("accountName"));
@@ -970,7 +1233,156 @@ public class AccountDAO implements IAccountDAO {
     }
 
 
+    public List<AccountDetail> searchAccounts(String fullName, String gender, String ageCategory, String view,
+                                              boolean online, String rentals, String city) {
+
+        List<AccountDetail> result = new ArrayList<>();
+
+        StringBuilder query = new StringBuilder("SELECT da.* FROM detail_Account da ");
+        query.append("JOIN account a ON da.account_id = a.idAccount ");
+        query.append("JOIN account_role ar ON a.idAccount = ar.account_id ");
+        query.append("WHERE ar.role_id = 2 AND a.status = 'Active' ");
+
+        int minAge = 0, maxAge = Integer.MAX_VALUE;
+        LocalDate today = LocalDate.now();
+
+        if (fullName != null && !fullName.isEmpty()) {
+            query.append("AND da.fullName LIKE ? ");
+        }
+        if (gender != null && !gender.isEmpty()) {
+            query.append("AND da.gender = ? ");
+        }
+        if (ageCategory != null && !ageCategory.isEmpty()) {
+            if (ageCategory.equals("18-30")) {
+                minAge = 18;
+                maxAge = 30;
+            } else if (ageCategory.equals("30-40")) {
+                minAge = 30;
+                maxAge = 40;
+            }
+            query.append("AND DATEDIFF(CURDATE(), da.dateOfBirth) / 365 BETWEEN ? AND ? ");
+        }
+        if (view != null && !view.isEmpty()) {
+            query.append("AND da.view >= ? ");
+        }
+        if (rentals != null && !rentals.isEmpty()) {
+            query.append("AND da.numberOfRentals = ? ");
+        }
+        if (city != null && !city.isEmpty()) {
+            query.append("AND da.city = ? ");
+        }
+
+        try (Connection connection = getConnection(); PreparedStatement pstmt = connection.prepareStatement(query.toString())) {
+            int index = 1;
+
+            if (fullName != null && !fullName.isEmpty()) {
+                pstmt.setString(index++, "%" + fullName + "%");
+            }
+            if (gender != null && !gender.isEmpty()) {
+                pstmt.setString(index++, gender);
+            }
+            if (ageCategory != null && !ageCategory.isEmpty()) {
+                pstmt.setInt(index++, minAge);
+                pstmt.setInt(index++, maxAge);
+            }
+            if (view != null && !view.isEmpty()) {
+                pstmt.setInt(index++, Integer.parseInt(view));
+            }
+            if (rentals != null && !rentals.isEmpty()) {
+                pstmt.setString(index++, rentals); // Thêm tham số rentals
+            }
+            if (city != null && !city.isEmpty()) {
+                pstmt.setString(index++, city);
+            }
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                AccountDetail accountDetail = new AccountDetail();
+                accountDetail.setIdDetail(rs.getInt("idDetail"));
+                accountDetail.setDateOfBirth(rs.getString("dateOfBirth"));
+                accountDetail.setFullName(rs.getString("fullName"));
+                accountDetail.setGender(rs.getString("gender"));
+                accountDetail.setCity(rs.getString("city"));
+                accountDetail.setNationality(rs.getString("nationality"));
+                accountDetail.setAvatar(rs.getString("avatar"));
+                accountDetail.setPortrait(rs.getString("portrait"));
+                accountDetail.setPortrait1(rs.getString("portrait1"));
+                accountDetail.setPortrait2(rs.getString("portrait2"));
+                accountDetail.setHeight(rs.getString("height"));
+                accountDetail.setWeight(rs.getString("weight"));
+                accountDetail.setInterest(rs.getString("interest"));
+                accountDetail.setDescribeYourself(rs.getString("describeYourself"));
+                accountDetail.setRegulations(rs.getString("regulations"));
+                accountDetail.setFacebook(rs.getString("facebook"));
+                accountDetail.setJoinDate(rs.getString("joinDate"));
+                accountDetail.setNumberOfRentals(rs.getInt("numberOfRentals"));
+                accountDetail.setAccount_id(rs.getInt("account_id"));
+                accountDetail.setView(rs.getInt("view"));
+                // Tiếp tục lấy các trường khác...
+                result.add(accountDetail);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
+    public List<Account> searchAccountsManager(String accountName, String status, String role) {
+
+        List<Account> result = new ArrayList<>();
+
+        StringBuilder query = new StringBuilder("SELECT a.* FROM account a ");
+        query.append("JOIN account_role ar ON a.idAccount = ar.account_id ");
+        query.append("JOIN role r ON ar.role_id = r.idRole ");
+        query.append("WHERE ar.role_id != 1 ");
+
+        if (accountName != null && !accountName.isEmpty()) {
+            query.append("AND a.accountName LIKE ? ");
+        }
+        if (status != null && !status.isEmpty()) {
+            query.append("AND a.status = ? ");
+        }
+        if (role != null && !role.isEmpty()) {
+            query.append("AND r.nameRole = ? ");
+        }
+
+        try (Connection connection = getConnection(); PreparedStatement pstmt = connection.prepareStatement(query.toString())) {
+            int index = 1;
+
+            if (accountName != null && !accountName.isEmpty()) {
+                pstmt.setString(index++, "%" + accountName + "%");
+            }
+            if (status != null && !status.isEmpty()) {
+                pstmt.setString(index++, status);
+            }
+            if (role != null && !role.isEmpty()) {
+                pstmt.setString(index++, role);
+            }
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Account account = new Account();
+                account.setIdAccount(rs.getInt("idAccount"));
+                account.setAccountName(rs.getString("accountName"));
+                account.setPassword(rs.getString("password"));
+                account.setEmail(rs.getString("email"));
+                account.setPhoneNumber(rs.getString("phoneNumber"));
+                account.setIdentifyCard(rs.getString("identifyCard"));
+                account.setSurname(rs.getString("surname"));
+                account.setName(rs.getString("name"));
+                account.setNickName(rs.getString("nickName"));
+                account.setStatus(rs.getString("status"));
+
+                result.add(account);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+}
 
 

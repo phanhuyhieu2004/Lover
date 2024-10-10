@@ -1,23 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins");
-
-
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: "Poppins", sans-serif;
     overflow: hidden;
     height: 100vh;
-    background-image: url("https://images6.alphacoders.com/114/1145091.png") ;
-    background-size: 100%;
+    background-image: url("https://images6.alphacoders.com/114/1145091.png");
+     background-size: cover;
 }
 
-
-
-
-
+.btn-login{
+    min-width: 144px;
+}
+.btn-login:hover{
+    opacity: 0.5;
+}
 .input-row {
     display: flex;
     gap: 10px; /* Khoảng cách giữa các input */
@@ -26,27 +24,21 @@ body {
 .input-row input {
     flex: 1; /* Để input chiếm phần bằng nhau trên hàng */
 }
-.role{
+
+.role {
     display: flex;
     justify-content: center;
 }
 
 
-
-
-
 h1 {
-    font-weight: 700;
-    letter-spacing: -1.5px;
-    margin: 0;
-    margin-bottom: 15px;
-}
 
-h1.title {
-    font-size: 45px;
-    line-height: 45px;
-    margin: 0;
-    text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
+    letter-spacing: -1.5px;
+    font-weight: 700;
+    font-family: var(--font-heading), serif;
+
+    line-height: 1.27;
+    font-size: 3.8rem;
 }
 
 
@@ -55,9 +47,6 @@ span {
     font-size: 14px;
     margin-top: 25px;
 }
-
-
-
 
 
 .content {
@@ -81,12 +70,10 @@ span {
 }
 
 .content label {
-    font-size: 14px;
+    font-size: 1.4rem;
     user-select: none;
     padding-left: 5px;
 }
-
-
 
 
 form {
@@ -109,7 +96,8 @@ input {
     margin: 8px 0;
     width: 100%;
 }
-.socials{
+
+.socials {
     list-style: none;
     display: flex;
     align-items: center;
@@ -118,21 +106,61 @@ input {
 
 }
 
-.socials a i{
+.socials a i {
     font-size: 1.1rem;
     width: 20px;
     transition: color .4s ease;
 
 
 }
-.socials a:hover i{
+
+.socials a:hover i {
     color: red;
 }
 
-.form-container {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
+
+.container {
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+
+    width: 405px;
+    max-width: calc(100% - 48px);
+    min-height: 550px;
 }
+/*PC*/
+@media (min-width: 992px) {
+body{
+    background-image: url("https://images6.alphacoders.com/114/1145091.png");
+    background-size: cover;
+}
+}
+
+/*Máy tính bảng và đt*/
+@media (max-width: 991.98px) {
+
+}
+/*Máy tính bảng*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+
+}
+/*Điện thoại*/
+@media (max-width: 767.98px) {
+    h1{
+        font-size: 1.8rem;
+    }
+
+.signup-link{
+    font-size: 1.1rem;
+}
+    .register-link{
+        font-size: 1.1rem;
+
+    }
+}
+
+
 

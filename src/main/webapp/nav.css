@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
-/*Giao diá»‡n cá»§a thanh Ä‘iá»u hÆ°á»›ng Ä‘áº§u trang*/
-/* TÃ¹y chá»‰nh pháº§n input vÃ  button trong pháº§n Search */
+
 .searchTerm {
     width: 300px;
     border: none;
@@ -9,32 +7,39 @@
     outline: none;
     font-size: 14px;
 }
-
+.menu.profile-dropdown-list-item{
+    display: none;
+}
+header{
+    background: var(--primary);
+}
+.container {
+    width: 1170px;
+    max-width: calc(100% - 48px);
+    margin: 0 auto;
+}
 .searchButton {
     width: 40px;
     height: 37px;
     border: none;
-    background-color: deeppink;
+    background-color: hotpink;
     color: #fff;
     border-radius: 0 20px 20px 0;
     cursor: pointer;
     font-size: 18px;
 }
 
-/* TÃ¹y chá»‰nh pháº§n Search container */
 .search {
     display: flex;
     align-items: center;
 }
 
-/* TÃ¹y chá»‰nh wrapper chá»©a Search vÃ  Logo */
 .wrap {
     display: flex;
     align-items: center;
     margin-right: 20px;
 }
 
-/* TÃ¹y chá»‰nh khoáº£ng cÃ¡ch giá»¯a Logo vÃ  pháº§n Search */
 .navbar-logo {
     margin-right: 10px;
 }
@@ -69,10 +74,10 @@
 .navbar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 70px;
-    background-color: #faedeb;
-    padding: 0 8%;
-    box-shadow: var(--shadow);
+    background-color: var(--primary);
+
 }
 
 
@@ -105,14 +110,12 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     width: 150px;
     border-radius: 50px;
-    color: var(--black);
-    /* background-color: white;
-    box-shadow: var(--shadow); */
-
+    color: white;
+    background: hotpink;
     cursor: pointer;
     border: 1px solid var(--secondary);
     transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in,
@@ -120,7 +123,7 @@
 }
 
 .profile-dropdown-btn:hover {
-    background-color: var(--secondary-light-2);
+
     box-shadow: var(--shadow);
 }
 
@@ -138,7 +141,12 @@
     margin-right: 0;
 
 }
-
+.navbar-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
 .profile-dropdown-list {
     position: absolute;
     top: 68px;
@@ -180,7 +188,35 @@
 
 .profile-dropdown-list-item:hover {
     padding-left: 1.5rem;
-    background-color: var(--secondary-light);
+    background-color: pink;
 
 }
+/*PC*/
+@media (min-width: 992px) {
+
+}
+
+/*Máy tính bảng và đt*/
+@media (max-width: 991.98px) {
+    .navbar-list{
+        display: none;
+    }
+    .menu.profile-dropdown-list-item{
+        display: block;
+    }
+}
+/*Máy tính bảng*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+
+}
+/*Điện thoại*/
+@media (max-width: 767.98px) {
+.wrap{
+    display: none;
+
+}
+}
+
+
 

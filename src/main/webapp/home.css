@@ -1,19 +1,12 @@
-/*  import google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 
 
-/* Side menubar section */
+
 nav{
     background: #FFE4E1;
     height: 800px;
 }
-.side_navbar {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-}
+
 
 .side_navbar span {
     color: hotpink;
@@ -40,12 +33,12 @@ nav{
 }
 
 .side_navbar a:hover {
-    background: deeppink;
+    background: hotpink;
 }
 
 .side_navbar .active {
     border-left: 2px solid #646464;
 }
-/* Main Body Section */
+
 
 
