@@ -51,7 +51,7 @@ public class AddMoneyControl  extends HttpServlet {
             request.setAttribute("error", "Please select denomination and provide account ID.");
         }
 
-        request.getRequestDispatcher("recharge.jsp").forward(request, response);
+       response.sendRedirect("addMoney");
 
 
 

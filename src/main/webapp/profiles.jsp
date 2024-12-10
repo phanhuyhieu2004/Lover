@@ -330,8 +330,7 @@
                     <div id="header">
                         <h3 style="margin-right: 25px;">TOP DONATE</h3>
                         <button class="share">
-                            <i class="ph ph-share-network"></i>
-                        </button>
+                            <i class="fa-solid fa-share-nodes"></i>                        </button>
                     </div>
                     <div id="leaderboard">
                         <div class="ribbon"></div>

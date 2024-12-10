@@ -19,7 +19,7 @@ import java.io.IOException;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 *600,
         maxFileSize = 1024 *1024 *600,
         maxRequestSize = 1024 * 1024 *600)
-public class EditUserInformation extends HttpServlet {
+public class    EditUserInformation extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private AccountDAO accountDAO;
 
@@ -48,8 +48,11 @@ public class EditUserInformation extends HttpServlet {
             String joinDate = request.getParameter("joinDate");
 
             int depositMoney= Integer.parseInt(request.getParameter("depositMoney"));
-             int price = Integer.parseInt(request.getParameter("price"));
-
+            String priceStr = request.getParameter("price");
+            int price = 0; // Hoặc giá trị mặc định khác bạn muốn
+            if (priceStr != null && !priceStr.isEmpty()) {
+                price = Integer.parseInt(priceStr);
+            }
             HttpSession session = request.getSession();
             Account account = (Account) session.getAttribute("acc");
             int account_id = account.getAccountDetail().getAccount_id();

@@ -68,10 +68,9 @@
     }
 
     .alert-success {
-        background-color: forestgreen;
         margin: 5px;
         border-radius: 5px;
-        color: white;
+
     }
 
     .socials a {

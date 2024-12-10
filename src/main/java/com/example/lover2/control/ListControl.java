@@ -33,7 +33,7 @@ public class ListControl extends HttpServlet {
         List<Account> listAccount= accountDAO.searchAccountsManager(accountName,status,role);
         request.setAttribute("accountName", accountName);
         request.setAttribute("status", status);
-        request.setAttribute("status", status);
+        request.setAttribute("role", role);
 
         request.setAttribute("listAccount", listAccount);
 

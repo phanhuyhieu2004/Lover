@@ -1,4 +1,7 @@
-
+.namePlayer p{
+    white-space: nowrap;
+    font-size: 1.5rem;
+}
 
 
 

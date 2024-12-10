@@ -152,19 +152,21 @@
                 <label for="moneyDenomination" class="moneyDenomination">Choose currency denomination:</label>
                 <select id="moneyDenomination" name="moneyDenomination">
                     <option value="0">--Choose denomination--</option>
-                    <option value="10000">10,000 VND</option>
-                    <option value="20000">20,000 VND</option>
-                    <option value="50000">50,000 VND</option>
-                    <option value="100000">100,000 VND</option>
-                    <option value="200000">200,000 VND</option>
-                    <option value="500000">500,000 VND</option>
+                    <option value="10">10.000k</option>
+                    <option value="20">20.000k</option>
+                    <option value="50">50.000k</option>
+                    <option value="100">100.000k</option>
+                    <option value="200">200.000k</option>
+                    <option value="500">500.000k</option>
                 </select>
 
                 <input type="submit" value="Deposit money">
             </form>
 
         </div>
-        <p style="padding: 20px;"> Current balance: ${accountDetail.depositMoney} VND</p>
+        <p style="padding: 20px;">Current balance: ${accountDetail.depositMoney == 0 ? '0' : accountDetail.depositMoney }
+            ${accountDetail.depositMoney == 0 ? '' : '.000k' }
+        </p>
     </div>
 </div>
 

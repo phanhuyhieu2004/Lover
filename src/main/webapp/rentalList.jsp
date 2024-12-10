@@ -107,7 +107,7 @@
                             <tr>
                                 <td>${loop.index+1}</td>
                                 <td>${rental.rentalHours}</td>
-                                <td>${rental.totalAmount}</td>
+                                <td>${rental.totalAmount}.000k</td>
                                 <td>${rental.rentalDate}</td>
                                 <td><a href="profile?aid=${rental.playerId}"><i class="fa-solid fa-circle-info tooltip"> <span
                                         class="tooltip-text">Information </span>

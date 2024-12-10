@@ -61,7 +61,6 @@
                     <option value="">Roles List</option>
                     <option value="serviceProviders"  ${role == 'serviceProviders'? 'selected' :''}>Service Providers
                     </option>
-                    <option value="account"  ${role == 'account'? 'selected' :''}>All Account List</option>
                     <option value="user" ${role == 'user'? 'selected' :''}>User List</option>
                 </select>
 
@@ -110,7 +109,7 @@
                                 <td>
                                     <button class="block-btn" style="padding: 10px;
   border: none;
-  border-radius: 10px;background: pink" onclick="blockAccount('${list.idAccount}')">Block
+  border-radius: 10px;background: pink" onclick="blockAccount('${list.idAccount}')" >Block
                                     </button>
                                 </td>
                             </tr>
@@ -190,6 +189,11 @@
 
     // Truyền tham số là id của tài khocần chặn đã lấy ở trên
     function blockAccount(id) {
+        // Hiện hộp thoại xác nhận
+        const confirmation = confirm("Bạn có chắc chắn muốn chặn tài khoản này không?");
+        if (!confirmation) {
+            return; // Nếu người dùng không xác nhận, thoát khỏi hàm
+        }
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'BlockAccountServlet', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

@@ -223,7 +223,7 @@ public class AccountDAO implements IAccountDAO {
                 newAccountDetail.setFacebook(newAccountDetail.getFacebook());
                 newAccountDetail.setJoinDate(newAccountDetail.getJoinDate());
                 newAccountDetail.setPrice(newAccountDetail.getPrice());
-                newAccountDetail.setDepositMoney(newAccountDetail.getDepositMoney());
+                newAccountDetail.setDepositMoney(50);
                 newAccountDetail.setAccount_id(accountId);
 //                lấy id của tài khoản  mới vừa thêm vào trong bảng account
                 addAccountDetail(accountId, newAccountDetail);
@@ -1332,7 +1332,7 @@ public class AccountDAO implements IAccountDAO {
 
         List<Account> result = new ArrayList<>();
 
-        StringBuilder query = new StringBuilder("SELECT a.* FROM account a ");
+        StringBuilder query = new StringBuilder("SELECT a.*,r.nameRole FROM account a ");
         query.append("JOIN account_role ar ON a.idAccount = ar.account_id ");
         query.append("JOIN role r ON ar.role_id = r.idRole ");
         query.append("WHERE ar.role_id != 1 ");

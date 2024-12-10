@@ -333,7 +333,7 @@
                     <div id="header">
                         <h3 style="margin-right: 25px;">TOP DONATE</h3>
                         <button class="share">
-                            <i class="ph ph-share-network"></i>
+                            <i class="fa-solid fa-share-nodes"></i>
                         </button>
                     </div>
                     <div id="leaderboard">
@@ -644,7 +644,7 @@
                         <label>Current balance:</label>
                     </div>
                     <div class="div-4">
-                        <span id="surplus" style="color: hotpink">${profile1.depositMoney} đ</span>
+                        <span id="surplus" style="color: hotpink">${profile1.depositMoney} .000k</span>
                         <button class="surplus-button" onclick="openModal2()">+</button>
                     </div>
                 </div>
@@ -652,22 +652,25 @@
             </div>
             <div class="modal-footer" >
                 <button type="submit" value="close" onclick="closeModal()" style="width: 60px;
-        height: 30px;
-        font-size: 15px;
-        margin-top: 10px;
-        float: right;
-        text-align: center;
-        margin-right: 15px;">Close</button>
+  height: 30px;
+  font-size: 15px;
+  margin-top: 10px;
+  float: right;
+  text-align: center;
+  margin-right: 15px;
+  border: none;
+  border-radius: 5px;">Close</button>
 
                 <button type="submit" value="rent" style=" width: 60px;
-        height: 30px;
-        font-size: 15px;
-        margin-top: 10px;
-        float: right;
-        text-align: center;
-        background-color: hotpink;
-        border: 1px solid hotpink;
-        margin-right: 7px;">Rent</button>
+  height: 30px;
+  font-size: 15px;
+  margin-top: 10px;
+  float: right;
+  text-align: center;
+  background-color: hotpink;
+  border: 1px solid hotpink;
+  margin-right: 7px;
+  border-radius: 5px;">Rent</button>
             </div>
             <script>
                 // Giá gốc cho 1 giờ thuê
@@ -677,7 +680,7 @@
                 function updatePrice() {
                     const hours = document.getElementById("hour-select").value; // Lấy số giờ được chọn
                     const newPrice = basePrice * hours; // Tính giá mới
-                    document.getElementById("price").textContent = newPrice + " đ";
+                    document.getElementById("price").textContent = newPrice + " .000k";
                     document.getElementById("rentalPrice").value = newPrice;
                 }
 
